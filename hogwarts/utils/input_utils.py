@@ -20,9 +20,8 @@ def askText(msg):
     Asks the user to enter text
     Prompt again whenever the text entered is invalid
 
-    :param {str} msg - Input message display
-
-    :return {str} - Text entered
+    :param msg: {str} - Input message display
+    :return txt: {str} - Text entered
     """
 
     txt = input(msg).strip() #Removes spaces at the beginning and at the end of the text
@@ -33,13 +32,10 @@ def askNumber(msg, minVal=None, maxVal=None):
     Asks the user to enter an integer
     Prompt again whenever the text entered is invalid
     
-    :param {str} msg - Input message display
-
-    :param {int} ?minVal - Minimum value
-
-    :param {int} ?maxVal - Maximum value
-
-    :return {int} - Integer entered
+    :param msg: {str} - Input message display
+    :param minVal: {int} ? - Minimum value
+    :param maxVal: {int} ? - Maximum value
+    :return nb: {int} - Integer entered
     """
 
     valid = False
@@ -67,10 +63,10 @@ def askNumber(msg, minVal=None, maxVal=None):
 def askChoice(msg, options):
     """
     Displays a numbered list of options and prompts the user to make a selection by entering the corresponding number
-    
-    :param {str} msg - Input message display
 
-    :param {list[str]} options - List of different options
+    :param msg: {str} - Input message display
+    :param options: {list[str]} - List of different options
+    :return choice: {int} - Number corresponding to the selected option
 
     """
     print(f"{msg}")
@@ -83,10 +79,10 @@ def askChoice(msg, options):
 
 def loadFile(path):
     """
-    Loads a JSON file contents
+    Loads a JSON file contents. Raises an exception if an error occurs during the process.
 
-    :param {str} path - filePath (Warning: file must not)
-    :return {list} jsonList - JSON contents organized in lists
+    :param path: {str} - file path of the JSON file to load
+    :return jsonList: {list} - JSON contents organized in lists
     """
     try: 
         with open(path, "r", encoding="utf-8") as f:
