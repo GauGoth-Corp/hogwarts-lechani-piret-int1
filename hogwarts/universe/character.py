@@ -12,6 +12,7 @@
 #%%###=== Global variables ===###
 contactSupportURL = "http://gaugoth.corp.free.fr/credits/contact/?subject=Hogwarts%20Game%20Support%20Request"
 
+
 #%%###=== Module (functions) ===####
 def initCharacter(lastName, firstName, attributes):
     """
