@@ -5,7 +5,9 @@
 #### 27/11/2025 - 29/11/2025 #################################
 #### Copyright (c) 2025 GauGoth Corp. All Rights reserved ####
 ##############################################################
-
+"""
+This module contains functions for creating, managing, and displaying the player's character. 
+"""
 #%%###=== Modules Import ===####
 #### Package modules import ####
 
