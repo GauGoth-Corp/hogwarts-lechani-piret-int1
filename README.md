@@ -1,3 +1,5 @@
+<img src="hgg-icon.png" alt="Hogwarts Game Logo" width="100"/>
+
 # Hogwarts Game - v. Bêta
 Hogwarts Game is a text-based adventure game set in the _Harry Potter_ universe. This project is developed as part of a Python programming project at our school **Efrei Paris**.
 
