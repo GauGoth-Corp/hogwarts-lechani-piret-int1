@@ -1,10 +1,12 @@
-# Hogwarts Project - v. Bêta
-Hogwarts Game is a text-based adventure game set in the Harry Potter universe. This project is developed as part of a Python programming project at our school **Efrei Paris**.
+# Hogwarts Game - v. Bêta
+Hogwarts Game is a text-based adventure game set in the _Harry Potter_ universe. This project is developed as part of a Python programming project at our school **Efrei Paris**.
 
-_Developed by Lisa Lechani & Gautier Piret._
+_Developed by Aomm-lgtm & GauGoth Corp._
 
-**Caution: This tool is intended for personal use only. Always respect the copyright laws in your country, and policies of the websites you download from.**
+**Caution: This tool is intended for personal use only. Always respect the copyright laws in your country.**
 
+## How to play
+**_This game is still in development. This part will be updated as soon as possible._**
 <!--
 ## Download it!
 
@@ -21,11 +23,16 @@ _Developed by Lisa Lechani & Gautier Piret._
 
 ## License
 _Copyright © 2025 GauGoth Corp. All rights reserved._
-<!--
+
+_Copyright © & TM Warner Bros. Entertainment Inc. Publishing Rights © J.K. Rowling_
+
+The Hogwarts Game is, in no way, affiliated with, endorsed, sponsored, or specifically approved by Warner Bros. Entertainment Inc., J.K. Rowling, or any of their respective affiliates or subsidiaries. All trademarks, service marks, and trade names are the property of their respective owners.
+
 **You can read the License in the LICENSE.md file:
 [[LICENSE.md](LICENSE.md)]**
--->
-Visit our website or our GitHub profiles to see our projects: 
+
+## About us
+Visit our GitHub profiles or the GauGoth Corp. website to discover our projects: 
 - [Aomm-lgtm](https://github.com/Aomm-lgtm)
 - [GauGoth Corp.](http://gaugoth.corp.free.fr/)
 - [GauGoth Corp. on GitHub](https://github.com/GauGoth-Corp)
