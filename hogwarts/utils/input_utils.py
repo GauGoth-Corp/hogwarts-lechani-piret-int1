@@ -6,7 +6,7 @@
 #### Copyright (c) 2025 GauGoth Corp. All Rights reserved ####
 ##############################################################
 """
-The input_utils.py module contains utility functions for properly managing user input.
+Utility functions for properly managing user input.
 """
 
 #%%###=== Modules Import ===####

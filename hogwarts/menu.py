@@ -8,7 +8,7 @@
 
 #%%###=== Modules Import ===####
 #### Package modules import ####
-from menu import *
+from utils.input_utils import *
 
 #%%###=== Global variables ===###
 contactSupportURL = "http://gaugoth.corp.free.fr/credits/contact/?subject=Hogwarts%20Game%20Support%20Request"

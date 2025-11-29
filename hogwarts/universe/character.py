@@ -6,7 +6,7 @@
 #### Copyright (c) 2025 GauGoth Corp. All Rights reserved ####
 ##############################################################
 """
-This module contains functions for creating, managing, and displaying the player's character. 
+Functions for creating, managing, and displaying the player's character. 
 """
 #%%###=== Modules Import ===####
 #### Package modules import ####
