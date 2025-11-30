@@ -14,6 +14,9 @@ Functions for managing Hogwarts houses, including player distribution, updating 
 
 
 #%%###=== Global variables ===###
+from hogwarts.utils.input_utils import askChoice
+
+
 contactSupportURL = "http://gaugoth.corp.free.fr/credits/contact/?subject=Hogwarts%20Game%20Support%20Request"
 
 #%%###=== Module (functions) ===####
@@ -73,8 +76,34 @@ def displayWinningHouse(houses):
 
 def assignHouse(character, questions):
     """
+    Determines a player's house by combining the character's personal attributes with their answers to the Sorting Hat's personality test during the sorting ceremony.
+
+    The function calculates a score for each house: ﬁrst by taking into account the player's character attributes (each trait inﬂuences a speciﬁc house), then by adding points based on the answers to the test.  
+
+    :param character: {dict} - The character dictionary
+    :param questions: {list[tuple]} -  A list of tuples, each containing: (1) the question text, (2) a list of possible choices, and (3) the corresponding houses for each answer.
+    :return house: {str} - The assigned house
+   """
+    #Initial house points with 0 each
+    housePoints = {"Gryffindor": 0, "Slytherin": 0, "Hufflepuff": 0, "Ravenclaw": 0}
+
+    #Attributes influence (add to each the attribute multiplied by 2)
+    attributes = character["Attributes"]
+    housePoints["Gryffindor"] += attributes["Courage"]* 2
+    housePoints["Slytherin"] += attributes["Ambition"]*2
+    housePoints["Hufflepuff"] += attributes["Loyalty"]*2
+    housePoints["Ravenclaw"] += attributes["Intelligence"]*2 
+
+    #Questions influence
+    for question, choices, houses in questions :
+        choice = askChoice(question, choices)
+        selectedHouse = houses[choice - 1] 
+        housePoints[selectedHouse] += 10  #Each answer gives 10 points to the corresponding house
+     
+    #Determine the house with the highest points
+    assignedHouse = max(housePoints, key=housePoints.get)
+    return assignedHouse
     
-    """
 
 #%%###=== Program ===####
 if __name__ == "__main__":
@@ -87,3 +116,29 @@ if __name__ == "__main__":
     print()
 
     displayWinningHouse(hgg_houses)
+
+    #Example of assignHouse function
+    from hogwarts.universe.character import initCharacter
+    Harry_the_goat = initCharacter("Potter", "Harry", {"Courage": 1000, "Intelligence": 0, "Loyalty": 9, "Ambition": 7})
+
+    questions = [ 
+    ( 
+        "You see a friend in danger. What do you do?", 
+        ["Rush to help", "Think of a plan", "Seek help", "Stay calm and observe"], 
+        ["Gryffindor", "Slytherin", "Hufflepuff", "Ravenclaw"] 
+    ), 
+    ( 
+        "Which trait describes you best?", 
+        ["Brave and loyal", "Cunning and ambitious", "Patient and hardworking", "Intelligent and curious"], 
+        ["Gryffindor", "Slytherin", "Hufflepuff", "Ravenclaw"] 
+    ), 
+    ( 
+        "When faced with a difficult challenge, you...", 
+        ["Charge in without hesitation", "Look for the best strategy", "Rely on your friends", 
+         "Analyze the problem"], 
+        ["Gryffindor", "Slytherin", "Hufflepuff", "Ravenclaw"] 
+    ) 
+]
+
+    assignedHouse = assignHouse(Harry_the_goat, questions)
+    print(f"Harry the goat has been assigned to {assignedHouse}.")
