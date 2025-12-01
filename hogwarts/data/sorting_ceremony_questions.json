@@ -1,0 +1,130 @@
+[ 
+    { 
+        "question": "What quality do you value most in a friend?", 
+        "choices": ["Courage", "Loyalty", "Ambition", "Wisdom"], 
+        "houses": ["Gryffindor", "Hufflepuff", "Slytherin", "Ravenclaw"] 
+        
+    },
+
+    { 
+        "question": "Which trait describes you best?", 
+        "choices": ["Brave and loyal", "Cunning and ambitious", "Patient and hardworking", "Intelligent and curious"], 
+        "houses": ["Gryffindor","Slytherin", "Hufflepuff", "Ravenclaw"] 
+    },
+    {
+        "question": "You're walking in a forest when suddendly you arrive just in front of two railways. You see, horrified, that there is a train coming toward twenty people tied to the main railway. On a side railway, there is one person tied - your MOTHER! You have the choice to divert the train onto the side railway, killing your own blood but saving 20. What do you do?",
+        "choices": ["Divert the train, saving the 20 people but killing your beloved mom", "Do nothing, letting the train continue on its path", "Jump in front of the train trying to stop it, sacrificing yourself", "Try to find another way to stop the train"],
+        "houses": ["Ravenclaw", "Slytherin", "Gryffindor", "Hufflepuff"]
+    },
+
+    {
+        "question": "You are watching your best ever friend dying from plague. His hours are numbered. You have the chance to save him/her by using a forbidden spell that will condemn ten innocent person to death somewhere else in the world. Do you use the spell?",
+        "choices": ["Yes, saving your friend is worth any cost", "No, you refuse to use dark magic", "You try to find another way to save your friend", "You ask your friend what he/she wants you to do"],
+        "houses": ["Slytherin", "Gryffindor", "Ravenclaw", "Hufflepuff"]
+    },
+    {
+        "question": "You're in a library and you find a book that can give to the reader immense knowledge and infinite power. But there's is one chance over two that your best friend will die if you do so. What do you do?",
+        "choices": ["Read the book, gaining power but risking your friend's life", "Immediately take the book and throw it in the fireplace", "Take the book and study it carefully before deciding", "Ask your friend if he/she is willing to take the risk for you to gain power"],
+        "houses": ["Slytherin", "Hufflepuff", "Ravenclaw", "Gryffindor"]
+    },
+    {
+        "question": "You learn that your crush has started dating a good friend of yours. How do you react?",
+        "choices": ["Try to move on and focus on yourself", "Kill your friend", "Feel jealous but keep it to yourself", "Suicide yourself"],
+        "houses": ["Ravenclaw", "Slytherin", "Gryffindor", "Hufflepuff"]
+    },
+    {
+
+        "question": "You enter into an empty room and find a button with a sign that says 'DO NOT PRESS'. What do you do?", 
+        "choices": ["Press the button out of curiosity", "Leave the room immediately", "Look for another way out", "Wait and observe what happens"],
+        "houses": ["Gryffindor", "Hufflepuff", "Slytherin", "Ravenclaw"] 
+
+    },
+
+
+    {
+        "question": "You find a hidden passage. What do you do?",
+        "choices": ["Map it out carefully", "Explore it with friends", "Keep it secret for later use", "Investigate it immediately"],
+        "houses": ["Ravenclaw", "Hufflepuff",  "Slytherin", "Gryffindor"] 
+    },
+
+    { 
+        "question": "You see a friend in danger. What do you do?",
+        "choices": ["Seek help", "Think of a plan", "Stay calm and observe", "Rush to help"], 
+        "houses": ["Hufflepuff", "Slytherin", "Ravenclaw", "Gryffindor"] 
+    },
+    {
+
+        "question": "How do you prefer to spend your free time?",
+        "choices": ["Reading in the library", "Practicing dueling", "Helping others with homework", "Planning your future success"],
+        "houses": ["Ravenclaw", "Gryffindor", "Hufflepuff", "Slytherin"]
+    },
+    {
+        "question": "What is your favorite subject at Hogwarts?",
+        "choices": ["Defense Against the Dark Arts", "Potions", "Herbology","Charms"], 
+        "houses": ["Gryffindor", "Slytherin", "Hufflepuff", "Ravenclaw"]
+
+    },
+    {
+        "question": "A bully is picking on a younger student. You...",   
+        "choices": ["Find a clever way to stop it", "Stand up to them directly", "Comfort the victim afterwards", "Report it to a teacher"],
+        "houses": ["Slytherin",  "Gryffindor", "Hufflepuff", "Ravenclaw"]
+    },  
+    {
+        "question": "What is your favorite movie?",
+        "choices": ["Star Wars", "Harry Potter", "The Lord of the Rings", "Pirates of the Caribbean"],
+        "houses": ["Gryffindor",  "Hufflepuff", "Ravenclaw", "Slytherin"]
+    },
+    { 
+        "question": "When faced with a difficult challenge, you...",
+        "choices": ["Charge in without hesitation", "Look for the best strategy", "Rely on your friends", "Analyze the problem"], 
+        "houses":["Gryffindor", "Slytherin", "Hufflepuff", "Ravenclaw"] 
+    },
+    {
+
+        "question": "What do you fear most?", 
+        "choices": ["Being seen as weak", "Being alone", "Failure", "Ignorance"], 
+        "houses": ["Slytherin","Ravenclaw", "Gryffindor", "Hufflepuff"]
+    },
+    {
+
+        "question": "Which element do you feel most connected to?",
+        "choices": ["Fire", "Water", "Earth", "Air"],
+        "houses": ["Gryffindor", "Hufflepuff", "Slytherin", "Ravenclaw"]
+    },
+    {
+        "question":"You discover a secret that could help you. Do you...",
+        "choices": ["Use it to your advantage" , "Study it thoroughly first","Share it with everyone",  "Tell only your closest friends"],
+        "houses": [ "Slytherin", "Ravenclaw", "Gryffindor", "Hufflepuff"] 
+    },
+    {
+        "question": "What kind of magic interests you most?",
+        "choices": ["Ancient and forgotten spells", "Powerful defensive magic", "Healing and supportive magic", "Dark arts understanding"],
+        "houses": ["Ravenclaw", "Gryffindor", "Hufflepuff", "Slytherin"]
+    },
+    {
+        "question": "In a group project, you typically..." ,
+        "choices": ["Lead the team", "Make sure everyone contributes", "Research and gather information","Find shortcuts to success"],
+        "houses": ["Gryffindor", "Hufflepuff" , "Ravenclaw", "Slytherin"]
+    },
+
+    {
+        "question": "What would you do with the Philosopher's Stone?",  
+        "choices": ["Study its properties", "Destroy it so no one can misuse it", "Use it wisely for good","Keep it hidden for yourself"],
+        "houses": ["Ravenclaw","Gryffindor","Hufflepuff","Slytherin"]
+
+    },
+    {
+        "question": "Which animal would you choose as a companion?", 
+        "choices": ["A clever raven", "A loyal dog", "A fierce lion", "A cunning snake"],
+        "houses": ["Ravenclaw","Hufflepuff","Gryffindor","Slytherin"] 
+    },
+
+    {
+        "question": "What motivates you to succeed?",
+        "choices": ["Recognition and glory", "Knowledge and understanding", "Helping others", "Achieving your goals"],
+        "houses": ["Gryffindor","Ravenclaw","Hufflepuff","Slytherin"]  
+    }
+
+
+]
+

@@ -118,5 +118,10 @@
         "name": "Incarcerous",
         "description": "Conjures ropes to bind a target.",
         "type": "Offensive"
+    },
+    {
+        "name": "Abracadabite",
+        "description": "A humorous spell that causes minor magical 'mishaps'.",
+        "type": "Utility"
     }
 ]
