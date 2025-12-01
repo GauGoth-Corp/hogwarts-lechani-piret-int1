@@ -9,7 +9,7 @@
 #%%###=== Modules Import ===####
 #### Package modules import ####
 from menu import *
-from input_utils import *
+from hogwarts.utils.input_utils import *
 
 #%%###=== Global variables ===###
 contactSupportURL = "http://gaugoth.corp.free.fr/credits/contact/?subject=Hogwarts%20Game%20Support%20Request"
@@ -42,14 +42,32 @@ def createCharacter():
 def receiveLetter():
     print("You have received your acceptance letter to Hogwarts School of Witchcraft and Wizardry! Press enter to continue...")
     input()
-    askChoice("Do you wish to attend Hogwarts ?", ["Yes", "No"])
+    choice = askChoice("Do you wish to attend Hogwarts ?", ["Yes", "No"])
+    if choice == "Yes":
+        print("Great! Let's get started on your magical journey. Press enter to continue...")
+        input() 
+
+    else:
+        print("You won't be missed! Goodbye!")
+        input()
+        exit()
 
 
 def meetHagrid():
-    pass
+    print("Hagrid arrives to take you to Hogwarts after assaulting your cousin. Press enter to continue...")
+    input()
+    print("Hagrid: 'You're a wizard, Harry!' Now, go buy me some beers with your dead parents' money. Press enter to continue...")
+    input()
+    print("You arrive at Diagon Alley with Hagrid. Instead of buying your school supplies, you decide to buy beers for Hagrid. Press enter to continue...")
+    input()
+    print("Hagrid is pleased with your choice. However, you still need to get your school supplies. Press enter to continue...")
+    input()
 
 def buySupplies():
-    pass
+    print("Welcome to Diagon Alley! You need to buy your school supplies. Press enter to continue...")
+    input()
+    print("Catalog of available items:")
+    
 
 def start_chapter_1():
     pass
