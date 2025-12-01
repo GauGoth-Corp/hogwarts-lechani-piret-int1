@@ -100,13 +100,13 @@ def loadFile(path):
 if __name__ == "__main__":
     ###Functions tests:
 
-    print("Loaded JSON: \n", loadFile("../data/houses.json"))
+    print("Loaded JSON: \n", loadFile("hogwarts/data/houses.json"))
 
-    """
+    
     print(askChoice("What do u choose?", ["Die", "Live", "None."]))
     print(askText("Enter text: "))
     print(askNumber("Enter a number between 1 and 10: ", 1, 10))
     print(askNumber("Enter a number greater than 5: ", 5))
     print(askNumber("Enter a number lower than 20: ", None, 20))
     print(askNumber("Enter any number: "))
-    """
+    

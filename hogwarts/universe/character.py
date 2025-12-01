@@ -45,7 +45,7 @@ def displayCharacter(character):
 
     :param character: {dict} - The character dictionary
     """
-    print(f"== {character["First Name"]} {character["Last Name"]} profile ==")
+    print(f"== {character['First Name']} {character['Last Name']} profile ==")
     for key, value in character.items():
         if type(value) == dict:
             print(f"{key}: ")

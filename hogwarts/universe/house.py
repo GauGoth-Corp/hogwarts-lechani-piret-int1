@@ -11,10 +11,10 @@ Functions for managing Hogwarts houses, including player distribution, updating 
 
 #%%###=== Modules Import ===####
 #### Package modules import ####
+from hogwarts.utils.input_utils import askChoice
 
 
 #%%###=== Global variables ===###
-from hogwarts.utils.input_utils import askChoice
 
 
 contactSupportURL = "http://gaugoth.corp.free.fr/credits/contact/?subject=Hogwarts%20Game%20Support%20Request"
