@@ -78,7 +78,7 @@ def askChoice(msg, options):
         print(f"    {i+1}. {options[i]}")
     print()
     
-    choice = askNumber("Choose you fate: ", 1, len(options))
+    choice = askNumber("Make your choice: ", 1, len(options))
     return choice
 
 def loadFile(path):

@@ -11,7 +11,16 @@ Functions for managing Hogwarts houses, including player distribution, updating 
 
 #%%###=== Modules Import ===####
 #### Package modules import ####
-from hogwarts.utils.input_utils import askChoice
+import sys
+from pathlib import Path
+
+####### A RETIRER LORS DU BUILD - UTILISE POUR LES TESTS RELATIFS AUX FICHIERS LOCAUX #######
+#Add project root to sys.path to allow imports to work
+project_root = Path(__file__).parent.parent.parent
+if str(project_root) not in sys.path:
+    sys.path.insert(0, str(project_root))
+
+from hogwarts.utils import input_utils as IU
 
 
 #%%###=== Global variables ===###
@@ -74,6 +83,7 @@ def displayWinningHouse(houses):
             print(f"{begin}{WinningHousesList[i][0]}{endee}", end="")
         print(f"all with a total of {WinningHousesList[i][1]} points.")
 
+#Version using the JSON questions file format
 def assignHouse(character, questions):
     """
     Determines a player's house by combining the character's personal attributes with their answers to the Sorting Hat's personality test during the sorting ceremony.
@@ -95,13 +105,27 @@ def assignHouse(character, questions):
     housePoints["Ravenclaw"] += attributes["Intelligence"]*2 
 
     #Questions influence
-    for question, choices, houses in questions :
-        choice = askChoice(question, choices)
-        selectedHouse = houses[choice - 1] 
+    counter = 1
+    for q in questions:
+        print(f"Q{counter}- ", end="")
+        choice = IU.askChoice(q["question"], q["choices"]) 
+        print()
+        selectedHouse = q["houses"][choice - 1] 
         housePoints[selectedHouse] += 10  #Each answer gives 10 points to the corresponding house
-     
+        counter += 1
+    
     #Determine the house with the highest points
-    assignedHouse = max(housePoints, key=housePoints.get)
+    assignedHouse = "Gryffindor" #Default house bcs it's the Goat House
+    maxScore = 0
+    for house, score in housePoints.items():
+        if score > maxScore:
+            assignedHouse = house
+            maxScore = score
+
+    #Summary of scores
+    print("== Summary of scores ==")
+    for house, score in housePoints.items():
+        print(f"{house}: {score} points") 
     return assignedHouse
     
 
@@ -118,9 +142,10 @@ if __name__ == "__main__":
     displayWinningHouse(hgg_houses)
 
     #Example of assignHouse function
-    from hogwarts.universe.character import initCharacter
-    Harry_the_goat = initCharacter("Potter", "Harry", {"Courage": 1000, "Intelligence": 0, "Loyalty": 9, "Ambition": 7})
+    from hogwarts.universe import character as carac
+    Harry_the_goat = carac.initCharacter("Potter", "Harry", {"Courage": 5, "Intelligence": 5, "Loyalty": 5, "Ambition": 5})
 
+    '''
     questions = [ 
     ( 
         "You see a friend in danger. What do you do?", 
@@ -139,6 +164,10 @@ if __name__ == "__main__":
         ["Gryffindor", "Slytherin", "Hufflepuff", "Ravenclaw"] 
     ) 
 ]
+    '''
+    #Import questions from JSON file
+    questions = IU.loadFile("hogwarts/data/sorting_ceremony_questions.json")
 
+    print(f"\n=== Here's the time to being assigned to your Hogwarts' House! Here is a quizz. Answer the questions and discover your House! ===\n")
     assignedHouse = assignHouse(Harry_the_goat, questions)
-    print(f"Harry the goat has been assigned to {assignedHouse}.")
+    print(f"{Harry_the_goat['First Name']} {Harry_the_goat['Last Name']} has been assigned to {assignedHouse}!")
