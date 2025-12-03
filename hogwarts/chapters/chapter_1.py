@@ -20,7 +20,7 @@ if str(project_root) not in sys.path:
 
 
 from hogwarts.utils import input_utils as IU
-from hogwarts.universe.character import initCharacter, displayCharacter
+from hogwarts.universe.character import initCharacter, displayCharacter, addItem, modifyMoney
 
 #%%###=== Global variables ===###
 contactSupportURL = "http://gaugoth.corp.free.fr/credits/contact/?subject=Hogwarts%20Game%20Support%20Request"
@@ -67,10 +67,17 @@ def meetHagrid():
     input("You arrive at Diagon Alley, the place is bustling with life. You should buy school supplies but you have enough to have some fun. Press enter to continue... ")
     input("It's now time to buy supplies! You may buy all that you want but be mindful of your money! Press enter to continue... ")
 
-def buySupplies(list, character):   
+def buySupplies(display_list, values_list, character):   
     print(f"You have {character['Money']} Galleons.") 
-    choice = IU.askChoice("Catalog of available items:", list) 
-    input(f"You have chosen: {list[choice - 1]}. Press enter to continue... ")
+    choice = IU.askChoice("Catalog of available items:", display_list) 
+    if values_list[choice][1] > character['Money']:
+        input("You're too poor to buy this item. How about you cross the street to get a job? Press enter to continue... ")
+
+    else:
+        addItem(character, "Inventory", values_list[choice][0])
+        modifyMoney(character, -values_list[choice][1])
+        input(f"You have successfully purchased {values_list[choice][0]} for {values_list[choice][1]} Galleons! Press enter to continue... ")
+        input(f"You now have {character['Money']} Galleons left.")
 
         
 
@@ -83,8 +90,9 @@ if __name__ == "__main__":
     receiveLetter() 
     meetHagrid()
     dict = IU.loadFile("hogwarts/data/inventory.json")
-    list =[]
+    display_list =[]
+    values_list = [[value[0], value[1], value[2]] for value in dict.values()]
 
     for value in dict.values():
-        list.append(f"{value[0]} - {value[1]} Galleons {value[2]}")
-    buySupplies(list, character)
+        display_list.append(f"{value[0]} - {value[1]} Galleons {value[2]}")
+    buySupplies(display_list, values_list, character)
