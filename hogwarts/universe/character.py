@@ -91,6 +91,40 @@ def addItem(character, key, item):
     else:
         print(f"[Error:] The key '{key}' does not exist.")
         return character
+    
+def incrementAttribute(character, attributeName, amount=1, displayMsg=False):
+    """ 
+    Increments one of the character's attributes (+ or -) by the specified amount 
+
+    :param character: {dict} - The character dictionary 
+    :param attributeName: {str} - The name of the attribute to increment
+    :param amount: {int} ? - The amount to increment the attribute by 
+    :param displayMsg: {bool} ? - Whether to display a message about the increment 
+    
+    :return character: {dict} - The updated character dictionary  
+    """
+
+    if attributeName in character["Attributes"]:
+        character["Attributes"][attributeName] += amount
+
+        if displayMsg:
+            if amount >= 0:
+                if amount >= 2:
+                    suffix = "s"
+                else:
+                    suffix = ""
+                print(f"Your {attributeName} has increased by {amount} point{suffix}!")
+            else:
+                if -amount >= 2:
+                    suffix = "s"
+                else:
+                    suffix = ""
+                print(f"Oh no, your {attributeName} has decreased by {-amount} point{suffix}...")
+    else:
+        print(f"[Error] The attribute '{attributeName}' does not exist.")
+    
+    return character
+
         
 #%%###=== Program ===####
 if __name__ == "__main__":
