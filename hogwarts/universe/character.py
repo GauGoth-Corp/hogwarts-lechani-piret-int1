@@ -95,12 +95,14 @@ def addItem(character, key, item):
 def incrementAttribute(character, attributeName, amount=1, displayMsg=False):
     """ 
     Increments one of the character's attributes (+ or -) by the specified amount 
+    
+    Available attributes are: "Courage", "Intelligence", "Loyalty" & "Ambition"
 
     :param character: {dict} - The character dictionary 
     :param attributeName: {str} - The name of the attribute to increment
     :param amount: {int} ? - The amount to increment the attribute by 
     :param displayMsg: {bool} ? - Whether to display a message about the increment 
-    
+
     :return character: {dict} - The updated character dictionary  
     """
 
@@ -113,13 +115,13 @@ def incrementAttribute(character, attributeName, amount=1, displayMsg=False):
                     suffix = "s"
                 else:
                     suffix = ""
-                print(f"Your {attributeName} has increased by {amount} point{suffix}!")
+                print(f"** Your {attributeName} has increased by {amount} point{suffix}! **")
             else:
                 if -amount >= 2:
                     suffix = "s"
                 else:
                     suffix = ""
-                print(f"Oh no, your {attributeName} has decreased by {-amount} point{suffix}...")
+                print(f"** Oh no, your {attributeName} has decreased by {-amount} point{suffix}... **")
     else:
         print(f"[Error] The attribute '{attributeName}' does not exist.")
     
