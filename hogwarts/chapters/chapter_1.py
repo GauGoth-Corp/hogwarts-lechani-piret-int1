@@ -30,8 +30,7 @@ def introduction():
     """
     Introduction to the first chapter
     """
-    print("Welcome to Hogwarts! Ready for your first adventure? Ready guys ? Ready ? Press enter to continue...")    
-    input()
+    input("Welcome to Hogwarts! Ready for your first adventure? Ready guys ? Ready ? Press enter to continue...")    
 
 def createCharacter():
     """
@@ -51,29 +50,21 @@ def createCharacter():
 
 
 def receiveLetter():
-    print("You have received your acceptance letter to Hogwarts School of Witchcraft and Wizardry! Press enter to continue...")
-    input()
+    input("You have received your acceptance letter to Hogwarts School of Witchcraft and Wizardry! Press enter to continue... ")
     choice = IU.askChoice("Do you wish to attend Hogwarts ?", ["Yes", "No"])
     if choice == 1 :
-        print("Great! Let's get started on your magical journey. Press enter to continue...")
-        input() 
+        input("Great! Let's get started on your magical journey. Press enter to continue... ")
 
     else:
-        print("You won't be missed! Goodbye!")
-        input()
+        input("You won't be missed! Goodbye! Press enter to exit...")
         exit()
 
 
 def meetHagrid():
-    print("Hagrid arrives to take you to Hogwarts after assaulting your cousin. Press enter to continue...")
-    input()
-    print("Hagrid: 'You're a wizard, Harry!' Now, go buy me some beers with your dead parents' money. Press enter to continue...")
-    input()
-    print("You arrive at Diagon Alley, the place is bustling with life. You should buy school supplies but you have enough to have some fun. Press enter to continue...")
-    input()
-    print(
-        "It's now time to buy supplies! You may buy all that you want but be mindful of your money! Press enter to continue...")
-    input()
+    input("Hagrid arrives to take you to Hogwarts after assaulting your cousin. Press enter to continue... ")
+    input("Hagrid: 'You're a wizard, Harry!' Now, go buy me some beers with your dead parents' money. Press enter to continue... ")
+    input("You arrive at Diagon Alley, the place is bustling with life. You should buy school supplies but you have enough to have some fun. Press enter to continue... ")
+    input("It's now time to buy supplies! You may buy all that you want but be mindful of your money! Press enter to continue... ")
 
 def buySupplies():
     print("Catalog of available items:")
