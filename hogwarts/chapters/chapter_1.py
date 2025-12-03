@@ -71,8 +71,7 @@ def meetHagrid():
     input()
     print("You arrive at Diagon Alley, the place is bustling with life. You should buy school supplies but you have enough to have some fun. Press enter to continue...")
     input()
-    print(
-        "It's now time to buy supplies! You may buy all that you want but be mindful of your money! Press enter to continue...")
+    print("It's now time to buy supplies! You may buy all that you want but be mindful of your money! Press enter to continue...")
     input()
 
 def buySupplies():

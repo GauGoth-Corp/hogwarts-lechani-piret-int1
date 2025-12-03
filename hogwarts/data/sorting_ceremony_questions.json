@@ -126,11 +126,12 @@
     },
 
     {
-        "question": "Your brother is an immortal being who, after having led a hardous century long life, wants to die and you to move on with your life. You decide to ",
-        "choices": ["Respect his wishes and make him pass from this world", "Try to make him change his mind but ultimately leave the decision up to him", "Kill him gladly, you didn't like him anyways", "Enslave him in your fake reality to force him to play the piano for you"],
-        "houses": ["Hufflepuff", "Ravenclaw", "Slytherin", "Gryffindor"]
+      "question": "Your brother is an immortal being who, after a century long hardous life, wishes to die. You decide to:",
+      "choices": ["Respect his wishes and find a way to help him", "Try to convince him otherwise but ultimately respect his wishes", "Kill him: you didn't like him anyways", "Enslave hims in your fake reality where he is forced to play the piano for eternity"],
+      "houses": ["Hufflepuff", "Ravenclaw", "Slytherin", "Gryffindor"]
+
 
     }
 
-]
+  ]
 
