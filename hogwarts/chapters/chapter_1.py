@@ -47,6 +47,7 @@ def createCharacter():
 
     character = initCharacter(last_name, first_name, attributes)
     displayCharacter(character)
+    return character
 
 
 def receiveLetter():
@@ -66,17 +67,24 @@ def meetHagrid():
     input("You arrive at Diagon Alley, the place is bustling with life. You should buy school supplies but you have enough to have some fun. Press enter to continue... ")
     input("It's now time to buy supplies! You may buy all that you want but be mindful of your money! Press enter to continue... ")
 
-def buySupplies():
-    print("Catalog of available items:")
+def buySupplies(list, character):   
+    print(f"You have {character['Money']} Galleons.") 
+    choice = IU.askChoice("Catalog of available items:", list) 
+    input(f"You have chosen: {list[choice - 1]}. Press enter to continue... ")
 
-    
+        
 
 def start_chapter_1():
     pass
         
 #%%###=== Program ===####
 if __name__ == "__main__":
-    createCharacter()
+    character = createCharacter()
     receiveLetter() 
     meetHagrid()
-    buySupplies()
+    dict = IU.loadFile("hogwarts/data/inventory.json")
+    list =[]
+
+    for value in dict.values():
+        list.append(f"{value[0]} - {value[1]} Galleons {value[2]}")
+    buySupplies(list, character)
