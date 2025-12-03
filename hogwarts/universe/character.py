@@ -58,16 +58,22 @@ def displayCharacter(character):
         else:
             print(f"{key}: {value}")
 
-def modifyMoney(character, amount):
+def modifyMoney(character, amount, displayMsg=False):
     """
     Adds or removes (negative value) the specified amount of money to the character
 
     :param character: {dict} - The character dictionary
     :param amount: {int} - The amount of money to add or remove
+    :param displayMsg: {bool} ? - Whether to display a message about the money modification
     :return character: {dict} - The updated character dictionary
     """
 
     character["Money"] += amount
+    if displayMsg:
+        if amount >= 0:
+            print(f"** You have received {amount} Galleons! **")
+        else: 
+            print(f"** You have lost {-amount} Galleons... **") 
     return character
 
 def addItem(character, key, item):
@@ -140,9 +146,11 @@ def endAdventure(character, msg):
     print()
     cheat = input(f"This is the end of your adventure. Press enter to exit... ")
     if cheat.lower() == "gaugothcorp":
-        print("\n** Congratulations! You've discovered the secret cheat code easter egg! As a reward, you win 1,000,000 Galleons! **")
-        character = modifyMoney(character, 1000000)
-        displayCharacter(character)
+        print("\n** Congratulations! You've discovered the secret cheat code easter egg! Here is a little reward: you win 1,000,000 Galleons! **")
+        character = modifyMoney(character, 1000000, True)
+        print()
+        print("Everyone thought you were done, but suddendly you take a great breath and get back on your feet. How mysterious is magic, isn't it?")
+        print(f"Welcome back, {character['First Name']} {character['Last Name']}!")
         print()
     else:
         exit()

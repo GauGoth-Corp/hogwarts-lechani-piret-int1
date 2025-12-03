@@ -113,6 +113,6 @@ def meetFriends(character):
     
 #%%###=== Program ===####
 if __name__ == "__main__":
-    Harry_the_goat = initCharacter("Mi", "Jean", {"Courage": 10, "Intelligence": 10, "Loyalty": 10, "Ambition": 10})
+    Harry_the_goat = initCharacter("Moustafa Al Ben Wallouh Ben Muhammad Abdel Kader Al Psartek", "Abdelaziz Al Saoudima", {"Courage": 10, "Intelligence": 10, "Loyalty": 10, "Ambition": 10})
 
     meetFriends(Harry_the_goat)
