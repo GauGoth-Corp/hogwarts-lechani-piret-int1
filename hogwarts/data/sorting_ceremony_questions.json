@@ -123,8 +123,14 @@
         "question": "What motivates you to succeed?",
         "choices": ["Recognition and glory", "Knowledge and understanding", "Helping others", "Achieving your goals"],
         "houses": ["Gryffindor","Ravenclaw","Hufflepuff","Slytherin"]  
-    }
+    },
 
+    {
+        "question": "Your brother is an immortal being who, after having led a hardous century long life, wants to die and you to move on with your life. You decide to ",
+        "choices": ["Respect his wishes and make him pass from this world", "Try to make him change his mind but ultimately leave the decision up to him", "Kill him gladly, you didn't like him anyways", "Enslave him in your fake reality to force him to play the piano for you"],
+        "houses": ["Hufflepuff", "Ravenclaw", "Slytherin", "Gryffindor"]
+
+    }
 
 ]
 
