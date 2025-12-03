@@ -95,7 +95,7 @@ def addItem(character, key, item):
 def incrementAttribute(character, attributeName, amount=1, displayMsg=False):
     """ 
     Increments one of the character's attributes (+ or -) by the specified amount 
-    
+
     Available attributes are: "Courage", "Intelligence", "Loyalty" & "Ambition"
 
     :param character: {dict} - The character dictionary 
@@ -126,6 +126,26 @@ def incrementAttribute(character, attributeName, amount=1, displayMsg=False):
         print(f"[Error] The attribute '{attributeName}' does not exist.")
     
     return character
+
+def endAdventure(character, msg):
+    """
+    Ends the adventure for the character with a message and displays the final character profile 
+
+    :param character: {dict} - The character dictionary 
+    :param msg: {str} - The message to display before ending the adventure
+    """ 
+    print(msg)
+    print("\nFinal character profile:")
+    displayCharacter(character)
+    print()
+    cheat = input(f"This is the end of your adventure. Press enter to exit... ")
+    if cheat.lower() == "gaugothcorp":
+        print("\n** Congratulations! You've discovered the secret cheat code easter egg! As a reward, you win 1,000,000 Galleons! **")
+        character = modifyMoney(character, 1000000)
+        displayCharacter(character)
+        print()
+    else:
+        exit()
 
         
 #%%###=== Program ===####
