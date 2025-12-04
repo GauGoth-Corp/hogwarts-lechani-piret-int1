@@ -25,7 +25,7 @@ if str(project_root) not in sys.path:
 
 
 from hogwarts.utils import input_utils as IU
-from hogwarts.universe.character import initCharacter, displayCharacter, incrementAttribute
+from hogwarts.universe.character import initCharacter, displayCharacter, incrementAttribute, endAdventure
 
 
 #%%###=== Global variables ===###
@@ -66,9 +66,7 @@ def meetFriends(character):
         incrementAttribute(character, "Ambition", 1, True)
         
     elif choice == 2:
-        print(f"Wrong choice! You have very bad luck today: the train is crossing a valley. You fall and flatten like a pancake. See you {character['First Name']}!")
-        input("This is the end of your adventure. Press enter to exit...")
-        exit()
+        endAdventure(character, f"You have very bad luck today: the train is crossing a valley. You fall and flatten like a pancake. See you {character['First Name']}!")
     else:
         print(f"- Ron: \"Wow! Nice to meet you {character['First Name']}!\" You and Ron instantly become friends. You spend the rest of the trip chatting and laughing!")
         #Adds 2 to Loyalty
@@ -85,18 +83,36 @@ def meetFriends(character):
         #Adds 1 to Courage
         incrementAttribute(character, "Courage", 1, True)
     elif choice == 2:
-        print(f"Wrong choice! You have very bad luck today: the train is crossing a valley. You fall and flatten like a pancake. See you {character['First Name']}!")
-        input("This is the end of your adventure. Press enter to exit...")
-        exit()
+        endAdventure(character, f"You have very bad luck today: the train is crossing a valley. You fall and flatten like a pancake. See you {character['First Name']}!")
     else:
         print(f"- Hermione: \"Nice to meet you {character['First Name']}!\" You and Hermione instantly become friends. You spend the rest of the trip discussing about various subjects, including books and spells!")
         #Adds 2 to Intelligence
         incrementAttribute(character, "Intelligence", 2, True)
     input("Press enter to continue... ")
     print()
-        
+
+    #%%== Encounter with Draco ==
+    print("Suddenly, a boy with slicked-back blond hair and a sneer on his face approaches you.")
+    print("— Mysterious character with slicked-back hair: : Well, well, well... What do we have here? I'm Draco Malfoy. Can I join you?")
+    choice = IU.askChoice("What do you answer?", [f"- {character['First Name']}: \"I don't like your face: go out of there shitty!\"", "You are very afraid of this boy and jump by the wagon window.", f"- {character['First Name']}: \"Sure, have a seat! I'm {character['First Name']} by the way.\""])
+    if choice == 1:
+        print("- Draco: \"How rude! You will regret this!\" Draco Malfoy turns back and goes away, muttering insults under his breath.")
+        #Adds 1 to Courage
+        incrementAttribute(character, "Courage", 1, True)
+    elif choice == 2:
+        endAdventure(character, f"You have very bad luck today: the train is crossing a valley. You fall and flatten like a pancake. See you {character['First Name']}!")
+    else:
+        print(f"- Draco: \"Hmph. I suppose I can tolerate your presence for...")
+        print("Hermione and Ron suddenly stand up.")
+        print("- Ron: \"Get out of here Malfoy! We don't want your kind around us!\"")
+        print("- Hermione: \"Yes! Go away!\"")
+        print("Draco Malfoy, clearly offended, side eyes you and leaves the wagon.")
+        print("Ron and Hermione then look at you and insult you for being friendly with Draco.")
+        #Removes 2 to Loyalty
+        incrementAttribute(character, "Loyalty", -2, True)
+    
 #%%###=== Program ===####
 if __name__ == "__main__":
-    Harry_the_goat = initCharacter("Mi", "Jean", {"Courage": 10, "Intelligence": 10, "Loyalty": 10, "Ambition": 10})
+    Harry_the_goat = initCharacter("Moustafa Al Ben Wallouh Ben Muhammad Abdel Kader Al Psartek", "Abdelaziz Al Saoudima", {"Courage": 10, "Intelligence": 10, "Loyalty": 10, "Ambition": 10})
 
     meetFriends(Harry_the_goat)
