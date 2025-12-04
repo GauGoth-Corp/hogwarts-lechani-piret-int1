@@ -20,7 +20,7 @@ if str(project_root) not in sys.path:
 
 
 from hogwarts.utils import input_utils as IU
-from hogwarts.universe.character import initCharacter, displayCharacter, addItem, modifyMoney
+from hogwarts.universe.character import initCharacter, displayCharacter, addItem, modifyMoney, endAdventure
 
 #%%###=== Global variables ===###
 contactSupportURL = "http://gaugoth.corp.free.fr/credits/contact/?subject=Hogwarts%20Game%20Support%20Request"
@@ -63,29 +63,39 @@ def receiveLetter():
 
 def meetHagrid():
     input("Hagrid arrives to take you to Hogwarts after assaulting your cousin. Press enter to continue... ")
-    input("Hagrid: 'You're a wizard, Harry!' Now, go buy me some beers with your dead parents' money. Press enter to continue... ")
+    input("Hagrid: You're a wizard, Harry! Now, go buy me some beers with your dead parents' money. Press enter to continue... ")
     input("You arrive at Diagon Alley, the place is bustling with life. You should buy school supplies but you have enough to have some fun. Press enter to continue... ")
     input("It's now time to buy supplies! You may buy all that you want but be mindful of your money! Press enter to continue... ")
 
-def buySupplies(display_list, values_list, character):   
-    print(f"You have {character['Money']} Galleons.") 
-    choice = IU.askChoice("Catalog of available items:", display_list) 
-    if values_list[choice][1] > character['Money']:
-        input("You're too poor to buy this item. How about you cross the street to get a job? Press enter to continue... ")
+def buySupplies(display_list, values_list, character):
+    required_bought = 0
+    while character['Money'] >= 5:
+        print(f"You have {character['Money']} Galleons. Make sure to save enough to buy the required items !")
+        choice = IU.askChoice("Catalog of available items:", display_list)
+        if values_list[choice-1][1] > character['Money']:
+            input("You're too poor to buy this item. How about you cross the street to get a job? Press enter to continue... ")
 
-    else:
-        addItem(character, "Inventory", values_list[choice][0])
-        modifyMoney(character, -values_list[choice][1])
-        input(f"You have successfully purchased {values_list[choice][0]} for {values_list[choice][1]} Galleons! Press enter to continue... ")
-        input(f"You now have {character['Money']} Galleons left.")
+        else:
+            addItem(character, "Inventory", values_list[choice-1][0])
+            modifyMoney(character, -values_list[choice-1][1])
+            input(f"You have successfully purchased {values_list[choice-1][0]} for {values_list[choice-1][1]} Galleons! Press enter to continue... ")
+            print(f"You now have {character['Money']} Galleons left.")
+            if values_list[choice-1][2] == "(required)":
+                required_bought += 1
+
+    if required_bought < 3:
+        endAdventure(character, "Instead of buying school supplies you thought it would be a good idea to buy beers, guns and children. You are not a problem solver and failed your school year. Get your priorities straight. GAME OVER")
+    
+    else: 
+        input("You have successfully bought all the required supplies! You can now head to Hogwarts. Press enter to continue... ")
 
         
 
 def start_chapter_1():
-    pass
-        
-#%%###=== Program ===####
-if __name__ == "__main__":
+    """
+    Starts chapter 1 of the Hogwarts adventure
+    """
+    introduction()
     character = createCharacter()
     receiveLetter() 
     meetHagrid()
@@ -96,3 +106,8 @@ if __name__ == "__main__":
     for value in dict.values():
         display_list.append(f"{value[0]} - {value[1]} Galleons {value[2]}")
     buySupplies(display_list, values_list, character)
+    return character
+        
+#%%###=== Program ===####
+if __name__ == "__main__":
+    start_chapter_1()
