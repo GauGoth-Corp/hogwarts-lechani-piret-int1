@@ -63,7 +63,7 @@ def receiveLetter():
 
 def meetHagrid():
     input("Hagrid arrives to take you to Hogwarts after assaulting your cousin. Press enter to continue... ")
-    input("Hagrid: 'You're a wizard, Harry!' Now, go buy me some beers with your dead parents' money. Press enter to continue... ")
+    input("Hagrid: You're a wizard, Harry! Now, go buy me some beers with your dead parents' money. Press enter to continue... ")
     input("You arrive at Diagon Alley, the place is bustling with life. You should buy school supplies but you have enough to have some fun. Press enter to continue... ")
     input("It's now time to buy supplies! You may buy all that you want but be mindful of your money! Press enter to continue... ")
 
