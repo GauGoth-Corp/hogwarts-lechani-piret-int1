@@ -24,8 +24,9 @@ if str(project_root) not in sys.path:
     sys.path.insert(0, str(project_root))
 
 
+from hogwarts.universe.house import *
 from hogwarts.utils import input_utils as IU
-from hogwarts.universe.character import initCharacter, displayCharacter, incrementAttribute, endAdventure
+from hogwarts.universe.character import *
 
 
 #%%###=== Global variables ===###
@@ -110,9 +111,70 @@ def meetFriends(character):
         print("Ron and Hermione then look at you and insult you for being friendly with Draco.")
         #Removes 2 to Loyalty
         incrementAttribute(character, "Loyalty", -2, True)
+
+    input("Press enter to continue... ")
+    print()
+    print("After hours of travelling across the British and then Scottish countryside, the Hogwarts Express finally arrives in sight of Hogwarts Castle.")
+    print("You already have met Ron, Hermione, and Draco during this journey. Your adventure is just beginning!")
+
+    print("\nHere is your current character profile, updated with your choices:")
+    displayCharacter(character)
+    input("Press enter to continue... ")
+    print()
+
+def welcomeMessage(houses):
+    """
+    Welcome Message from Dumbledore
+
+    :param houses: {dict} - Houses & their current points. 
+    """
+    print("- Dumbledore: Hello guys! My name is Albus Dumbledore and I will be your headschool teacher for the year!")
+    print("- Dumbledore: What am I hearing? No I am not 200 years old, thank you. -30 points for Hupplepuff!")
+    #-30 points for Hupplepuff 
+    updateHousePoints(houses, "Hufflepuff", -30, True)
+
+    print("Oh, by the way very little children, did you know the existence of Houses? You will learn more about them in a very short time...")
+    print("- Dumbledore: Welcome to Hogwarts School of Witchcraft and Wizardry! (Yes I'm totally crazy, but you know, we are in 1998 after all...)")
+    print("Students applause.")
+
+    input("Press enter to continue... ")
+    print()
+
+def sortingCeremony(character, questions):
+    """
+    Sorting Ceremony function
+
+    :param character: {dict} - The character dictionary
+    :param questions: {list[tuple]} -  A list of tuples, each containing: (1) the question text, (2) a list of possible choices, and (3) the corresponding houses for each answer.
+    """
+    print("It's time for the Sorting Ceremony! The Sorting Hat will now determine your house based on your personality and choices. \nHere is a quizz. Answer the questions and discover your House! ")
+    assignedHouse = assignHouse(character, questions)
+    character["House"] = assignedHouse
+    print(f"Congratulations! {character['First Name']} {character['Last Name']} has been assigned to {assignedHouse}!")
+    input("Press enter to continue... ")
+    print()
+
+
+def startChapter2(character, houses):
+    """
+    Starts Chapter 2 
+    
+    :param character: {dict} - The character dictionary
+    :param houses: {dict} - Houses & their current points. Structure used: houses = {"Gryffindor": 0, "Slytherin": 0, "Hufflepuff": 0, "Ravenclaw": 0}
+    """
+    print("=== Chapter 2: The Journey to Hogwarts ===")
+    print()
+    meetFriends(character)
+    welcomeMessage(houses)
+    #Import questions from JSON file
+    questions = IU.loadFile("hogwarts/data/sorting_ceremony_questions.json")
+    sortingCeremony(character, questions)
+
+
     
 #%%###=== Program ===####
 if __name__ == "__main__":
     Harry_the_goat = initCharacter("Moustafa Al Ben Wallouh Ben Muhammad Abdel Kader Al Psartek", "Abdelaziz Al Saoudima", {"Courage": 10, "Intelligence": 10, "Loyalty": 10, "Ambition": 10})
+    hgg_houses = {"Gryffindor": 0, "Slytherin": 0, "Hufflepuff": 0, "Ravenclaw": 0}
 
-    meetFriends(Harry_the_goat)
+    startChapter2(Harry_the_goat, hgg_houses)

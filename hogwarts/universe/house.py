@@ -29,18 +29,24 @@ from hogwarts.utils import input_utils as IU
 contactSupportURL = "http://gaugoth.corp.free.fr/credits/contact/?subject=Hogwarts%20Game%20Support%20Request"
 
 #%%###=== Module (functions) ===####
-def updateHousePoints(houses, houseName, points):
+def updateHousePoints(houses, houseName, points, msg=True):
     """
-    Updates the score of the specified house.
+    Updates the score of the specified House.
 
     :param houses: {dict} - Houses associated with their current points. Structure used: houses = {"Gryffindor": 0, "Slytherin": 0, "Hufflepuff": 0, "Ravenclaw": 0} 
     :param houseName: {str} - The name of the house to update.
-    :param points: {int} - The number of points to add (or subtract if negative) to the house.
+    :param msg: {bool} - Whether to display a message about the points update
+    :param points: {int} - The number of points to add (or subtract if negative) to the House.
     """
     if houseName not in houses:
-        print(f"The house '{houseName}' does not exist.")
+        print(f"The House '{houseName}' does not exist.")
     else:
         houses[houseName] += points
+        if msg:
+            if points >= 0:
+                print(f"** {houseName} has been awarded +{points} points! **")
+            else:
+                print(f"** {houseName} has been deducted {-points} points! **")
 
 def displayHouses(houses):
     """
