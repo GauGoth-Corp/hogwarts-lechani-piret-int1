@@ -96,12 +96,62 @@ def loadFile(path):
     except Exception as e:
         return f"An error occured while trying to read the file {path}. [Error: {e}]\nPlease try again later or contact us at the adress {contactSupportURL} for help."
 
+def encryptText(text, key):
+    """
+    This function is used to encrypt text in order to store sensitive game information (like pswds, secret spells, etc.)
+    Based on the Caesar & Vigenère cipher methods.
+    
+    :param text: {str} - Text to encrypt
+    :param key: {list[int]} - Encryption key - WARNING: len(key) = len(text); 1 <= key[i] <= 9
+
+    :return: {str} - Encrypted text
+    """
+
+    #PROCESS
+    text = text
+    key = key
+    Crypted=""
+    for i in range(len(text)):
+        asciiPos = ord(text[i])
+        Crypted+= chr(asciiPos+key[i])
+
+    #OUTPUT
+    return Crypted
+
+def decryptText(encryptedText, key):
+    """
+    This function is used to decrypt text in order to retrieve sensitive game information 
+    Based on the Caesar & Vigenère cipher methods.
+    
+    :param encryptedText: {str} - Text to decrypt
+    :param key: {list[int]} - Decryption key - WARNING: len(key) = len(encryptedText); 1 <= key[i] <= 9
+
+    :return: {str} - Decrypted text
+    """
+
+    #Different from encryptText only in the processing part (subtraction instead of addition)
+
+    #PROCESS
+    text = encryptedText
+    key = key
+    Decrypted=""
+    for i in range(len(text)):
+        asciiPos = ord(text[i])
+        Decrypted+= chr(asciiPos - key[i])
+
+    #OUTPUT
+    return Decrypted
+
 #%%###=== Program ===####
 if __name__ == "__main__":
     ###Functions tests:
 
     print("Loaded JSON: \n", loadFile("hogwarts/data/houses.json"))
 
+    encrypted = encryptText("Hello World!", [1,2,3,4,5,6,7,8,9,10,11,12])
+    print("Encrypted:", encrypted)
+    decrypted = decryptText(encrypted, [1,2,3,4,5,6,7,8,9,10,11,12])
+    print("Decrypted:", decrypted)
     
     print(askChoice("What do u choose?", ["Die", "Live", "None."]))
     print(askText("Enter text: "))

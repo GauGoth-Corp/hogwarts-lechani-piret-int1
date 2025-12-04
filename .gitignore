@@ -8,3 +8,5 @@ hogwarts/universe/__pycache__/house.cpython-310.pyc
 hogwarts/__pycache__/__init__.cpython-310.pyc
 hogwarts/utils/__pycache__/input_utils.cpython-310.pyc
 hogwarts/utils/__pycache__/input_utils.cpython-310.pyc
+hogwarts/utils/__pycache__/input_utils.cpython-310.pyc
+hogwarts/data/sensitive_info.json

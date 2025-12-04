@@ -52,13 +52,13 @@ def meetFriends(character):
         #Adds 1 to Intelligence
         incrementAttribute(character, "Intelligence", 1, True)
     else:
-        print(f"You choose the {choice}th wagon. And seat near the window.")
+        print(f"You choose the {choice}th wagon and seat near the window.")
         print(f"{character['First Name']}, do you really think choosing a precise wagon will change anything? It's just a train after all...")
     print()
 
     #%%== Meeting with Ron ==
     print("As the train starts moving, a boy with red hair approaches you.")
-    print(f"— Mysterious character with readhead: Hi, I'm a Ron Weasley. Would you mind if I seat next to you?")
+    print(f"— Mysterious character with redhead: Hi, I'm Ron Weasley. Would you mind if I sit next to you?")
     choice = IU.askChoice("What do you answer?", [f"- {character['First Name']}: \"Go out, you seem to me very silly.\"", "You are very afraid of this boy and jump by the wagon window.", f"- {character['First Name']}: \"Hey! What's up guy! My name is {character['First Name']}, have a seat with me: atually I feel very alone...\""])
     if choice == 1:
         print("- Ron: \"I don't mind. I want a seat.\" Ron Weasley takes a seat and do not speak to you anymore.")

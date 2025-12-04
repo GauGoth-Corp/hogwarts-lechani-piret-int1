@@ -11,6 +11,7 @@ Functions for creating, managing, and displaying the player's character.
 
 #%%###=== Modules Import ===####
 #### Package modules import ####
+from hogwarts.utils import input_utils as IU
 
 #%%###=== Global variables ===###
 contactSupportURL = "http://gaugoth.corp.free.fr/credits/contact/?subject=Hogwarts%20Game%20Support%20Request"
@@ -145,7 +146,10 @@ def endAdventure(character, msg):
     displayCharacter(character)
     print()
     cheat = input(f"This is the end of your adventure. Press enter to exit... ")
-    if cheat.lower() == "gaugothcorp":
+    #Loading secured key from sensitive_info.json (ADD TO .gitignore)
+    key = IU.loadFile("hogwarts/data/sensitive_info.json")["easter_egg_pswd_key"]
+
+    if IU.encryptText(cheat, key) == "Ig}H{}s%L{~x0":
         print("\n** Congratulations! You've discovered the secret cheat code easter egg! Here is a little reward: you win 1,000,000 Galleons! **")
         character = modifyMoney(character, 1000000, True)
         print()
