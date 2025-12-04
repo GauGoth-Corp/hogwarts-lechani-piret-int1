@@ -11,6 +11,15 @@ Functions for creating, managing, and displaying the player's character.
 
 #%%###=== Modules Import ===####
 #### Package modules import ####
+import sys
+from pathlib import Path
+
+####### A RETIRER LORS DU BUILD - UTILISE POUR LES TESTS RELATIFS AUX FICHIERS LOCAUX #######
+#Add project root to sys.path to allow imports to work
+project_root = Path(__file__).parent.parent.parent
+if str(project_root) not in sys.path:
+    sys.path.insert(0, str(project_root))
+    
 from hogwarts.utils import input_utils as IU
 
 #%%###=== Global variables ===###
@@ -147,17 +156,23 @@ def endAdventure(character, msg):
     print()
     cheat = input(f"This is the end of your adventure. Press enter to exit... ")
     #Loading secured key from sensitive_info.json (ADD TO .gitignore)
-    key = IU.loadFile("hogwarts/data/sensitive_info.json")["easter_egg_pswd_key"]
+    try:
+        key = IU.loadFile("hogwarts/data/sensitive_info.json")["easter_egg_pswd_key"]
+    
 
-    if IU.encryptText(cheat, key) == "Ig}H{}s%L{~x0":
-        print("\n** Congratulations! You've discovered the secret cheat code easter egg! Here is a little reward: you win 1,000,000 Galleons! **")
-        character = modifyMoney(character, 1000000, True)
-        print()
-        print("Everyone thought you were done, but suddendly you take a great breath and get back on your feet. How mysterious is magic, isn't it?")
-        print(f"Welcome back, {character['First Name']} {character['Last Name']}!")
-        print()
-    else:
+        if IU.encryptText(cheat, key) == "Ig}H{}s%L{~x0":
+            print("\n** Congratulations! You've discovered the secret cheat code easter egg! Here is a little reward: you win 1,000,000 Galleons! **")
+            character = modifyMoney(character, 1000000, True)
+            print()
+            print("Everyone thought you were done, but suddendly you take a great breath and get back on your feet. How mysterious is magic, isn't it?")
+            print(f"Welcome back, {character['First Name']} {character['Last Name']}!")
+            print()
+        else:
+            exit()
+    except TypeError:
+        print(f"An error occured while trying to read the file 'hogwarts/data/sensitive_info.json'.\nPlease try again later or contact us at the adress {contactSupportURL} for help.")
         exit()
+
 
         
 #%%###=== Program ===####
