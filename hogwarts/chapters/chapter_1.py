@@ -79,7 +79,7 @@ def buySupplies(display_list, values_list, character):
             addItem(character, "Inventory", values_list[choice-1][0])
             modifyMoney(character, -values_list[choice-1][1])
             input(f"You have successfully purchased {values_list[choice-1][0]} for {values_list[choice-1][1]} Galleons! Press enter to continue... ")
-            input(f"You now have {character['Money']} Galleons left.")
+            print(f"You now have {character['Money']} Galleons left.")
             if values_list[choice-1][2] == "(required)":
                 required_bought += 1
 
