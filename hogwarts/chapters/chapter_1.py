@@ -20,7 +20,7 @@ if str(project_root) not in sys.path:
 
 
 from hogwarts.utils import input_utils as IU
-from hogwarts.universe.character import initCharacter, displayCharacter, addItem, modifyMoney
+from hogwarts.universe.character import initCharacter, displayCharacter, addItem, modifyMoney, endAdventure
 
 #%%###=== Global variables ===###
 contactSupportURL = "http://gaugoth.corp.free.fr/credits/contact/?subject=Hogwarts%20Game%20Support%20Request"
@@ -84,8 +84,7 @@ def buySupplies(display_list, values_list, character):
                 required_bought += 1
 
     if required_bought < 3:
-        input("Instead of buying school supplies you thought it would be a good idea to buy beers, guns and children. You didn't have the necessary supplies and failed your school year. Get your priorities straight. GAME OVER")
-        exit()
+        endAdventure(character, "Instead of buying school supplies you thought it would be a good idea to buy beers, guns and children. You are not a problem solver and failed your school year. Get your priorities straight. GAME OVER")
     
     else: 
         input("You have successfully bought all the required supplies! You can now head to Hogwarts. Press enter to continue... ")
@@ -93,10 +92,10 @@ def buySupplies(display_list, values_list, character):
         
 
 def start_chapter_1():
-    pass
-        
-#%%###=== Program ===####
-if __name__ == "__main__":
+    """
+    Starts chapter 1 of the Hogwarts adventure
+    """
+    introduction()
     character = createCharacter()
     receiveLetter() 
     meetHagrid()
@@ -107,3 +106,8 @@ if __name__ == "__main__":
     for value in dict.values():
         display_list.append(f"{value[0]} - {value[1]} Galleons {value[2]}")
     buySupplies(display_list, values_list, character)
+    return character
+        
+#%%###=== Program ===####
+if __name__ == "__main__":
+    start_chapter_1()
