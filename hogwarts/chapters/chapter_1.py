@@ -67,17 +67,28 @@ def meetHagrid():
     input("You arrive at Diagon Alley, the place is bustling with life. You should buy school supplies but you have enough to have some fun. Press enter to continue... ")
     input("It's now time to buy supplies! You may buy all that you want but be mindful of your money! Press enter to continue... ")
 
-def buySupplies(display_list, values_list, character):   
-    print(f"You have {character['Money']} Galleons.") 
-    choice = IU.askChoice("Catalog of available items:", display_list) 
-    if values_list[choice][1] > character['Money']:
-        input("You're too poor to buy this item. How about you cross the street to get a job? Press enter to continue... ")
+def buySupplies(display_list, values_list, character):
+    required_bought = 0
+    while character['Money'] >= 5:
+        print(f"You have {character['Money']} Galleons. Make sure to save enough to buy the required items !")
+        choice = IU.askChoice("Catalog of available items:", display_list)
+        if values_list[choice-1][1] > character['Money']:
+            input("You're too poor to buy this item. How about you cross the street to get a job? Press enter to continue... ")
 
-    else:
-        addItem(character, "Inventory", values_list[choice][0])
-        modifyMoney(character, -values_list[choice][1])
-        input(f"You have successfully purchased {values_list[choice][0]} for {values_list[choice][1]} Galleons! Press enter to continue... ")
-        input(f"You now have {character['Money']} Galleons left.")
+        else:
+            addItem(character, "Inventory", values_list[choice-1][0])
+            modifyMoney(character, -values_list[choice-1][1])
+            input(f"You have successfully purchased {values_list[choice-1][0]} for {values_list[choice-1][1]} Galleons! Press enter to continue... ")
+            input(f"You now have {character['Money']} Galleons left.")
+            if values_list[choice-1][2] == "(required)":
+                required_bought += 1
+
+    if required_bought < 3:
+        input("Instead of buying school supplies you thought it would be a good idea to buy beers, guns and children. You didn't have the necessary supplies and failed your school year. Get your priorities straight. GAME OVER")
+        exit()
+    
+    else: 
+        input("You have successfully bought all the required supplies! You can now head to Hogwarts. Press enter to continue... ")
 
         
 
