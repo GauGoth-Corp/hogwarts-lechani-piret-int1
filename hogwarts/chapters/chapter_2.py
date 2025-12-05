@@ -119,7 +119,7 @@ def meetFriends(character):
 
     print("\nHere is your current character profile, updated with your choices:")
     displayCharacter(character)
-    input("Press enter to continue... ")
+    input("\nPress enter to continue... ")
     print()
 
 def welcomeMessage(houses):
@@ -188,10 +188,11 @@ def enterCommonRoom(character):
 #%%
 
 def startChapter2(character, houses):
+
     """
     Starts Chapter 2 
-    
-    :param character: {dict} - The character dictionary
+
+    :param character: {dict} - The character dictionary 
     :param houses: {dict} - Houses & their current points. Structure used: houses = {"Gryffindor": 0, "Slytherin": 0, "Hufflepuff": 0, "Ravenclaw": 0}
     """
     print("=== Chapter 2: The Journey to Hogwarts ===")
