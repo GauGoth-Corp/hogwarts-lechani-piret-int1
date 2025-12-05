@@ -13,20 +13,11 @@ We can add as much functions as we want. The mandatory functions are still neede
 
 #%%###=== Modules Import ===####
 #### Package modules import ####
-import sys
-from pathlib import Path
-
-
-####### A RETIRER LORS DU BUILD - UTILISE POUR LES TESTS RELATIFS AUX FICHIERS LOCAUX #######
-#Add project root to sys.path to allow imports to work
-project_root = Path(__file__).parent.parent.parent
-if str(project_root) not in sys.path:
-    sys.path.insert(0, str(project_root))
-
-
-from hogwarts.universe.house import *
-from hogwarts.utils import input_utils as IU
-from hogwarts.universe.character import *
+#WARNING: these imports do not work if we try to run this file directly 
+#They only work if we run the program from the main directory (hogwarts/) using main.py, menu.py or __debug__.py 
+from universe.house import *
+from utils import input_utils as IU
+from universe.character import *
 
 
 #%%###=== Global variables ===###
@@ -157,8 +148,8 @@ def sortingCeremony(character, questions):
     input("Press enter to continue... ")
     print()
 
-#%%
 def enterCommonRoom(character):
+#%%
     """
     The character enters his/her House common room
 
@@ -168,7 +159,7 @@ def enterCommonRoom(character):
     #Handles if no house assigned 
     if "House" not in character or character["House"] == None:
         print(f"[Error] No house assigned to {character['First Name']} {character['Last Name']}. Cannot enter common room.")
-        endAdventure(character, "YOU HAVE FAILED THE SORTING CEREMONY. You are expelled from Hogwarts. Game over.")
+        endAdventure(character, "YOU HAVE FAILED THE SORTING CEREMONY. You are expelled from Hogwarts. GAME OVER")
     
     house = character["House"]
     housesDescriptions = IU.loadFile("hogwarts/data/houses.json")

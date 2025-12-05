@@ -5,6 +5,16 @@
 #### 27/11/2025 - 28/11/2025 #################################
 #### Copyright (c) 2025 GauGoth Corp. All Rights reserved ####
 ##############################################################
+"""
+Hogwarts Game is a text-based adventure game set in the Harry Potter universe. This project is developed as part of a Python programming project at our school Efrei Paris.
+
+Developed by Aomm-lgtm & GauGoth Corp.
+
+For more information, check our GitHub repository: 
+
+https://github.com/GauGoth-Corp/hogwarts-lechani-piret-int1
+"""
+
 
 #%%###=== Modules Import ===####
 #### Package modules import ####

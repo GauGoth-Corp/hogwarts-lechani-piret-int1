@@ -14,7 +14,7 @@ Allows players to:
 
     - Load a saved game
 
-    - View credits
+    - View credits 
 
     - Contact support
 
