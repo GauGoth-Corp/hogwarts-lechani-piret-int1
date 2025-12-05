@@ -128,14 +128,14 @@ def welcomeMessage(houses):
 
     :param houses: {dict} - Houses & their current points. 
     """
-    print("- Dumbledore: Hello guys! My name is Albus Dumbledore and I will be your headschool teacher for the year!")
-    print("- Dumbledore: What am I hearing? No I am not 200 years old, thank you. -30 points for Hupplepuff!")
+    print("- Dumbledore: \"Ready guys? My name is Albus Dumbledore and I will be your headschool teacher for the year!\"")
+    print("- Dumbledore: \"What am I hearing? No I am not 200 years old, thank you. -30 points for Hupplepuff!\"")
     #-30 points for Hupplepuff 
     updateHousePoints(houses, "Hufflepuff", -30, True)
 
-    print("Oh, by the way very little children, did you know the existence of Houses? You will learn more about them in a very short time...")
-    print("- Dumbledore: Welcome to Hogwarts School of Witchcraft and Wizardry! (Yes I'm totally crazy, but you know, we are in 1998 after all...)")
-    print("Students applause.")
+    print("- Dumbledore: \"Oh, by the way very little children, did you know the existence of Houses? You will learn more about them in a very short time...\"")
+    print("- Dumbledore: \"Welcome to Hogwarts School of Witchcraft and Wizardry! (Yes I'm totally crazy, but you know, we are in 1998 after all...)\"")
+    print("Students applause. [This is how liberty dies... under thunderous applause.]")
 
     input("Press enter to continue... ")
     print()
@@ -150,10 +150,42 @@ def sortingCeremony(character, questions):
     print("It's time for the Sorting Ceremony! The Sorting Hat will now determine your house based on your personality and choices. \nHere is a quizz. Answer the questions and discover your House! ")
     assignedHouse = assignHouse(character, questions)
     character["House"] = assignedHouse
-    print(f"Congratulations! {character['First Name']} {character['Last Name']} has been assigned to {assignedHouse}!")
+    print(f"- Sorting Hat: \"After careful consideration, I have decided that {character['First Name']} {character['Last Name']} belongs to...\"")
+    print(f"- Sorting Hat: \"{assignedHouse.upper()}!!!!\"")
+    print(f"** Congratulations {character['First Name']}! You have been sorted into {assignedHouse}! **")
+    print(f"\nYou then join the {assignedHouse} students under thunderous applause.")
     input("Press enter to continue... ")
     print()
 
+#%%
+def enterCommonRoom(character):
+    """
+    The character enters his/her House common room
+
+    :param character: {dict} - The character dictionary
+    """
+
+    #Handles if no house assigned 
+    if "House" not in character or character["House"] == None:
+        print(f"[Error] No house assigned to {character['First Name']} {character['Last Name']}. Cannot enter common room.")
+        endAdventure(character, "YOU HAVE FAILED THE SORTING CEREMONY. You are expelled from Hogwarts. Game over.")
+    
+    house = character["House"]
+    housesDescriptions = IU.loadFile("hogwarts/data/houses.json")
+
+    print("After stuffing yourself like a pig, you follow the Prefects through the castle corridors...\n")
+
+    print(f"{housesDescriptions[house]['emoji']} {housesDescriptions[house]['description']}")
+    print(f"{housesDescriptions[house]['installation_message']}")
+    print(f"Your House colors: {housesDescriptions[house]['colors'][0]} and {housesDescriptions[house]['colors'][1]}.")
+    print()
+    for key, value in housesDescriptions[house]["bonus_attributs"].items():
+        incrementAttribute(character, key, value, True)
+    print()
+    
+    input("Press enter to continue... ")
+    print()
+#%%
 
 def startChapter2(character, houses):
     """
@@ -169,6 +201,13 @@ def startChapter2(character, houses):
     #Import questions from JSON file
     questions = IU.loadFile("hogwarts/data/sorting_ceremony_questions.json")
     sortingCeremony(character, questions)
+    enterCommonRoom(character)
+
+    print("This is the end of Chapter 2. Here is your current character profile:")
+    displayCharacter(character)
+    print()
+    print("It's now time to sleep in your common room and prepare for the classes starting tomorrow!")
+    input("Press enter to continue... ")
 
 
     
