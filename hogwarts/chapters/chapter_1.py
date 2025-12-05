@@ -50,15 +50,14 @@ def createCharacter():
     return character
 
 
-def receiveLetter():
+def receiveLetter(character):
     input("You have received your acceptance letter to Hogwarts School of Witchcraft and Wizardry! Press enter to continue... ")
     choice = IU.askChoice("Do you wish to attend Hogwarts ?", ["Yes", "No"])
     if choice == 1 :
         input("Great! Let's get started on your magical journey. Press enter to continue... ")
 
     else:
-        input("You won't be missed! Goodbye! Press enter to exit...")
-        exit()
+        endAdventure(character, "You won't be missed! Goodbye! GAME OVER")
 
 
 def meetHagrid():
@@ -97,7 +96,7 @@ def start_chapter_1():
     """
     introduction()
     character = createCharacter()
-    receiveLetter() 
+    receiveLetter(character) 
     meetHagrid()
     dict = IU.loadFile("hogwarts/data/inventory.json")
     display_list =[]

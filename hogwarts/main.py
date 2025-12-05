@@ -8,7 +8,7 @@
 
 #%%###=== Modules Import ===####
 #### Package modules import ####
-from menu import *
+from menu import launchMenuChoice
 
 #%%###=== Global variables ===###
 contactSupportURL = "http://gaugoth.corp.free.fr/credits/contact/?subject=Hogwarts%20Game%20Support%20Request"
@@ -18,4 +18,4 @@ contactSupportURL = "http://gaugoth.corp.free.fr/credits/contact/?subject=Hogwar
         
 #%%###=== Program ===####
 if __name__ == "__main__":
-    pass #Last test
+    launchMenuChoice()

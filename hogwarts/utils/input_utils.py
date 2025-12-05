@@ -88,11 +88,28 @@ def loadFile(path):
     :param path: {str} - file path of the JSON file to load
     :return jsonList: {list} - JSON contents organized in lists
     """
+    
     try: 
         with open(path, "r", encoding="utf-8") as f:
             jsonList = json.load(f)
             f.close()
             return jsonList
+    except Exception as e:
+        return f"An error occured while trying to read the file {path}. [Error: {e}]\nPlease try again later or contact us at the adress {contactSupportURL} for help."
+
+def loadAsciiArt(path):
+    """
+    Loads an ASCII art from a text file. Raises an exception if an error occurs during the process. 
+
+    :param path: {str} - file path of the text file to load
+    :return asciiArt: {str} - ASCII art content
+    """
+
+    try: 
+        with open(path, "r", encoding="utf-8") as f:
+            asciiArt = f.read()
+            f.close()
+            return asciiArt
     except Exception as e:
         return f"An error occured while trying to read the file {path}. [Error: {e}]\nPlease try again later or contact us at the adress {contactSupportURL} for help."
 
