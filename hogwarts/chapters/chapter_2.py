@@ -7,6 +7,7 @@
 ##############################################################
 """
 Functions for the second chapter of the Hogwarts Game.
+
 We can add as much functions as we want. The mandatory functions are still needed.
 """
 
