@@ -127,7 +127,8 @@ def quitGame():
     """
 
     print("Thank you for playing Hogwarts Game. See you soon!\n")
-    exit()
+    input("Press Enter to exit... ") 
+    return False
 
 def displayMainMenu():
     """
@@ -150,8 +151,11 @@ def displayMainMenu():
 
 def launchMenuChoice():
     """
+    Launches the main menu and handles user choices
     """
-    while True:
+
+    onLoop = True
+    while onLoop:
         choice = displayMainMenu()
         #%%###=== Main menu choices handling ===####
         if choice == 1: #Start Game
@@ -166,7 +170,7 @@ def launchMenuChoice():
             displayContactInfo()
         
         elif choice == 5: #Quit Game
-            quitGame()
+            onLoop = quitGame()
 
 
         
