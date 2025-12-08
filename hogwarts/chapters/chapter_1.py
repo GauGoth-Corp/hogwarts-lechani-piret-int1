@@ -51,6 +51,10 @@ def createCharacter():
 
 
 def receiveLetter():
+    """
+    Receives letter from Hogwarts and asks if the player wishes to go on an adventure (possible end state)
+    :return:
+    """
     input("You have received your acceptance letter to Hogwarts School of Witchcraft and Wizardry! Press enter to continue... ")
     choice = IU.askChoice("Do you wish to attend Hogwarts ?", ["Yes", "No"])
     if choice == 1 :
@@ -91,7 +95,7 @@ def buySupplies(display_list, values_list, character):
 
         
 
-def start_chapter_1():
+def startChapter1():
     """
     Starts chapter 1 of the Hogwarts adventure
     """
@@ -110,4 +114,4 @@ def start_chapter_1():
         
 #%%###=== Program ===####
 if __name__ == "__main__":
-    start_chapter_1()
+    startChapter1()
