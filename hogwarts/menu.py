@@ -25,7 +25,7 @@ Allows players to:
 #%%###=== Modules Import ===####
 #### Package modules import ####
 from utils.input_utils import *
-from chapters.chapter_1 import start_chapter_1
+from chapters.chapter_1 import startChapter1
 from chapters.chapter_2 import startChapter2
 
 #from chapters.chapter_3 import start_chapter_3
@@ -72,7 +72,7 @@ def startGame():
     hgg_houses = {"Gryffindor": 0, "Slytherin": 0, "Hufflepuff": 0, "Ravenclaw": 0}
 
     #Executes each chapter
-    my_character = start_chapter_1()
+    my_character = startChapter1()
     startChapter2(my_character, hgg_houses)
     #start_chapter_3()
     #start_chapter_4()
