@@ -8,7 +8,11 @@
 
 #%%###=== Modules Import ===####
 #### Package modules import ####
-from menu import *
+#WARNING: these imports do not work if we try to run this file directly 
+#They only work if we run the program from the main directory (hogwarts/) using main.py, menu.py or __debug__.py 
+from universe.house import *
+from utils import input_utils as IU
+from universe.character import *
 
 from hogwarts.utils import input_utils as IU
 from hogwarts.universe.character import initCharacter, displayCharacter, addItem, modifyMoney, endAdventure

@@ -11,16 +11,11 @@ Functions for managing Hogwarts houses, including player distribution, updating 
 
 #%%###=== Modules Import ===####
 #### Package modules import ####
-import sys
-from pathlib import Path
-
-####### A RETIRER LORS DU BUILD - UTILISE POUR LES TESTS RELATIFS AUX FICHIERS LOCAUX #######
-#Add project root to sys.path to allow imports to work
-project_root = Path(__file__).parent.parent.parent
-if str(project_root) not in sys.path:
-    sys.path.insert(0, str(project_root))
-
-from hogwarts.utils import input_utils as IU
+#WARNING: these imports do not work if we try to run this file directly 
+#They only work if we run the program from the main directory (hogwarts/) using main.py, menu.py or __debug__.py 
+from universe.house import *
+from utils import input_utils as IU
+from universe.character import *
 
 
 #%%###=== Global variables ===###
@@ -29,18 +24,24 @@ from hogwarts.utils import input_utils as IU
 contactSupportURL = "http://gaugoth.corp.free.fr/credits/contact/?subject=Hogwarts%20Game%20Support%20Request"
 
 #%%###=== Module (functions) ===####
-def updateHousePoints(houses, houseName, points):
+def updateHousePoints(houses, houseName, points, msg=True):
     """
-    Updates the score of the specified house.
+    Updates the score of the specified House.
 
     :param houses: {dict} - Houses associated with their current points. Structure used: houses = {"Gryffindor": 0, "Slytherin": 0, "Hufflepuff": 0, "Ravenclaw": 0} 
     :param houseName: {str} - The name of the house to update.
-    :param points: {int} - The number of points to add (or subtract if negative) to the house.
+    :param msg: {bool} - Whether to display a message about the points update
+    :param points: {int} - The number of points to add (or subtract if negative) to the House.
     """
     if houseName not in houses:
-        print(f"The house '{houseName}' does not exist.")
+        print(f"The House '{houseName}' does not exist.")
     else:
         houses[houseName] += points
+        if msg:
+            if points >= 0:
+                print(f"** {houseName} has been awarded +{points} points! **")
+            else:
+                print(f"** {houseName} has been deducted {-points} points! **")
 
 def displayHouses(houses):
     """

@@ -8,19 +8,11 @@
 
 #%%###=== Modules Import ===####
 #### Package modules import ####
-import sys
-from pathlib import Path
-
-
-####### A RETIRER LORS DU BUILD - UTILISE POUR LES TESTS RELATIFS AUX FICHIERS LOCAUX #######
-#Add project root to sys.path to allow imports to work
-project_root = Path(__file__).parent.parent.parent
-if str(project_root) not in sys.path:
-    sys.path.insert(0, str(project_root))
-
-
-from hogwarts.utils import input_utils as IU
-from hogwarts.universe.character import initCharacter, displayCharacter, addItem, modifyMoney, endAdventure
+#WARNING: these imports do not work if we try to run this file directly 
+#They only work if we run the program from the main directory (hogwarts/) using main.py, menu.py or __debug__.py 
+from universe.house import *
+from utils import input_utils as IU
+from universe.character import *
 
 #%%###=== Global variables ===###
 contactSupportURL = "http://gaugoth.corp.free.fr/credits/contact/?subject=Hogwarts%20Game%20Support%20Request"
@@ -50,7 +42,7 @@ def createCharacter():
     return character
 
 
-def receiveLetter():
+def receiveLetter(character):
     """
     Receives letter from Hogwarts and asks if the player wishes to go on an adventure (possible end state)
     :return:
@@ -61,8 +53,7 @@ def receiveLetter():
         input("Great! Let's get started on your magical journey. Press enter to continue... ")
 
     else:
-        input("You won't be missed! Goodbye! Press enter to exit...")
-        exit()
+        endAdventure(character, "You won't be missed! Goodbye! GAME OVER")
 
 
 def meetHagrid():
@@ -101,7 +92,7 @@ def startChapter1():
     """
     introduction()
     character = createCharacter()
-    receiveLetter() 
+    receiveLetter(character) 
     meetHagrid()
     dict = IU.loadFile("hogwarts/data/inventory.json")
     display_list =[]
