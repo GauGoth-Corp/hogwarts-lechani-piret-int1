@@ -15,8 +15,8 @@ from utils import input_utils as IU
 from universe.character import *
 from random import choice
 
-from hogwarts.utils import input_utils as IU
-from hogwarts.universe.character import initCharacter, displayCharacter, addItem, modifyMoney, endAdventure
+from utils import input_utils as IU
+from universe.character import initCharacter, displayCharacter, addItem, modifyMoney, endAdventure
 
 #%%###=== Global variables ===###
 contactSupportURL = "http://gaugoth.corp.free.fr/credits/contact/?subject=Hogwarts%20Game%20Support%20Request"
@@ -39,29 +39,33 @@ def learnSpells(character, spells_list):
     defensive_spells = [spell for spell in spells_list if spell[1] == "Defensive"]
     for i in range(3):
         learned_spell = choice(utility_spells)
-        addItem(character, "Spell", learned_spell)
-        input(f"You just learned the spell {learned_spell}. How exciting... Press enter to continue... ")
+        addItem(character, "Spells", learned_spell)
+        input(f"You just learned the spell {learned_spell} (Utility). How exciting... Press enter to continue... ")
     for i in range(1):
         learned_spell = choice(offensive_spells)
-        addItem(character, "Spell", learned_spell)
-        input(f"You just learned the spell {learned_spell}. Do you even read these anymore ? Press enter to continue... ")
+        addItem(character, "Spells", learned_spell)
+        input(f"You just learned the spell {learned_spell} (Offensive). Do you even read these anymore ? Press enter to continue... ")
     for i in range(1):
         learned_spell = choice(defensive_spells)
-        addItem(character, "Spell", learned_spell)
-        input(f"You just learned the spell {learned_spell}. Did you know that the Alicia leitmotiv was used in 20 tracks of Clair Obscur ? Press enter to continue... ")
+        addItem(character, "Spells", learned_spell)
+        input(f"You just learned the spell {learned_spell} (Defensive). Did you know that the Alicia leitmotiv was used in 20 tracks of Clair Obscur ? Press enter to continue... ")
 
 
-
+def magicQuiz(character, questions_list, answer_list):
+    return "fuck you"
 
 def startChapter3(character):
-    dict = IU.loadFile("hogwarts/data/inventory.json")
-    display_list =[]
-    spells_list = [[value[0], value[2]] for value in dict.values()]
-    
-
-    learnSpells(display_list, spells_list, character)
+    spell_dict = IU.loadFile("hogwarts/data/spells.json")
+    quiz_dict = IU.loadFile("hogwarts/data/magic_quiz.json")
+    spells_list = [[spell["name"], spell["type"]] for spell in spell_dict]
+    questions_list = [[q["question"]] for q in quiz_dict]
+    answer_list = [[q["answer"]] for q in quiz_dict]    
+    learnSpells(spells_list, character)
+    magicQuiz(character, questions_list, answer_list)
     return character
+
 
 #%%###=== Program ===####
 if __name__ == "__main__":
-    pass
+    spell_dict = IU.loadFile("hogwarts/data/inventory.json")
+    print([type(spell) for spell in spell_dict])
