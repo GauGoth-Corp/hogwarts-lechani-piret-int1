@@ -5,7 +5,11 @@
 #### 27/11/2025 - 28/11/2025 #################################
 #### Copyright (c) 2025 GauGoth Corp. All Rights reserved ####
 ##############################################################
+"""
+Chapter 4 of the Hogwarts Game
 
+Plot: The main character fights the Dragon in the Goblet of Fire tournament
+"""
 
 
 #%%###=== Modules Import ===####
@@ -20,6 +24,26 @@ from universe.character import *
 contactSupportURL = "http://gaugoth.corp.free.fr/credits/contact/?subject=Hogwarts%20Game%20Support%20Request"
 
 #%%###=== Module (functions) ===####
+def introductionBeforeFight(character):
+    """
+    Docstring for introductionBeforeFight
+    
+    :param character: Description
+    """
+
+
+def startChapter4(character):
+    """
+    Starts chapter 4 of the game: The Dragon Fight
+ 
+    :param character: {dict} - The player's character dictionary 
+    """
+
+    print("=== Chapter 4: The Dragon Fight ===")
+    print()
+    input("Oh wow! The time has passed very very quickly! It's now your 4th year at Hogwarts and you have been selected to participate in the Triwizard Tournament! Press enter to continue... ")
+
+
 
         
 #%%###=== Program ===####
