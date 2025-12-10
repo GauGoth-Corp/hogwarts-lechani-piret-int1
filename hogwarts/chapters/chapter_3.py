@@ -24,24 +24,31 @@ contactSupportURL = "http://gaugoth.corp.free.fr/credits/contact/?subject=Hogwar
 #%%###=== Module (functions) ===####
 
 def learnSpells(character, spells_list):
-     #learn 5 spells 1 offensive, 1 defensive, 3 utility chosen at random
+    """
+    The player learns 5 new spells (utility, offensive, defensive)
+
+    Args:
+        character (dict): your character info 
+        spells_list (list): all the spells available in the game
+    """
 
     input("You begin your magic lessons at Hogwarts. Press enter to continue... ")
-    #list of already chosen spells
-    #take random index in the list
-    #check if in already chosen 
-    #if yes take another random index
-    #should also take utility
-    chosen_spells = [] 
+
     utility_spells = [spell for spell in spells_list if spell[1] == "Utility"]
     offensive_spells = [spell for spell in spells_list if spell[1] == "Offensive"]
     defensive_spells = [spell for spell in spells_list if spell[1] == "Defensive"]
     for i in range(3):
-        chosen_spells.append(choice(utility_spells))
+        learned_spell = choice(utility_spells)
+        addItem(character, "Spell", learned_spell)
+        input(f"You just learned the spell {learned_spell}. How exciting... Press enter to continue... ")
     for i in range(1):
-        chosen_spells.append(choice(offensive_spells))
+        learned_spell = choice(offensive_spells)
+        addItem(character, "Spell", learned_spell)
+        input(f"You just learned the spell {learned_spell}. Do you even read these anymore ? Press enter to continue... ")
     for i in range(1):
-        chosen_spells.append(choice(defensive_spells))
+        learned_spell = choice(defensive_spells)
+        addItem(character, "Spell", learned_spell)
+        input(f"You just learned the spell {learned_spell}. Did you know that the Alicia leitmotiv was used in 20 tracks of Clair Obscur ? Press enter to continue... ")
 
 
 
