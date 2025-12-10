@@ -1,0 +1,154 @@
+[
+    {
+        "id": 1,
+        "message": "The dragon turns around and gives you a burning look.",
+        "choices": [
+            "You call out to it, trying to calm it down.",
+            "You stand your ground, ready to face it head-on.",
+            "You turn around screaming like a mandrake."
+        ],
+        "outcomes": [
+            {
+                "message": "The dragon is upset by your attempt to communicate and lashes out.",
+                "dragon_attack_increase": 10,
+                "player_attack_increase": 5,
+                "PE_use": 5
+            },
+            {
+                "message": "The dragon respects your bravery and prepares to fight you fairly. He swipes at you and scratches you, but without causing too much damage.",
+                "dragon_attack_increase": 0,
+                "player_attack_increase": 10,
+                "PE_use": 0
+            },
+            {
+                "message": "The dragon is confused by your reaction and hesitates.",
+                "dragon_attack_increase": -5,
+                "player_attack_increase": 0,
+                "PE_use": 3
+                
+            }
+        ]
+
+    },
+    {
+        "id": 2,
+        "message": "The dragon prepares to breathe fire at you.",
+        "choices": [
+            "You cast the Protego spell while attempting to shield yourself.",
+            "You dodge behind a nearby rock, trying to avoid the flames.",
+            "You cast a spell trying to extinguish the flames."
+        ],
+        "outcomes": [
+            {
+                "message": "- \"Protego!\" you shout, raising your wand just in time to partially block the dragon's fiery breath.",
+                "dragon_attack_increase": 2,
+                "player_attack_increase": 5,
+                "PE_use": 2
+            },
+            {
+                "message": "You narrowly avoid the flames, but the heat singes your clothes and skin.",
+                "dragon_attack_increase": 7,
+                "player_attack_increase": 0,
+                "PE_use": 1
+            },
+            {
+                "message": "- \"Aguamenti!\" you shout, successfully dousing the dragon's flames with a powerful jet of water.",
+                "dragon_attack_increase": -10,
+                "player_attack_increase": 10,
+                "PE_use": 7
+            }
+        ]
+    },
+
+    {
+        "id": 3,
+        "message": "The dragon is momentarily stunned from your last move.",
+        "choices": [
+            "You seize the opportunity to launch a powerful attack.",
+            "You take a moment to catch your breath and assess the situation.",
+            "You summon a wild Pikkachu to distract the dragon."
+        ],
+        "outcomes": [
+            {
+                "message": "You channel all your energy into a single, devastating spell that hits the dragon squarely.",
+                "dragon_attack_increase": 0,
+                "player_attack_increase": 15,
+                "PE_use": 10
+            },
+            {
+                "message": "You take a deep breath, steadying yourself for the next phase of the battle.",
+                "dragon_attack_increase": 0,
+                "player_attack_increase": 0,
+                "PE_use": -15
+            },
+            {
+                "message": "The Pikkachu appears out of nowhere, causing the dragon to turn its attention away from you. The dragon raises its right paw and crushes Pikachu like a mere fly. But you've gained the time you needed and cast Incendio directly at the creature's rear end!",
+                "dragon_attack_increase": -15,
+                "player_attack_increase": 0,
+                "PE_use": 5
+            }
+        ]
+    },
+
+    {
+        "id": 4,
+        "message": "The dragon rises into the air, moving its huge wings in an impressive manner.",
+        "choices": [
+            "You aim a spell at the dragon's wings to try and bring it down.",
+            "You prepare to defend yourself from an aerial attack.",
+            "You summon a flock of enchanted birds to harass the dragon."
+        ],
+        "outcomes": [
+            {
+                "message": "- \"Confringo!\" Your spell hits the dragon's wing, causing it to lose balance.",
+                "dragon_attack_increase": -2,
+                "player_attack_increase": 5,
+                "PE_use": 8
+            },
+            {
+                "message": "You brace yourself as the dragon swoops down, narrowly avoiding its claws and teeth.",
+                "dragon_attack_increase": 5,
+                "player_attack_increase": 0,
+                "PE_use": 3
+            },
+            {
+                "message": "The enchanted birds swarm around the dragon, distracting it and causing it to lose focus.",
+                "dragon_attack_increase": -5,
+                "player_attack_increase": 5,
+                "PE_use": 6
+            }
+        ]
+    },
+
+    {
+        "id": 5,
+        "message": "The Hungarian Horntail soars high into the air but is suddenly stopped by the chain holding it back. Enraged, it lunges at you.",
+        "choices": [
+            "You pull out a piece of meat and try to throw it into the crowd to distract the monster.",
+            "You cast “Bombarda” on the dragon's snout.",
+            "You call your Nimbus 2000."
+        ],
+        "outcomes": [
+            {
+                "message": "You throw the meat with all your strength, and the dragon turns its head to snatch it, giving you a chance to strike. But there's the crowd! The dragon accidentally eat one or two spectators. Oops. Severus Snape PAS CONTENT and immediately casts a spell on you: \"Crucio!\" You feel a sharp pain in your back.",
+                "dragon_attack_increase": -5,
+                "player_attack_increase": 2,
+                "PE_use": 25
+            },
+            {
+                "message": "- \"Bombarda!\" you shout, and the spell hits the dragon's snout, causing it to reel back in pain.",
+                "dragon_attack_increase": 0,
+                "player_attack_increase": 15,
+                "PE_use": 7
+            },
+
+            {
+                "message": "You summon your magic broomstick, and with a swift maneuver, you manage to get close enough to the dragon to strike it.",
+                "dragon_attack_increase": -10,
+                "player_attack_increase": 15,
+                "PE_use": 10
+            }
+        ]
+    }
+
+]

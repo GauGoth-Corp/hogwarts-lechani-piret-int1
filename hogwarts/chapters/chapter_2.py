@@ -127,7 +127,8 @@ def welcomeMessage(houses, character):
 
     if hggIsBought:
         print("No sooner have you stepped off the train than you find yourself surrounded by an official procession straight from Hogwarts: Albus Dumbledore welcomes you personally!")
-        print("Dumbledore: “Hello, child. We understand you are the new owner of Hogwarts... Here are some gifts for Your Majesty.”")
+        input("Press enter to continue... ")
+        print("- Dumbledore: “Hello, child. We understand you are the new owner of Hogwarts... Here are some gifts for Your Majesty.”")
         character = modifyMoney(character, 100000, True)
         character = addItem(character, "Inventory", "100 slaves", True)
         character = addItem(character, "Inventory", "Royal crown", True)
@@ -141,20 +142,20 @@ def welcomeMessage(houses, character):
         print("He and all the wizards in the procession then grovel at your feet.")
         choice = IU.askChoice("What will you do, Your Highness?", ["Accept their homage graciously", "Ignore them and walk away", "Order them to be executed for treason"])
         if choice == 1:
-            print("Dumbledore: “Thank you, Your Majesty. We are honored but everything we do is for your infinite glory.”")
+            print("- Dumbledore: “Thank you, Your Majesty. We are honored but everything we do is for your infinite glory.”")
             print("You graciously accept their homage, and the wizards bow even lower.")
             #Adds 50 to Loyalty
             incrementAttribute(character, "Loyalty", 50, True)
         elif choice == 2:
             print("You walk past them without a word. But you do not forget to get your gifts of course.")
-            print("Dumbledore: - \"I am so sorry for bothering you, Your Majesty. Please forgive us. Please. PLEASEEEEEEE\"")
+            print("- Dumbledore: \"I am so sorry for bothering you, Your Majesty. Please forgive us. Please. PLEASEEEEEEE\"")
             print("You ignore them and walk away, leaving Dumbledore and the wizards in a state of shock and despair.")
             #Adds 20 to Ambition
             incrementAttribute(character, "Ambition", 20, True)
         else:
             print(f"{character['First Name']}: \"Execute them.\" you order coldly.")
-            print("Dumbledore: - \"NOOOOOOOOOOOOOOOOOOOOOOOOOOOO\"")
-            print("You order them to be executed for treason. The wizards are horrified, but they comply with your command (of course, you're so much charismatic).")
+            print("- Dumbledore: \"NOOOOOOOOOOOOOOOOOOOOOOOOOOOO\"")
+            print("The wizards are horrified, but they comply with your command (of course, you're so much charismatic).")
             print("Dumbledore and the wizards are executed on the spot. A dark cloud of fear and despair descends upon Hogwarts.")
             #Adds 100 to Courage 
             incrementAttribute(character, "Courage", 100, True)
