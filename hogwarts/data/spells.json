@@ -124,4 +124,9 @@
         "description": "A humorous spell that causes minor magical 'mishaps'.",
         "type": "Utility"
     }
+    {
+        "name": "Stendhal",
+        "description": "Causes multiple chroma swords that do massive void damage.",
+        "type": "Offensive"
+    }
 ]

@@ -13,6 +13,7 @@
 from universe.house import *
 from utils import input_utils as IU
 from universe.character import *
+from random import choice
 
 from hogwarts.utils import input_utils as IU
 from hogwarts.universe.character import initCharacter, displayCharacter, addItem, modifyMoney, endAdventure
@@ -22,7 +23,7 @@ contactSupportURL = "http://gaugoth.corp.free.fr/credits/contact/?subject=Hogwar
 
 #%%###=== Module (functions) ===####
 
-def learnSpells(character, spell_names, values_list):
+def learnSpells(character, spells_list):
      #learn 5 spells 1 offensive, 1 defensive, 3 utility chosen at random
 
     input("You begin your magic lessons at Hogwarts. Press enter to continue... ")
@@ -30,8 +31,17 @@ def learnSpells(character, spell_names, values_list):
     #take random index in the list
     #check if in already chosen 
     #if yes take another random index
-    #should also take utility 
-    learned_spells = []
+    #should also take utility
+    chosen_spells = [] 
+    utility_spells = [spell for spell in spells_list if spell[1] == "Utility"]
+    offensive_spells = [spell for spell in spells_list if spell[1] == "Offensive"]
+    defensive_spells = [spell for spell in spells_list if spell[1] == "Defensive"]
+    for i in range(3):
+        chosen_spells.append(choice(utility_spells))
+    for i in range(1):
+        chosen_spells.append(choice(offensive_spells))
+    for i in range(1):
+        chosen_spells.append(choice(defensive_spells))
 
 
 
@@ -39,10 +49,10 @@ def learnSpells(character, spell_names, values_list):
 def startChapter3(character):
     dict = IU.loadFile("hogwarts/data/inventory.json")
     display_list =[]
-    values_list = [[value[0], value[1], value[2]] for value in dict.values()]
-    spell_names = [value[0] for value in values_list]
+    spells_list = [[value[0], value[2]] for value in dict.values()]
+    
 
-    learnSpells(display_list, values_list, character)
+    learnSpells(display_list, spells_list, character)
     return character
 
 #%%###=== Program ===####
