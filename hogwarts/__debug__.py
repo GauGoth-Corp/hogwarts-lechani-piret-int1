@@ -14,6 +14,8 @@ from universe.house import *
 from universe.character import *
 from utils.input_utils import *
 from chapters.chapter_2 import *
+from chapters.chapter_3 import startChapter3
+
 
 #%%###=== Global variables ===###
 contactSupportURL = "http://gaugoth.corp.free.fr/credits/contact/?subject=Hogwarts%20Game%20Support%20Request"
@@ -23,6 +25,10 @@ contactSupportURL = "http://gaugoth.corp.free.fr/credits/contact/?subject=Hogwar
 
 #%%###=== Program ===####
 if __name__ == "__main__":
+    startChapter3(initCharacter("Test Debug", "Debugging Inc.", {"Courage": 5, "Intelligence": 5, "Loyalty": 5, "Ambition": 5}))
+
+
+
     text = input("Enter text to encrypt: ")
     key = [random.randint(1,15) for i in range(len(text))]
 

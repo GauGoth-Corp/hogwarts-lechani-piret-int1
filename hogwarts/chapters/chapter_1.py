@@ -76,9 +76,12 @@ def buySupplies(display_list, values_list, character):
         choice = IU.askChoice("Catalog of available items:", display_list + ["Exit the shop"])
         if choice == len(display_list) + 1: #Quit shop
             if required_bought < 3:
-                quit = IU.askChoice("You have not bought all the required supplies. Are you sure you want to go out?", ["Stop bothering me, let me go!", "Uhh no sorry your Highness, I will continue shopping"])
-                if quit == 1:
-                    break
+                msg = "You have not bought all the required supplies. Are you sure you want to go out?"
+            else:
+                msg = "Are you sure you want to go out of the shop?"
+            quit = IU.askChoice(msg, ["Stop bothering me, let me go!", "Uhh no sorry your Highness, I will continue shopping"])
+            if quit == 1:
+                break
             
         #Do not check if "exit" was chosen
         if choice <= len(display_list):
@@ -86,8 +89,18 @@ def buySupplies(display_list, values_list, character):
                 input("You're too poor to buy this item. How about you cross the street to get a job? Press enter to continue... ")
 
             else:
-                addItem(character, "Inventory", values_list[choice-1][0])
+                #Manages the strange options:
+                if choice == 15: #100 Galleons
+                    modifyMoney(character, 100)
+                elif choice == 16: #500 Galleons
+                    modifyMoney(character, 500)  
+                else:
+                    addItem(character, "Inventory", values_list[choice-1][0])
+
                 modifyMoney(character, -values_list[choice-1][1])
+
+
+
                 input(f"You have successfully purchased {values_list[choice-1][0]} for {values_list[choice-1][1]} Galleons! Press enter to continue... ")
                 print(f"You now have {character['Money']} Galleons left.")
                 if values_list[choice-1][2] == "(required)":
@@ -97,7 +110,11 @@ def buySupplies(display_list, values_list, character):
         endAdventure(character, "Instead of buying school supplies you thought it would be a good idea to buy beers, guns and children. You are not a problem solver and failed your school year. Get your priorities straight. GAME OVER")
     
     else: 
-        input("You have successfully bought all the required supplies! You can now head to Hogwarts. Press enter to continue... ")
+        print("You have successfully bought all the required supplies! You can now head to Hogwarts.\n")
+        print("Here is a summary of your character:")
+        displayCharacter(character)
+        input("Press enter to continue... ")
+        print()
 
         
 

@@ -27,6 +27,7 @@ Allows players to:
 from utils.input_utils import *
 from chapters.chapter_1 import startChapter1
 from chapters.chapter_2 import startChapter2
+#from chapters.chapter_3 import startChapter3
 
 #from chapters.chapter_3 import start_chapter_3
 #from chapters.chapter_4 import start_chapter_4

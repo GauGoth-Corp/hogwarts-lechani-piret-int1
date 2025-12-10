@@ -114,20 +114,60 @@ def meetFriends(character):
     input("\nPress enter to continue... ")
     print()
 
-def welcomeMessage(houses):
+def welcomeMessage(houses, character):
     """
     Welcome Message from Dumbledore
 
     :param houses: {dict} - Houses & their current points. 
     """
-    print("- Dumbledore: \"Ready guys? My name is Albus Dumbledore and I will be your headschool teacher for the year!\"")
-    print("- Dumbledore: \"What am I hearing? No I am not 200 years old, thank you. -30 points for Hupplepuff!\"")
-    #-30 points for Hupplepuff 
-    updateHousePoints(houses, "Hufflepuff", -30, True)
+    #Checks if the player has bought Hogwarts:
+    hggIsBought = False
+    if "Hogwarts (yes, the real estate market is slowing down)" in character["Inventory"]:
+        hggIsBought = True
 
-    print("- Dumbledore: \"Oh, by the way very little children, did you know the existence of Houses? You will learn more about them in a very short time...\"")
-    print("- Dumbledore: \"Welcome to Hogwarts School of Witchcraft and Wizardry! (Yes I'm totally crazy, but you know, we are in 1998 after all...)\"")
-    print("Students applause. [This is how liberty dies... under thunderous applause.]")
+    if hggIsBought:
+        print("No sooner have you stepped off the train than you find yourself surrounded by an official procession straight from Hogwarts: Albus Dumbledore welcomes you personally!")
+        print("Dumbledore: “Hello, child. We understand you are the new owner of Hogwarts... Here are some gifts for Your Majesty.”")
+        character = modifyMoney(character, 100000, True)
+        character = addItem(character, "Inventory", "100 slaves", True)
+        character = addItem(character, "Inventory", "Royal crown", True)
+        character = addItem(character, "Inventory", "Scepter of power", True)
+        character = addItem(character, "Inventory", "Throne", True)
+        character = addItem(character, "Inventory", "10 bodyguards", True)
+        character = addItem(character, "Inventory", "Dragon", True)
+        character = addItem(character, "Inventory", "Private jet", True)
+        character = addItem(character, "Inventory", "Unlimited butterbeer at the Three Broomsticks", True)
+
+        print("He and all the wizards in the procession then grovel at your feet.")
+        choice = IU.askChoice("What will you do, Your Highness?", ["Accept their homage graciously", "Ignore them and walk away", "Order them to be executed for treason"])
+        if choice == 1:
+            print("Dumbledore: “Thank you, Your Majesty. We are honored but everything we do is for your infinite glory.”")
+            print("You graciously accept their homage, and the wizards bow even lower.")
+            #Adds 50 to Loyalty
+            incrementAttribute(character, "Loyalty", 50, True)
+        elif choice == 2:
+            print("You walk past them without a word. But you do not forget to get your gifts of course.")
+            print("Dumbledore: - \"I am so sorry for bothering you, Your Majesty. Please forgive us. Please. PLEASEEEEEEE\"")
+            print("You ignore them and walk away, leaving Dumbledore and the wizards in a state of shock and despair.")
+            #Adds 20 to Ambition
+            incrementAttribute(character, "Ambition", 20, True)
+        else:
+            print(f"{character['First Name']}: \"Execute them.\" you order coldly.")
+            print("Dumbledore: - \"NOOOOOOOOOOOOOOOOOOOOOOOOOOOO\"")
+            print("You order them to be executed for treason. The wizards are horrified, but they comply with your command (of course, you're so much charismatic).")
+            print("Dumbledore and the wizards are executed on the spot. A dark cloud of fear and despair descends upon Hogwarts.")
+            #Adds 100 to Courage 
+            incrementAttribute(character, "Courage", 100, True)
+
+    else:
+        print("- Dumbledore: \"Ready guys? My name is Albus Dumbledore and I will be your headschool teacher for the year!\"")
+        print("- Dumbledore: \"What am I hearing? No I am not 200 years old, thank you. -30 points for Hupplepuff!\"")
+        #-30 points for Hupplepuff 
+        updateHousePoints(houses, "Hufflepuff", -30, True)
+
+        print("- Dumbledore: \"Oh, by the way very little children, did you know the existence of Houses? You will learn more about them in a very short time...\"")
+        print("- Dumbledore: \"Welcome to Hogwarts School of Witchcraft and Wizardry! (Yes I'm totally crazy, but you know, we are in 1998 after all...)\"")
+        print("Students applause. [This is how liberty dies... under thunderous applause.]")
 
     input("Press enter to continue... ")
     print()
@@ -190,7 +230,7 @@ def startChapter2(character, houses):
     print("=== Chapter 2: The Journey to Hogwarts ===")
     print()
     meetFriends(character)
-    welcomeMessage(houses)
+    welcomeMessage(houses, character)
     #Import questions from JSON file
     questions = IU.loadFile("hogwarts/data/sorting_ceremony_questions.json")
     sortingCeremony(character, questions)
