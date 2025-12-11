@@ -40,6 +40,41 @@ if __name__ == "__main__":
     enterCommonRoom(Harry_the_goat)
     """
 
+    def learnSpells(character, spells_list):
+        """
+        The player learns 5 new spells (utility, offensive, defensive)
+
+        Args:
+            character (dict): your character info 
+            spells_list (list): all the spells available in the game
+        """
+        input("You begin your magic lessons at Hogwarts. Press enter to continue... ")
+
+        remaining = {
+            "Utility": 3,
+            "Offensive": 1,
+            "Defensive": 1
+            }
+        while remaining["Utility"] > 0 or remaining["Offensive"] > 0 or remaining["Defensive"] > 0:
+            learned_spell = choice(spells_list)
+
+            if learned_spell[1] == "Utility" and remaining["Utility"] > 0:
+                remaining["Utility"] -= 1
+                addItem(character, "Spells", learned_spell)
+                spells_list.remove(learned_spell)
+                input(f"You just learned the spell {learned_spell[0]} ({learned_spell[1]}). How exciting... Press enter to continue... ")
+
+            elif learned_spell[1] == "Offensive" and remaining["Offensive"] > 0:
+                remaining["Offensive"] -= 1
+                addItem(character, "Spells", learned_spell)
+                spells_list.remove(learned_spell)
+                input(f"You just learned the spell {learned_spell[0]} ({learned_spell[1]}). Do you even read these anymore ? Press enter to continue... ")
+                    
+            elif learned_spell[1] == "Defensive" and remaining["Defensive"] > 0:
+                remaining["Defensive"] -= 1
+                addItem(character, "Spells", learned_spell)
+                spells_list.remove(learned_spell)
+                input(f"You just learned the spell {learned_spell[0]} ({learned_spell[1]}). Did you know that the Alicia leitmotiv was used in 20 tracks of Clair Obscur ? Press enter to continue... ")
 
 
 
@@ -78,4 +113,5 @@ if __name__ == "__main__":
     spells_list = [[spell["name"], spell["type"]] for spell in spell_dict]
     questions_list = [q["question"] for q in quiz_dict]
     answer_list = [q["answer"] for q in quiz_dict]     
+    learnSpells(character, spells_list)
     magicQuiz(character, questions_list, answer_list)

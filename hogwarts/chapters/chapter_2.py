@@ -201,7 +201,6 @@ def startChapter2(character, houses):
     print()
     print("It's now time to sleep in your common room and prepare for the classes starting tomorrow!")
     input("Press enter to continue... ")
-    return hgg_houses
 
 
     

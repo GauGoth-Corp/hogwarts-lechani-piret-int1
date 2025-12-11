@@ -22,6 +22,9 @@ contactSupportURL = "http://gaugoth.corp.free.fr/credits/contact/?subject=Hogwar
 
 #%%###=== Module (functions) ===####
 
+    #USE ASK CHOICE OR ELSE YOU WILL REGRET IT
+
+
 def learnSpells(character, spells_list):
     """
     The player learns 5 new spells (utility, offensive, defensive)
