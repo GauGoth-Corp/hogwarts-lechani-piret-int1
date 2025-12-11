@@ -12,7 +12,9 @@
                 "message": "The dragon is upset by your attempt to communicate and lashes out.",
                 "dragon_attack_increase": 10,
                 "player_attack_increase": 5,
-                "PE_use": 5
+                "PE_use": 5,
+                "Attribute_use": "Ambition"
+                
             },
             {
                 "message": "The dragon respects your bravery and prepares to fight you fairly. He swipes at you and scratches you, but without causing too much damage.",
@@ -147,6 +149,66 @@
                 "dragon_attack_increase": -10,
                 "player_attack_increase": 15,
                 "PE_use": 10
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "message": "The dragon performs a triple backflip followed by a 360 and prepares to strike with its tail.",
+        "choices": [
+            "You cast “Stupefy” to try and stun the dragon.",
+            "You roll to the side to avoid the tail strike.",
+            "You cast “Rictusempra” to make the dragon laugh."
+        ],
+        "outcomes": [
+            {
+                "message": "- \"Stupefy!\" Your spell hits the dragon, but it only throws it off balance for a few seconds, and its attack is no less violent.",
+                "dragon_attack_increase": 5,
+                "player_attack_increase": -4,
+                "PE_use": 4
+            },
+            {
+                "message": "You roll to the side just in time, avoiding the dragon's tail strike.",
+                "dragon_attack_increase": 5,
+                "player_attack_increase": 3,
+                "PE_use": 3
+            },
+            {
+                "message": "- \"Rictusempra!\" The dragon starts laughing uncontrollably at your spell, giving you an opening.",
+                "dragon_attack_increase": -5,
+                "player_attack_increase": 15,
+                "PE_use": 7
+            }
+        ]
+    },
+
+    {
+        "id": 7,
+        "message": "The dragon circles around you at full speed, spewing jets of flame.",
+        "choices": [
+            "You shoot a jet of flames with your wand, trying to counter the dragon's flames.",
+            "You use your wand to create a whirlwind to divert the flames.",
+            "You try to cut through the flames."
+        ],
+        "outcomes": [
+            {
+                "message": "- \"Incendio!\" you shout, and your flames collide with the dragon's, creating a spectacular fire explosion.",
+                "dragon_attack_increase": 0,
+                "player_attack_increase": 5,
+                "PE_use": 6
+            },
+            {
+                "message": "- \"Ventus!\" You create a whirlwind that diverts the dragon's flames away from you but starts a fire in the crowd. Oops.",
+                "dragon_attack_increase": -5,
+                "player_attack_increase": 5,
+                "PE_use": 8
+            },
+
+            {
+                "message": "You manage to cut through the flames, but the heat is intense and drains your energy. Your spell only grazes the dragon.",
+                "dragon_attack_increase": 5,
+                "player_attack_increase": 0,
+                "PE_use": 5
             }
         ]
     }

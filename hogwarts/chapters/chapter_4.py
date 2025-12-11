@@ -46,6 +46,31 @@ def introductionBeforeFight():
     input("Press enter to continue... ")
     print()
 
+def createDragonBoss(name, pv, pe, attack, defense, special_attack):
+    """
+    Creates a dictionary to represent the dragon boss 
+ 
+    :param name: {str} - Dragon's name
+    :param pv: {int} - Dragon's health points
+    :param pe: {int} - Dragon's energy points
+    :param attack: {int} - Attack power
+    :param defense: {int} - Defense power
+    :param special_attack: {int} - Special attack power
+
+    :return dragonBoss: {dict} - The dragon boss created
+    """
+
+    dragonBoss = {}
+
+    dragonBoss["Name"] = name
+    dragonBoss["PV"] = pv
+    dragonBoss["PE"] = pe
+    dragonBoss["Attack"] = attack
+    dragonBoss["Defense"] = defense
+    dragonBoss["Special Attack"] = special_attack
+
+    return dragonBoss
+
 #%%## Combat functions ####
 def displayDragonStats(dragonBoss):
     """
@@ -57,9 +82,20 @@ def displayDragonStats(dragonBoss):
     for key, item in dragonBoss.items():
         print(f"    - {key}: {item}")
 
-def playerAttack(character):
+def displayPlayerStats(character):
     """
-    The player's attack during the dragon fight 
+    Displays the player's character stats (PV & PE)
+
+    :param character: {dict} - The player's character dictionary 
+    """
+
+    print(f"== {character['First Name']} {character['Last Name']} stats ==")
+    print(f"    - PV: {character['PV']}")
+    print(f"    - PE: {character['PE']}")
+
+def playerAttack(character, attack_increase):
+    """
+    The player's attack
 
     :param character: {dict} - The player's character dictionary 
     """
@@ -67,20 +103,54 @@ def playerAttack(character):
     #Fight simulation: we combine character's Courage, PE and some random to determine attack power:
     return character["Attributes"]["Courage"] * 2 + character["PE"] + rd.randint(0, 20)
 
+def dragonAttack(dragonBoss, attack_increase):
+    """
+    The dragon's attack
+
+    :param dragonBoss: {dict} - The dragon boss dictionary 
+    """
+
+    #Fight simulation: we combine dragon's Attack, PE and some random to determine attack power:
+    return dragonBoss["Attack"] + dragonBoss["PE"] + rd.randint(0, 20)
+
+
+def dragonFightFirstRound(character, dragonBoss): 
+    """
+    The first round of the dragon fight. Directly called (always same choice)
+
+    :param character: {dict} - The player's character dictionary 
+    :param dragonBoss: {dict} - The dragon boss dictionary 
+    """
+
+    choice = IU.askChoice(f"The dragon notices you and lets out a huge roar. What will you do, {character["First Name"]}?", ["Load the creature from the front", "Save time to think", "Use Avadakedavra"])
+    if choice == 1:
+        print("You decide to gather your courage and launch a frontal attack, hoping that this will take the dragon by surprise.")
+
+        #Fight simulation: we combine character's Courage, PE and some random to determine attack power:
+        player_attack = playerAttack(character, 0)
+        print(f"Your attack power is {player_attack}!")
+
+        #Defense: we combine dragon's Defense, PE and some random to determine defense power:
+        dragon_defense = dragonBoss["Defense"] + dragonBoss["PE"] + rd.randint(0, 20)
+
+        #Damage calculation
+        damage = player_attack - dragon_defense
+        if damage > 0:
+            dragonBoss["PV"] -= damage
+            print(f"Your attack is successful! You deal {damage} points of damage to the dragon. It now has {dragonBoss['PV']} PV left.")
+        else:
+            print("Your attack misses! The dragon evades your attack and prepares to strike back.")    
+
+def dragonFightSimulation(): ...
+
 def dragonFight(character):
     """
     The dragon fight of chapter 4
 
     :param character: {dict} - The player's character dictionary 
     """
-    dragonBoss = {
-        "Name": "Hungarian Horntail",
-        "PV": 150,
-        "PE": 100,
-        "Attack": 25,
-        "Defense": 30,
-        "Special Attack": 40
-    }
+
+    dragonBoss = createDragonBoss("Hungarian Horntail", 150, 80, 30, 20, 25)
 
     #Adds a PV and PE system to the character for the fight
     character["PV"] = 80
@@ -93,29 +163,13 @@ def dragonFight(character):
     input("Press enter to continue... ")
     print()
 
-    #### Fight simulation ####
+    #%%### Fight simulation ####
     print(f"== A wild {dragonBoss['Name']} appears in front of you, breathing fire and looking very angry! ==")
     displayDragonStats(dragonBoss)
     print()
 
-    choice = IU.askChoice(f"The dragon notices you and lets out a huge roar. What will you do, {character["First Name"]}?", ["Load the creature from the front", "Save time to think", "Use Avadakedavra"])
-    if choice == 1:
-        print("You decide to gather your courage and launch a frontal attack, hoping that this will take the dragon by surprise.")
-
-        #Fight simulation: we combine character's Courage, PE and some random to determine attack power:
-        player_attack = playerAttack(character)
-        print(f"Your attack power is {player_attack}!")
-
-        #Defense: we combine dragon's Defense, PE and some random to determine defense power:
-        dragon_defense = dragonBoss["Defense"] + dragonBoss["PE"] + rd.randint(0, 20)
-
-        #Damage calculation
-        damage = player_attack - dragon_defense
-        if damage > 0:
-            dragonBoss["PV"] -= damage
-            print(f"Your attack is successful! You deal {damage} points of damage to the dragon. It now has {dragonBoss['PV']} PV left.")
-        else:
-            print("Your attack misses! The dragon evades your attack and prepares to strike back.")
+    #FIRST ROUND: always the same choice
+    dragonFightFirstRound(character, dragonBoss)
     
 
 def startChapter4(character):
