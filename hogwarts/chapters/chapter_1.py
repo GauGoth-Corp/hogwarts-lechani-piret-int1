@@ -28,8 +28,15 @@ def createCharacter():
     """
     Asks user for character info to create a character and then displays it
     """
-    first_name = input("Enter your character's first name: ")
-    last_name = input("Enter your character's last name: ")
+    first_name, last_name = "", ""
+    while first_name.strip() == "":
+        first_name = input("Enter your character's first name: ")
+        if first_name.strip() == "":
+            print("You're not ready to become a problem solver if you don't even have a name... Try again shitty\n")
+    while last_name.strip() == "":
+        last_name = input("Enter your character's last name: ")
+        if last_name.strip() == "":
+            print("You're not ready to become a problem solver if you don't even have a last name... Try again shitty\n")
     attributes = {
         "Courage": IU.askNumber("Enter your Courage (1-10): ", 1, 10),
         "Intelligence": IU.askNumber("Enter your Intelligence (1-10): ", 1, 10),
@@ -66,23 +73,48 @@ def buySupplies(display_list, values_list, character):
     required_bought = 0
     while character['Money'] >= 5:
         print(f"You have {character['Money']} Galleons. Make sure to save enough to buy the required items !")
-        choice = IU.askChoice("Catalog of available items:", display_list)
-        if values_list[choice-1][1] > character['Money']:
-            input("You're too poor to buy this item. How about you cross the street to get a job? Press enter to continue... ")
+        choice = IU.askChoice("Catalog of available items:", display_list + ["Exit the shop"])
+        if choice == len(display_list) + 1: #Quit shop
+            if required_bought < 3:
+                msg = "You have not bought all the required supplies. Are you sure you want to go out?"
+            else:
+                msg = "Are you sure you want to go out of the shop?"
+            quit = IU.askChoice(msg, ["Stop bothering me, let me go!", "Uhh no sorry your Highness, I will continue shopping"])
+            if quit == 1:
+                break
+            
+        #Do not check if "exit" was chosen
+        if choice <= len(display_list):
+            if values_list[choice-1][1] > character['Money']:
+                input("You're too poor to buy this item. How about you cross the street to get a job? Press enter to continue... ")
 
-        else:
-            addItem(character, "Inventory", values_list[choice-1][0])
-            modifyMoney(character, -values_list[choice-1][1])
-            input(f"You have successfully purchased {values_list[choice-1][0]} for {values_list[choice-1][1]} Galleons! Press enter to continue... ")
-            print(f"You now have {character['Money']} Galleons left.")
-            if values_list[choice-1][2] == "(required)":
-                required_bought += 1
+            else:
+                #Manages the strange options:
+                if choice == 15: #100 Galleons
+                    modifyMoney(character, 100)
+                elif choice == 16: #500 Galleons
+                    modifyMoney(character, 500)  
+                else:
+                    addItem(character, "Inventory", values_list[choice-1][0])
+
+                modifyMoney(character, -values_list[choice-1][1])
+
+
+
+                input(f"You have successfully purchased {values_list[choice-1][0]} for {values_list[choice-1][1]} Galleons! Press enter to continue... ")
+                print(f"You now have {character['Money']} Galleons left.")
+                if values_list[choice-1][2] == "(required)":
+                    required_bought += 1
 
     if required_bought < 3:
         endAdventure(character, "Instead of buying school supplies you thought it would be a good idea to buy beers, guns and children. You are not a problem solver and failed your school year. Get your priorities straight. GAME OVER")
     
     else: 
-        input("You have successfully bought all the required supplies! You can now head to Hogwarts. Press enter to continue... ")
+        print("You have successfully bought all the required supplies! You can now head to Hogwarts.\n")
+        print("Here is a summary of your character:")
+        displayCharacter(character)
+        input("Press enter to continue... ")
+        print()
 
         
 

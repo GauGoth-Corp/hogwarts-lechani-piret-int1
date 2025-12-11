@@ -14,8 +14,14 @@ from universe.house import *
 from universe.character import *
 from utils.input_utils import *
 from chapters.chapter_2 import *
+<<<<<<< HEAD
 from chapters.chapter_3 import *
 from utils import input_utils as IU
+=======
+#from chapters.chapter_3 import startChapter3
+from chapters.chapter_4 import startChapter4
+
+>>>>>>> a43ae6ab507532a092c340774431ab36db879d65
 
 #%%###=== Global variables ===###
 contactSupportURL = "http://gaugoth.corp.free.fr/credits/contact/?subject=Hogwarts%20Game%20Support%20Request"
@@ -25,7 +31,28 @@ contactSupportURL = "http://gaugoth.corp.free.fr/credits/contact/?subject=Hogwar
 
 #%%###=== Program ===####
 if __name__ == "__main__":
+<<<<<<< HEAD
     """
+=======
+    print("=== DEBUG MODE ACTIVATED ===\n\n")
+    #### Chapter 4 test ####
+    igor_character = {
+                        "Last Name": "D'Osgor", 
+                        "First Name": "Igor", 
+                        "Money": 531,
+                        "Inventory": ["Magic Wand", "Bus full of children", "House elf", "Potions Book", "Wizard Robe"],
+                        "Spells": ["Lumos", "Alohomora", "Expelliarmus", "Stupefy"],
+                        "Attributes": {"Courage": 8, "Intelligence": 6, "Loyalty": 4, "Ambition": 7}
+                        }
+
+    startChapter4(igor_character)
+
+    """
+    startChapter3(initCharacter("Test Debug", "Debugging Inc.", {"Courage": 5, "Intelligence": 5, "Loyalty": 5, "Ambition": 5}))
+
+
+
+>>>>>>> a43ae6ab507532a092c340774431ab36db879d65
     text = input("Enter text to encrypt: ")
     key = [random.randint(1,15) for i in range(len(text))]
 
@@ -38,6 +65,7 @@ if __name__ == "__main__":
     Harry_the_goat = initCharacter("Moustafa Al Ben Wallouh Ben Muhammad Abdel Kader Al Psartek", "Abdelaziz Al Saoudima", {"Courage": 10, "Intelligence": 10, "Loyalty": 10, "Ambition": 10})
     Harry_the_goat["House"] = "Ravenclaw"
     enterCommonRoom(Harry_the_goat)
+<<<<<<< HEAD
     """
 
     def learnSpells(character, spells_list):
@@ -115,3 +143,6 @@ if __name__ == "__main__":
     answer_list = [q["answer"] for q in quiz_dict]     
     learnSpells(character, spells_list)
     magicQuiz(character, questions_list, answer_list)
+=======
+    """
+>>>>>>> a43ae6ab507532a092c340774431ab36db879d65

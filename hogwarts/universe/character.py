@@ -81,7 +81,7 @@ def modifyMoney(character, amount, displayMsg=False):
             print(f"** You have lost {-amount} Galleons... **") 
     return character
 
-def addItem(character, key, item):
+def addItem(character, key, item ,displayMsg=False):
     """
     Adds an item to the specified list in the character dictionary. Raises an error if the key does not exist or is not a list.
     (Existing keys for lists are: "Inventory" and "Spells")
@@ -98,6 +98,8 @@ def addItem(character, key, item):
             return character
         
         character[key].append(item)
+        if displayMsg:
+            print(f"** You have obtained the item: {item}! **")
         return character
     else:
         print(f"[Error:] The key '{key}' does not exist.")

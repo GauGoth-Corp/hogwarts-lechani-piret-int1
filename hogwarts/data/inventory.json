@@ -12,5 +12,8 @@
         "11": ["Beers for Hagrid", 12,""],
         "12": ["Franprix Doughnuts", 8,""],
         "13": ["Magic Gun", 10,""],
-        "14": ["Many magic guns", 200,""]
+        "14": ["Many magic guns", 200,""],
+        "15": ["120 Galleons", 100,""],
+        "16": ["500 Galleons", 300,""],
+        "17": ["Hogwarts (yes, the real estate market is slowing down)", 100000, ""]
     }
