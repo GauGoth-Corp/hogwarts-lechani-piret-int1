@@ -30,7 +30,7 @@ from chapters.chapter_2 import startChapter2
 #from chapters.chapter_3 import startChapter3
 
 #from chapters.chapter_3 import start_chapter_3
-#from chapters.chapter_4 import start_chapter_4
+from chapters.chapter_4 import startChapter4
 #from chapters.chapter_5_extension import start_chapter_5
 
 #%%###=== Global variables ===###
@@ -41,6 +41,8 @@ def theEnd():
     Ends the game and displays some little messages & ads...
     """
 
+    input("Press Enter to continue... ")
+    print("\n\n\n")
     print("================================ THE END ======================================")
     print("Congratulations! You have completed the Hogwarts Game adventure!")
     print("We hope you enjoyed this little game set in the magical world of Harry Potter.")
@@ -76,7 +78,7 @@ def startGame():
     my_character = startChapter1()
     startChapter2(my_character, hgg_houses)
     #start_chapter_3()
-    #start_chapter_4()
+    startChapter4(my_character)
     #start_chapter_5()
 
     theEnd()

@@ -91,7 +91,7 @@ def buySupplies(display_list, values_list, character):
             else:
                 #Manages the strange options:
                 if choice == 15: #100 Galleons
-                    modifyMoney(character, 100)
+                    modifyMoney(character, 120)
                 elif choice == 16: #500 Galleons
                     modifyMoney(character, 500)  
                 else:

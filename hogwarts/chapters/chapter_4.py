@@ -372,6 +372,7 @@ def dragonFightSimulation(character, dragonBoss, roundNumber, message, choicesLi
         - "dragon_PE_use": {int} - Dragon's PE usage
         - "Attribute_use": {list} - [attribute_used {str} - the attribute used, attribute_power {int} - the power of the attribute used]
 
+        :return FightResult: {bool} - True if the player wins, False if the dragon wins
     """
 
     print(f"=== Round {roundNumber} ===")
@@ -475,21 +476,10 @@ def dragonFight(character):
 
         #Ends the fight:
         if character["PV"] <= 0:
-            print(f"Albus Dumbledore: - \"{character['First Name'].upper()} {character['Last Name'].upper()}. You're completely useless. OUT OF MY SCHOOL! Oh damn, I forgot you're already dead... Sorry.\"")
-            print(f"You have been defeated by the {dragonBoss['Name']}. Press enter to try again... ")
-            print()
-            print("=== GAME OVER ===")
-            return
+            return False
         
         elif dragonBoss["PV"] <= 0:
-            print(f"Albus Dumbledore: - \"Congratulations {character['First Name']} {character['Last Name']}! You have successfully completed the first task of the Triwizard Tournament by defeating the {dragonBoss['Name']}!")
-            print("WELL DONE!!! Yes, really!\"")
-            print("Uh yes, you have maybe killed some innocent spectators too but hey, details...")
-            print("[The crowd erupts in applause (not talking of the injuries families of course) as you are declared the winner of the first task.]")
-            input("Press enter to continue... ")
-            print()
-            print("=== END OF CHAPTER 4 ===")
-            return
+            return True
         
         round_number += 1
     
@@ -501,11 +491,89 @@ def startChapter4(character):
     :param character: {dict} - The player's character dictionary 
     """
 
+    fightResult = False
+    tentativeNumber = 0
+
     print("=== Chapter 4: The Dragon Fight ===")
     print()
     introductionBeforeFight()
-    dragonFight(character)
-    
+    #Restarts fight unless the player wins
+    while not fightResult:
+
+        fightResult = dragonFight(character)
+
+        if fightResult:
+            print(f"Albus Dumbledore: - \"Congratulations {character['First Name']} {character['Last Name']}! You have successfully completed the first task of the Triwizard Tournament by defeating the dragon!")
+            print("WELL DONE!!! Yes, really!\"")
+            print("Uh yes, you have maybe killed some innocent spectators too but hey, details...")
+            print("[The crowd erupts in applause (not talking of the injuries families of course) as you are declared the winner of the first task.]")
+            input("Press enter to continue... ")
+            print()
+            print("=== END OF CHAPTER 4 ===")
+        else:
+            print(f"Albus Dumbledore: - \"{character['First Name'].upper()} {character['Last Name'].upper()}. You're completely useless. OUT OF MY SCHOOL! Oh damn, I forgot you're already dead... Sorry.\"")
+            print(f"You have been defeated by the dragon. PINPINPINPINNN PONNNN [Game Over Zelda version sound effect].")
+            print()
+            print("=== GAME OVER ===")
+            print()
+            input("Press enter to continue... ")
+            print(".....................")
+            print(f"{character['First Name']}: - \"Well, where am I? Did I die? Uhh... This looks like the Hogwarts infirmary...\"")
+            input("Press enter to continue... ")
+            print()
+            print("A lady suddendly spawns from nowhere:")
+
+            #Special dialogues for the 2nd tentative and more
+            tentativeNumber += 1
+            if tentativeNumber >= 2:
+                print("Madam Pomfrey: - \"OKAY. You're really starting to piss me off now. This is the second time you die against that stupid dragon! Are you even trying to win this tournament??? Come on, get your act together!\"")
+                input("Press enter to continue... ")
+                print()
+            else:
+                print("Madam Pomfrey: - \"Yes dear, you had a bad encounter with a dragon during the Triwizard Tournament. But don't worry, you're safe now.\"")
+                input("Press enter to continue... ")
+                print()
+                print(f"{character['First Name']}: - \"Phew! That was close! I must have been really lucky to survive that. Thank you, I-dont-know-who-you-are.\"")
+                print("Madam Pomfrey: - \"You're welcome dear.")
+            
+            print("Madam Pomfrey: - \"But no time to rest, let's try again!\"")
+            input("Press enter to continue... ")
+            print()
+            print(f"{character['First Name']}: - \"Uhh... NOWW?\"")
+            print("Madam Pomfrey: - \"Yes, NOWW! The dragon won't wait for you to be ready!\"")
+
+            #The player learns Avada Kedavra if not already known
+            if "Avada Kedavra" not in character["Spells"]:
+                print(f"{character['First Name']}: - \"Well, to be honest Madam Pomfrey, I tried to use Avada Kedavra on the dragon but it backfired on me... I guess I should have learned it first...\"")
+                input("Press enter to continue... ")
+                print()
+                print("Madame Pomfrey: - \"*sigh* Okay, I better understand... I'll teach you it.\"")
+                print(f"{character['First Name']}: - \"You really know this dark spell??? I should ask questions but ok, thxx!\"")
+                input("Press enter to continue... ")
+                print()
+                character["Spells"].append("Avada Kedavra")
+                print(f"** You have learned the spell Avada Kedavra! **")
+                print(f"{character['First Name']}: - \"Aaweuhdaaa...\"")
+                print("Madam Pomfrey: - \"NO. Don't try it on me please.\"")
+
+            input("Press enter to continue... ")
+            print()
+            print(f"{character['First Name']}: - \"Oh. I'm speechless. OK, let's try again!\"")
+            print("Madam Pomfrey: - \"Before you go (ahh, young people, they're in such a hurry these days), here's something to cheer you up and that should help:\"")
+            input("Press enter to continue... ")  
+            print()
+            addItem(character, "Inventory", "Chocolate Frog")
+            addItem(character, "Inventory", "Bertie Bott's Every Flavour Beans")
+            incrementAttribute(character, "Courage", 7, True)
+            incrementAttribute(character, "Loyalty", 7, True)
+            incrementAttribute(character, "Intelligence", 7, True)
+            incrementAttribute(character, "Ambition", 7, True)
+            print("You feel a sudden rush of adrenaline and confidence, and suddenly feel ready for battle again! You jump out of bed, ready to face the dragon once more.")
+            input("Press enter to continue... ")
+            print(".....................\n")
+            print()
+            
+
 
      
 #%%###=== Program ===####
