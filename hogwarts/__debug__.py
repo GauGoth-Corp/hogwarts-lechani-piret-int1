@@ -27,5 +27,16 @@ contactSupportURL = "http://gaugoth.corp.free.fr/credits/contact/?subject=Hogwar
 
 
 #%%###=== Program ===####
-if __name__ == "__main__": ...
-#test
+if __name__ == "__main__":
+    print("=== DEBUG MODE ACTIVATED ===\n\n")
+    #### Chapter 4 test ####
+    igor_character = {
+                        "Last Name": "D'Osgor", 
+                        "First Name": "Igor", 
+                        "Money": 531,
+                        "Inventory": ["Magic Wand", "Bus full of children", "House elf", "Potions Book", "Wizard Robe"],
+                        "Spells": ["Lumos", "Alohomora", "Expelliarmus", "Stupefy", "Avada Kedavra"],
+                        "Attributes": {"Courage": 8, "Intelligence": 6, "Loyalty": 4, "Ambition": 7}
+                        }
+
+    startChapter4(igor_character)

@@ -12,22 +12,25 @@
                 "message": "The dragon is upset by your attempt to communicate and lashes out.",
                 "dragon_attack_increase": 10,
                 "player_attack_increase": 5,
-                "PE_use": 5,
-                "Attribute_use": ["Ambition", 2]
+                "player_PE_use": 5,
+                "dragon_PE_use": 0,
+                "Attribute_use": ["Ambition", 1]
                 
             },
             {
                 "message": "The dragon respects your bravery and prepares to fight you fairly. He swipes at you and scratches you, but without causing too much damage.",
                 "dragon_attack_increase": 0,
                 "player_attack_increase": 10,
-                "PE_use": 0,
-                "Attribute_use": ["Courage", 2]
+                "player_PE_use": 0,
+                "dragon_PE_use": 3,
+                "Attribute_use": ["Courage", 1]
             },
             {
                 "message": "The dragon is confused by your reaction and hesitates.",
                 "dragon_attack_increase": -5,
                 "player_attack_increase": 0,
-                "PE_use": 3,
+                "player_PE_use": 3,
+                "dragon_PE_use": 8,
                 "Attribute_use": ["Intelligence", 2]
                 
             }
@@ -47,21 +50,24 @@
                 "message": "- \"Protego!\" you shout, raising your wand just in time to partially block the dragon's fiery breath.",
                 "dragon_attack_increase": 2,
                 "player_attack_increase": 5,
-                "PE_use": 2,
+                "player_PE_use": 2,
+                "dragon_PE_use": 5,
                 "Attribute_use": ["Intelligence", 1]
             },
             {
                 "message": "You narrowly avoid the flames, but the heat singes your clothes and skin.",
                 "dragon_attack_increase": 7,
                 "player_attack_increase": 0,
-                "PE_use": 1,
+                "player_PE_use": -5,
+                "dragon_PE_use": 4,
                 "Attribute_use": ["None", 0]
             },
             {
                 "message": "- \"Aguamenti!\" you shout, successfully dousing the dragon's flames with a powerful jet of water.",
                 "dragon_attack_increase": -10,
                 "player_attack_increase": 10,
-                "PE_use": 7,
+                "player_PE_use": 7,
+                "dragon_PE_use": 10,
                 "Attribute_use": ["Intelligence", 2]
             }
         ]
@@ -80,21 +86,24 @@
                 "message": "You channel all your energy into a single, devastating spell that hits the dragon squarely.",
                 "dragon_attack_increase": 0,
                 "player_attack_increase": 15,
-                "PE_use": 10,
-                "Attribute_use": ["Ambition", 2]
+                "player_PE_use": 10,
+                "dragon_PE_use": 15,
+                "Attribute_use": ["Ambition", 3]
             },
             {
                 "message": "You take a deep breath, steadying yourself for the next phase of the battle.",
                 "dragon_attack_increase": 0,
                 "player_attack_increase": 0,
-                "PE_use": -15,
+                "player_PE_use": -15,
+                "dragon_PE_use": -10,
                 "Attribute_use": ["None", 0]
             },
             {
                 "message": "The Pikkachu appears out of nowhere, causing the dragon to turn its attention away from you. The dragon raises its right paw and crushes Pikachu like a mere fly. But you've gained the time you needed and cast Incendio directly at the creature's rear end!",
                 "dragon_attack_increase": -15,
                 "player_attack_increase": 0,
-                "PE_use": 5,
+                "player_PE_use": 5,
+                "dragon_PE_use": 3,
                 "Attribute_use": ["None", 0]
             }
         ]
@@ -113,22 +122,25 @@
                 "message": "- \"Confringo!\" Your spell hits the dragon's wing, causing it to lose balance.",
                 "dragon_attack_increase": -2,
                 "player_attack_increase": 5,
-                "PE_use": 8,
+                "player_PE_use": 8,
+                "dragon_PE_use": 5,
                 "Attribute_use": ["Intelligence", 2]
             },
             {
                 "message": "You brace yourself as the dragon swoops down, narrowly avoiding its claws and teeth.",
                 "dragon_attack_increase": 5,
                 "player_attack_increase": 0,
-                "PE_use": 3,
+                "player_PE_use": -5,
+                "dragon_PE_use": 0,
                 "Attribute_use": ["None", 0]
             },
             {
                 "message": "The enchanted birds swarm around the dragon, distracting it and causing it to lose focus.",
                 "dragon_attack_increase": -5,
                 "player_attack_increase": 5,
-                "PE_use": 6,
-                "Attribute_use": ["Loyalty", 2]
+                "player_PE_use": 6,
+                "dragon_PE_use": 6,
+                "Attribute_use": ["Loyalty", 1]
             }
         ]
     },
@@ -146,22 +158,25 @@
                 "message": "You throw the meat with all your strength, and the dragon turns its head to snatch it, giving you a chance to strike. But there's the crowd! The dragon accidentally eat one or two spectators. Oops. Severus Snape PAS CONTENT and immediately casts a spell on you: \"Crucio!\" You feel a sharp pain in your back.",
                 "dragon_attack_increase": -5,
                 "player_attack_increase": 2,
-                "PE_use": 25,
-                "Attribute_use": ["Ambition", 2]
+                "player_PE_use": 25,
+                "dragon_PE_use": -10,
+                "Attribute_use": ["Ambition", 3]
             },
             {
                 "message": "- \"Bombarda!\" you shout, and the spell hits the dragon's snout, causing it to reel back in pain.",
                 "dragon_attack_increase": 0,
                 "player_attack_increase": 15,
-                "PE_use": 7,
-                "Attribute_use": ["Courage", 2]
+                "player_PE_use": 7,
+                "dragon_PE_use": 10,
+                "Attribute_use": ["Courage", 3]
             },
 
             {
                 "message": "You summon your magic broomstick, and with a swift maneuver, you manage to get close enough to the dragon to strike it.",
                 "dragon_attack_increase": -10,
                 "player_attack_increase": 15,
-                "PE_use": 10,
+                "player_PE_use": 10,
+                "dragon_PE_use": 4,
                 "Attribute_use": ["Loyalty", 2]
             }
         ]
@@ -179,21 +194,24 @@
                 "message": "- \"Stupefy!\" Your spell hits the dragon, but it only throws it off balance for a few seconds, and its attack is no less violent.",
                 "dragon_attack_increase": 5,
                 "player_attack_increase": -4,
-                "PE_use": 4,
-                "Attribute_use": ["Courage", 2]
+                "player_PE_use": 4,
+                "dragon_PE_use": 8,
+                "Attribute_use": ["Courage", 1]
             },
             {
                 "message": "You roll to the side just in time, avoiding the dragon's tail strike.",
                 "dragon_attack_increase": 5,
                 "player_attack_increase": 3,
-                "PE_use": 3,
+                "player_PE_use": -3,
+                "dragon_PE_use": 0,
                 "Attribute_use": ["None", 0]
             },
             {
                 "message": "- \"Rictusempra!\" The dragon starts laughing uncontrollably at your spell, giving you an opening.",
                 "dragon_attack_increase": -5,
                 "player_attack_increase": 15,
-                "PE_use": 7,
+                "player_PE_use": 7,
+                "dragon_PE_use": 10,
                 "Attribute_use": ["Intelligence", 2]
             }
         ]
@@ -212,14 +230,16 @@
                 "message": "- \"Incendio!\" you shout, and your flames collide with the dragon's, creating a spectacular fire explosion.",
                 "dragon_attack_increase": 0,
                 "player_attack_increase": 5,
-                "PE_use": 6,
-                "Attribute_use": ["Ambition", 2]
+                "player_PE_use": 6,
+                "dragon_PE_use": 3,
+                "Attribute_use": ["Ambition", 3]
             },
             {
                 "message": "- \"Ventus!\" You create a whirlwind that diverts the dragon's flames away from you but starts a fire in the crowd. Oops.",
                 "dragon_attack_increase": -5,
                 "player_attack_increase": 5,
-                "PE_use": 8,
+                "player_PE_use": 8,
+                "dragon_PE_use": 2,
                 "Attribute_use": ["Loyalty", 2]
             },
 
@@ -227,7 +247,8 @@
                 "message": "You manage to cut through the flames, but the heat is intense and drains your energy. Your spell only grazes the dragon.",
                 "dragon_attack_increase": 5,
                 "player_attack_increase": 0,
-                "PE_use": 5,
+                "player_PE_use": 5,
+                "dragon_PE_use": -2,
                 "Attribute_use": ["None", 0]
             }
         ]
