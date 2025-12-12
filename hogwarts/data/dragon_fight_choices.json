@@ -104,7 +104,7 @@
                 "player_attack_increase": 0,
                 "player_PE_use": 5,
                 "dragon_PE_use": 3,
-                "Attribute_use": ["None", 0]
+                "Attribute_use": ["Intelligence", 2]
             }
         ]
     },
@@ -252,6 +252,257 @@
                 "Attribute_use": ["None", 0]
             }
         ]
-    }
+    },
 
+    {
+        "id": 8,
+        "message": "The Hungarian Horntail stomps his feet on the ground, agaced by your performance.",
+        "choices": [
+            "You perform a dramatic gesture with your wand, worthy of Lord Voldemort prime.",
+            "You shout 'It's leviosa, not leviosaaa!' just to annoy it further.",
+            "You cast 'Reparo' on a nearby rock for no reason."
+        ],
+        "outcomes": [
+            {
+                "message": "Your theatrical performance momentarily disorients the dragon, who no longer knows which way to turn.",
+                "dragon_attack_increase": -3,
+                "player_attack_increase": 7,
+                "player_PE_use": 6,
+                "dragon_PE_use": 3,
+                "Attribute_use": ["Ambition", 2]
+            },
+            {
+                "message": "The dragon becomes offended by your tone and roars straight into your face.",
+                "dragon_attack_increase": 10,
+                "player_attack_increase": 0,
+                "player_PE_use": 2,
+                "dragon_PE_use": 2,
+                "Attribute_use": ["Intelligence", 1]
+            },
+            {
+                "message": "The repaired rock impresses nobody except perhaps Professor Flitwick. The dragon ignores you entirely but it swings its tail at you and sends you flying more than 20 meters through the air.",
+                "dragon_attack_increase": 5,
+                "player_attack_increase": -5,
+                "player_PE_use": 5,
+                "dragon_PE_use": 0,
+                "Attribute_use": ["None", 0]
+            }
+        ]
+    },
+
+    {
+        "id": 9,
+        "message": "The dragon suddenly hiccups tiny fireballs like a drunken Hufflepuff after too many Butterbeers.",
+        "choices": [
+            "You attempt to soothe it with a lullaby learned from Hagrid.",
+            "You cast 'Protego Maxima' to shield yourself with a magical umbrella.",
+            "You cast 'Episkey' on the dragon's throat."
+        ],
+        "outcomes": [
+            {
+                "message": "It seems the dragon is deaf... It doesn't react and you finish burned like a toast. The crowd laughs at your foolish failure",
+                "dragon_attack_increase": 8,
+                "player_attack_increase": 0,
+                "player_PE_use": 1,
+                "dragon_PE_use": 4,
+                "Attribute_use": ["None", 0]
+            },
+            {
+                "message": "- \"Protego Maxima!\" you shout, erecting a magical umbrella that deflects the tiny fireballs.",
+                "dragon_attack_increase": -5,
+                "player_attack_increase": 5,
+                "player_PE_use": 6,
+                "dragon_PE_use": 3,
+                "Attribute_use": ["Intelligence", 2]
+            },
+            {
+                "message": "- \"Episkey\"! The spell soothes the dragon's hiccups. It exhales softly… then sneezes a massive fireball that misses you by inches.",
+                "dragon_attack_increase": -10,
+                "player_attack_increase": 10,
+                "player_PE_use": 4,
+                "dragon_PE_use": 5,
+                "Attribute_use": ["Loyalty", 1]
+            }
+        ]
+    },
+    
+    {
+        "id": 10,
+        "message": "The dragon attempts to sit on you to crush you under its massive weight.",
+        "choices": [
+            "You take a step to the side.",
+            "You cast 'Wingardium Leviosa' on the dragon.",
+            "You pretend to be asleep to confuse it."
+        ],
+        "outcomes": [
+            {
+                "message": "You step aside just in time and lets you time to cast 'Expelliarmus' on the Horntail.",
+                "dragon_attack_increase": 0,
+                "player_attack_increase": 4,
+                "player_PE_use": 2,
+                "dragon_PE_use": 4,
+                "Attribute_use": ["None", 0]
+            },
+            {
+                "message": "- \"Wingardium Leviosa!\" you shout, and the dragon is lifted off the ground momentarily, giving you a chance to strike. But it costs you a lot of energy.",
+                "dragon_attack_increase": -5,
+                "player_attack_increase": 3,
+                "player_PE_use": 25,
+                "dragon_PE_use": 4,
+                "Attribute_use": ["Intelligence", 2]
+            },
+            {
+                "message": "Pretending to be asleep wasn't your best idea... The dragon flattens you like a pancake.",
+                "dragon_attack_increase": 25,
+                "player_attack_increase": -5,
+                "player_PE_use": 0,
+                "dragon_PE_use": 4,
+                "Attribute_use": ["None", 0]
+            }
+        ]
+    },
+    
+    {
+        "id": 11,
+        "message": "The dragon sneezes, covering you in burning snot.",
+        "choices": [
+            "You cast on yourself 'Scourgify' to clean off the mucus.",
+            "You cast on yourself 'Glacius' to freeze the mucus before it burns you entirely.",
+            "You throw a piece of inflamed mucus back at the dragon using 'Repulso'."
+        ],
+        "outcomes": [
+            {
+                "message": "- \"Scourgify!\" you shout, successfully cleaning off the burning mucus.",
+                "dragon_attack_increase": 0,
+                "player_attack_increase": 5,
+                "player_PE_use": 6,
+                "dragon_PE_use": 2,
+                "Attribute_use": ["Intelligence", 2]
+            },
+            {
+                "message": "- \"Glacius!\" you shout, freezing the mucus on your skin. But then you cannot move properly for a few moments! Until the dragon breathes fire at you.",
+                "dragon_attack_increase": 4,
+                "player_attack_increase": -5,
+                "player_PE_use": 3,
+                "dragon_PE_use": 2,
+                "Attribute_use": ["None", 0]
+            },
+            {
+                "message": "- \"Repulso!\" you shout, and the piece of burning mucus flies back at the dragon, hitting it squarely in the face. Who knew dragons were sensitive against snot attacks?",
+                "dragon_attack_increase": -3,
+                "player_attack_increase": 5,
+                "player_PE_use": 4,
+                "dragon_PE_use": 4,
+                "Attribute_use": ["Loyalty", 1]
+            }
+        ]
+    },
+    
+    {
+        "id": 12,
+        "message": "The dragon begins a strange mating dance. You're unsure whether to feel flattered or horrified.",
+        "choices": [
+            "You applaud politely.",
+            "You try your own seduction dance.",
+            "You run away shouting that you're already in a relationship."
+        ],
+        "outcomes": [
+            {
+                "message": "The dragon seems to appreciate your polite applause and hesitates, giving you an opening.",
+                "dragon_attack_increase": 0,
+                "player_attack_increase": 5,
+                "player_PE_use": 0,
+                "dragon_PE_use": 3,
+                "Attribute_use": ["Loyalty", 1]
+            },
+            {
+                "message": "Your dance completely confuses the dragon, which begins to purr and stop fighting. You take advantage of this to cast the spell 'Abracadabite' right in its face!",
+                "dragon_attack_increase": -15,
+                "player_attack_increase": 10,
+                "player_PE_use": 5,
+                "dragon_PE_use": 5,
+                "Attribute_use": ["Courage", 3]
+            },
+            {
+                "message": "The dragon is very disappointed to learn you are already taken. It growls and lashes out at you in frustration.",
+                "dragon_attack_increase": 8,
+                "player_attack_increase": 0,
+                "player_PE_use": 2,
+                "dragon_PE_use": 4,
+                "Attribute_use": ["None", 0]
+            }
+        ]
+    },
+    
+    {
+        "id": 13,
+        "message": "The dragon stops fighting, seemingly waiting for epic music celebrating its glory.",
+        "choices": [
+            "You summon an entire symphony orchestra to play 'Hedwig's Theme'.",
+            "You don't mind and cast 'Silencio' on the Horntail.",
+            "You cast 'Sonorus' on yourself and narrate the battle like Lee Jordan."
+        ],
+        "outcomes": [
+            {
+                "message": "Your tune inspires the dragon, who spreads its wings dramatically before attacking, leading to a dramatic clash.",
+                "dragon_attack_increase": 10,
+                "player_attack_increase": 10,
+                "player_PE_use": 6,
+                "dragon_PE_use": 5,
+                "Attribute_use": ["Ambition", 2]
+            },
+            {
+                "message": "The dragon halts, confused, giving you a brief opening to strike.",
+                "dragon_attack_increase": -3,
+                "player_attack_increase": 5,
+                "player_PE_use": 2,
+                "dragon_PE_use": 0,
+                "Attribute_use": ["Intelligence", 1]
+            },
+            {
+                "message": "Your majestic commentary enchants the crowd—and distracts the dragon long enough for a clean hit.",
+                "dragon_attack_increase": -5,
+                "player_attack_increase": 8,
+                "player_PE_use": 4,
+                "dragon_PE_use": 2,
+                "Attribute_use": ["Courage", 2]
+            }
+        ]
+    },
+    
+    {
+        "id": 14,
+        "message": "You are suddendly seeing you flying through the air, after the dragon jumped on the ground, in a perfect imitation of a kangaroo.",
+        "choices": [
+            "You summon your personal Hippogriff to catch you.",
+            "You do nothing because you're enjoying the flight.",
+            "You shout 'Accio Ground!' hopping to bring the ground closer to you."
+        ],
+        "outcomes": [
+            {
+                "message": "Your Hippogriff, sad to see you in great danger, catches you and quickly strikes the dragon from above before landing safely.",
+                "dragon_attack_increase": 0,
+                "player_attack_increase": 10,
+                "player_PE_use": 0,
+                "dragon_PE_use": 3,
+                "Attribute_use": ["Ambition", 2]
+            },
+            {
+                "message": "Enjoying the flight, you cast 'Expelliarmus' on the dragon, but therefore you crash painfully on the ground.",
+                "dragon_attack_increase": 6,
+                "player_attack_increase": 3,
+                "player_PE_use": -15,
+                "dragon_PE_use": 3,
+                "Attribute_use": ["None", 0]
+            },
+            {
+                "message": "Did you really think it could work??? It seems that you were rocked too close to the wall (literally speaking). You approaches the ground faster than a TGV and crash terribly.",
+                "dragon_attack_increase": 10,
+                "player_attack_increase": -10,
+                "player_PE_use": 4,
+                "dragon_PE_use": 3,
+                "Attribute_use": ["None", 0]
+            }
+        ]
+    }
 ]
