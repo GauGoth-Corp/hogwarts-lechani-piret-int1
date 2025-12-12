@@ -75,8 +75,10 @@ def displayDragonStats(dragonBoss):
     :param dragonBoss: {dict} - The dragon boss dictionary 
     """
 
-    for key, item in dragonBoss.items():
-        print(f"    - {key}: {item}")
+    print(f"== {dragonBoss['Name']} stats ==")
+    print(f"    - PV: {dragonBoss['PV']}")
+    print(f"    - PE: {dragonBoss['PE']}")
+    print(f"    - Attack: {dragonBoss['Attack']}")
 
 def displayPlayerStats(character):
     """
@@ -100,7 +102,7 @@ def playerAttack(character, attribute_used, attribute_power, attack_increase):
     """
 
     #Fight simulation:
-    #(Chosen attribute ; attribute power ; attack increase) from action ; PE ; random(0, 20)
+    #(Chosen attribute ; attribute power ; attack increase) from action ; PE ; random(0, 10)
     attack = attack_increase + character["PE"]//2  + rd.randint(0, 10)
 
     if attribute_used != "None":
@@ -159,7 +161,10 @@ def playerPEuse(character, pe_used):
     if character["PE"] < 0:
         character["PE"] = 0
 
-    print(f"** You used {pe_used} PE points. **")
+    if pe_used >=0:
+        print(f"** You used {pe_used} PE points. **")
+    else:
+        print(f"** You earn {-pe_used} PE points. **")
 
 def dragonPEuse(dragonBoss, pe_used):
     """
@@ -173,9 +178,12 @@ def dragonPEuse(dragonBoss, pe_used):
     if dragonBoss["PE"] < 20: #Cannot be less than 20 for the dragon!
         dragonBoss["PE"] = 20
 
-    print(f"** The dragon used {pe_used} PE points. **")
+    if pe_used >=0:
+        print(f"** The dragon used {pe_used} PE points. **")
+    else:
+        print(f"** The dragon earns {-pe_used} PE points. **")
 
-def playerPErest(character, maxPE=50):
+def playerPErest(character):
     """
     A little chance for the player to rest and regain some PE (to be called after an action)
 
@@ -187,12 +195,11 @@ def playerPErest(character, maxPE=50):
     if restChance <= 40: #40% chance to rest
         restAmount = rd.randint(10, 20)
 
-        character["PE"] += restAmount
-        if character["PE"] > maxPE: #Max PE = 50
-            character["PE"] = 50
-        print(f"** You have luck! {restAmount} PE points have been restored! **")
+        character["PE"] += restAmount #No max PE
 
-def dragonPErest(dragonBoss, maxPE):
+        print(f"** You have luck! You earn {restAmount} PE points! **")
+
+def dragonPErest(dragonBoss):
     """
     A little chance for the dragon to rest and regain some PE (to be called after an action)
 
@@ -204,12 +211,11 @@ def dragonPErest(dragonBoss, maxPE):
     if restChance <= 30: #30% chance to rest
         restAmount = rd.randint(5, 15)
 
-        dragonBoss["PE"] += restAmount
-        if dragonBoss["PE"] > maxPE: #Max default PE = 80
-            dragonBoss["PE"] = maxPE
-        print(f"** Oh no, the dragon seems to regain some energy! It restores {restAmount} PE points! **")
+        dragonBoss["PE"] += restAmount #No max PE
 
-def dragonFightFirstRound(character, dragonBoss, dragon_maxPE): 
+        print(f"** Oh no, the dragon seems to regain some Energy! It earns {restAmount} PE points! **")
+
+def dragonFightFirstRound(character, dragonBoss): 
     """
     The first round of the dragon fight. Directly called (always same choice)
 
@@ -222,7 +228,10 @@ def dragonFightFirstRound(character, dragonBoss, dragon_maxPE):
     :param dragon_maxPE: {int} - The maximum PE of the dragon => Do not forget to stock the max value before fight
     """
 
-    choice = IU.askChoice(f"The dragon notices you and lets out a huge roar. What will you do, {character["First Name"]}?", ["Load the creature from the front", "Save time to think", "Use Avadakedavra"])
+    print("=== Round 1 ===")
+    choice = IU.askChoice(f"The dragon notices you and lets out a huge roar. What will you do, {character['First Name']}?", ["Load the creature from the front", "Save time to think", "Use Avadakedavra"])
+    print()
+    
     if choice == 1:
         print("You decide to gather your courage and launch a frontal attack, hoping that this will take the dragon by surprise.")
 
@@ -251,9 +260,6 @@ def dragonFightFirstRound(character, dragonBoss, dragon_maxPE):
         playerPEuse(character, 7)
         dragonPEuse(dragonBoss, 3)
 
-        #PE rest chance
-        playerPErest(character)
-        dragonPErest(dragonBoss, dragon_maxPE)
 
     elif choice == 2:
         print("You decide to take a moment to think and analyze the situation before making your move.")
@@ -263,40 +269,45 @@ def dragonFightFirstRound(character, dragonBoss, dragon_maxPE):
         playerPEuse(character, -10)
         dragonPEuse(dragonBoss, -4)
 
-        #PE rest chance
-        playerPErest(character)
-        dragonPErest(dragonBoss, dragon_maxPE)
 
     else:
         if "Avada Kedavra" in character["Spells"]:
-            print(f"- {character['First Name']}: \"Aaaawaadakédavraaa!\"")
+            print(f"- {character['First Name']}: \"Aaaaweuhdaaakédaavraaa!\"")
             print("You shout the killing curse with all your might, hoping to take down the dragon in one swift move.")
 
             #Fight simulation
-            player_attack = playerAttack(character, "Ambition", 4, 20) #Very high attack increase uhh is it ok?
+            player_attack = playerAttack(character, "Ambition", 5, 20) #Very high attack increase uhh is it ok?
             input("Press enter to continue... ")
             print()
 
             #Dragon does not strike back (!)
+            print(f"The {dragonBoss['Name']} is surprised by your powerful spell and doesn't have time to react!")
+            input("Press enter to continue... ")
+            print()
 
             #Damage calculation
             dragonBoss["PV"] -= player_attack
             print(f"** Attack VERY successful! {dragonBoss['Name']} loses {player_attack} PV points. **")
             print(f"The {dragonBoss['Name']} falls to the ground, very weakened, but still alive...")
             input("Press enter to continue... ")
+            print()
 
             #PE usage
             playerPEuse(character, 7)
             dragonPEuse(dragonBoss, 10)
 
-        else: #If the spell did not learn the spell
+        else: #If the player did not learn the spell
+            print(f"- {character['First Name']}: \"AaaaweuhdaaaAAHHH Heuheuheu... [*Tousse*]\"")
             print(f"{character['First Name']}, did you think you could cast this dark spell without having learned it first??? How mad you are...")
             print("The spell turns against you, causing you severe damage. The dragon didn't even moved haha!")
+            input("Press enter to continue... ")
+            print()
 
             #Player loses -30 PV points
             damage = -30
             character["PV"] += damage
-            print(f"** Your attack failed! You lose {-damage} PV points. **")
+            print(f"Your attack failed miserably {character['First Name']}! What a shame you've just brought upon yourself!")
+            print(f"** You lose {-damage} PV points. **")
             input("Press enter to continue... ")
             print()
 
@@ -304,11 +315,121 @@ def dragonFightFirstRound(character, dragonBoss, dragon_maxPE):
             playerPEuse(character, 10)
             dragonPEuse(dragonBoss, 0)
 
-        #PE rest chance
-        playerPErest(character)
-        dragonPErest(dragonBoss, dragon_maxPE)            
+    #PE rest chance
+    playerPErest(character)
+    dragonPErest(dragonBoss)
+    input("Press enter to continue... ")
+    print()
 
-def dragonFightSimulation(): ...
+    #Display stats at the end of the round 
+    print("======= Round 1 Results =======")
+    displayPlayerStats(character)
+    print()
+    displayDragonStats(dragonBoss)
+
+    input("Press enter to continue... ")
+    print()
+
+def getRandomFightAction():
+    """
+    Gets a random fight action from the data/dragon_fight_choices.json file
+
+    :return action: {dict} - The action chosen randomly
+    """
+
+    actions_file = IU.loadFile("hogwarts/data/dragon_fight_choices.json")
+
+    #Chooses randomly one action from the file 
+    action = rd.choice(actions_file)
+
+    return action
+
+def dragonFightSimulation(character, dragonBoss, roundNumber, message, choicesList, outcomesList):
+    """
+    Simulates one round of the dragon fight:
+
+        - Round number display
+        - Choice selection with message display
+        - Fight simulation:
+            - Player attack
+            - Dragon attack
+            - Damage calculation
+            - PE usage
+            - PE rest chance
+        - Round results (stats display of player & dragon)
+
+    :param character: {dict} - The player's character dictionary
+    :param dragonBoss: {dict} - The dragon boss dictionary
+    :param roundNumber: {int} - Current round number
+    :param message: {str} - The message to display 
+    :param choicesList: {list} - List of choices available 
+    :param outcomesList: {list} - The list of possible outcomes for the choices. Each outcome is a {dict} with:
+    
+        - "message": {str} - Outcome message to display
+        - "dragon_attack_increase": {int} - Dragon's attack increase
+        - "player_attack_increase": {int} - Player's attack increase
+        - "player_PE_use": {int} - Player's PE usage
+        - "dragon_PE_use": {int} - Dragon's PE usage
+        - "Attribute_use": {list} - [attribute_used {str} - the attribute used, attribute_power {int} - the power of the attribute used]
+
+    """
+
+    print(f"=== Round {roundNumber} ===")
+
+    choice = IU.askChoice(f"{message} What will you do, {character['First Name']}?", choicesList)
+    choice -= 1 #Match list index
+    print()
+
+    #Initialization of the outcome variables:
+    outComeMessage = outcomesList[choice]["message"]
+    dragon_attack_increase = outcomesList[choice]["dragon_attack_increase"]
+    player_attack_increase = outcomesList[choice]["player_attack_increase"]
+    player_PE_use = outcomesList[choice]["player_PE_use"]
+    dragon_PE_use = outcomesList[choice]["dragon_PE_use"]
+    attribute_used = outcomesList[choice]["Attribute_use"][0]
+    attribute_power = outcomesList[choice]["Attribute_use"][1]
+
+    print(f"{outComeMessage}")
+
+    #Fight simulation
+    player_attack = playerAttack(character, attribute_used, attribute_power, player_attack_increase)
+    input("Press enter to continue... ")
+    print()
+    dragon_attack = dragonAttack(dragonBoss, dragon_attack_increase)
+    input("Press enter to continue... ")
+    print()
+
+    #Damage calculation
+    damage = player_attack - dragon_attack
+    if damage > 0:
+        dragonBoss["PV"] -= damage
+        print(f"** Attack successful! {dragonBoss['Name']} loses {damage} PV points. **")
+        input("Press enter to continue... ")
+        print()
+    else:
+        character["PV"] += damage #damage is negative here
+        print(f"** Your attack failed! You lose {-damage} PV points. **")
+        input("Press enter to continue... ")
+        print()
+
+    #PE usage
+    playerPEuse(character, player_PE_use)
+    dragonPEuse(dragonBoss, dragon_PE_use)
+
+    #PE rest chance
+    playerPErest(character)
+    dragonPErest(dragonBoss)
+    input("Press enter to continue... ")
+    print()
+
+    #Display stats at the end of the round 
+    print(f"======= Round {roundNumber} Results =======")
+    displayPlayerStats(character)
+    print()
+    displayDragonStats(dragonBoss)
+
+    input("Press enter to continue... ")
+    print()
 
 def dragonFight(character):
     """
@@ -318,16 +439,13 @@ def dragonFight(character):
     """
 
     dragonBoss = createDragonBoss("Hungarian Horntail", 250, 80, 30)
-    dragon_maxPE = dragonBoss["PE"]
 
     #Adds a PV and PE system to the character for the fight
     character["PV"] = 80
     character["PE"] = 50
 
     print("The time has come for your first task! You are the last champion to enter the arena. You take a deep breath and step forward, trying to calm your nerves.")
-    input("Press enter to continue... ")
-    print()
-    print(f"As you enter the arena, you see the dragon waiting for you. It's an enormous creature and you are filled with both fear and excitement. It is a {dragonBoss['Name']}!")
+    print(f"As you enter the arena, you see the dragon waiting for you. It's an enormous creature and you are filled with both fear and excitement.")
     input("Press enter to continue... ")
     print()
 
@@ -335,9 +453,45 @@ def dragonFight(character):
     print(f"== A wild {dragonBoss['Name']} appears in front of you, breathing fire and looking very angry! ==")
     displayDragonStats(dragonBoss)
     print()
+    displayPlayerStats(character)
+    input("Press enter to continue... ")
+    print()
 
-    #FIRST ROUND: always the same choice
-    dragonFightFirstRound(character, dragonBoss, dragon_maxPE)
+    #FIRST ROUND: always the same choice for this one only
+    dragonFightFirstRound(character, dragonBoss)
+
+    #Other rounds
+    round_number = 2
+
+    while character["PV"] > 0 and dragonBoss["PV"] > 0:
+        action = getRandomFightAction()
+
+        #Initialization of action sub variables 
+        message = action["message"]
+        choicesList = action["choices"]
+        outComesList = action["outcomes"]
+
+        dragonFightSimulation(character, dragonBoss, round_number, message, choicesList, outComesList)
+
+        #Ends the fight:
+        if character["PV"] <= 0:
+            print(f"Albus Dumbledore: - \"{character['First Name'].upper()} {character['Last Name'].upper()}. You're completely useless. OUT OF MY SCHOOL! Oh damn, I forgot you're already dead... Sorry.\"")
+            print(f"You have been defeated by the {dragonBoss['Name']}. Press enter to try again... ")
+            print()
+            print("=== GAME OVER ===")
+            return
+        
+        elif dragonBoss["PV"] <= 0:
+            print(f"Albus Dumbledore: - \"Congratulations {character['First Name']} {character['Last Name']}! You have successfully completed the first task of the Triwizard Tournament by defeating the {dragonBoss['Name']}!")
+            print("WELL DONE!!! Yes, really!\"")
+            print("Uh yes, you have maybe killed some innocent spectators too but hey, details...")
+            print("[The crowd erupts in applause (not talking of the injuries families of course) as you are declared the winner of the first task.]")
+            input("Press enter to continue... ")
+            print()
+            print("=== END OF CHAPTER 4 ===")
+            return
+        
+        round_number += 1
     
 
 def startChapter4(character):
@@ -353,9 +507,7 @@ def startChapter4(character):
     dragonFight(character)
     
 
-
-
-        
+     
 #%%###=== Program ===####
 if __name__ == "__main__":
     pass

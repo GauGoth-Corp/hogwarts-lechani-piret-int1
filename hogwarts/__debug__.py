@@ -17,7 +17,7 @@ from chapters.chapter_2 import *
 from chapters.chapter_3 import *
 from utils import input_utils as IU
 #from chapters.chapter_3 import startChapter3
-from chapters.chapter_4 import startChapter4
+from chapters.chapter_4 import *
 
 
 #%%###=== Global variables ===###
@@ -29,14 +29,25 @@ contactSupportURL = "http://gaugoth.corp.free.fr/credits/contact/?subject=Hogwar
 #%%###=== Program ===####
 if __name__ == "__main__":
     print("=== DEBUG MODE ACTIVATED ===\n\n")
+    
     #### Chapter 4 test ####
     igor_character = {
                         "Last Name": "D'Osgor", 
                         "First Name": "Igor", 
                         "Money": 531,
                         "Inventory": ["Magic Wand", "Bus full of children", "House elf", "Potions Book", "Wizard Robe"],
-                        "Spells": ["Lumos", "Alohomora", "Expelliarmus", "Stupefy", "Avada Kedavra"],
-                        "Attributes": {"Courage": 8, "Intelligence": 6, "Loyalty": 4, "Ambition": 7}
+                        "Spells": ["Lumos", "Alohomora", "Expelliarmus", "Stupefy"],
+                        "Attributes": {"Courage": 13, "Intelligence": 11, "Loyalty": 10, "Ambition": 13}
                         }
+    
+    """
+    hungarian_horntail = createDragonBoss("Hungarian Horntail", 250, 80, 30)
 
+    #Adds a PV and PE system to the character for the fight
+    igor_character["PV"] = 80
+    igor_character["PE"] = 50
+    
+    dragonFightFirstRound(igor_character, hungarian_horntail)
+    """
+    
     startChapter4(igor_character)
