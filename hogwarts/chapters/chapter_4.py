@@ -46,14 +46,14 @@ def introductionBeforeFight():
     input("Press enter to continue... ")
     print()
 
-def createDragonBoss(name, pv, pe, attack):
+def createDragonBoss(name, pv, pe, strength):
     """
     Creates a dictionary to represent the dragon boss 
  
     :param name: {str} - Dragon's name
     :param pv: {int} - Dragon's health points
     :param pe: {int} - Dragon's energy points
-    :param attack: {int} - Attack power
+    :param strength: {int} - Strength power
 
     :return dragonBoss: {dict} - The dragon boss created
     """
@@ -63,7 +63,7 @@ def createDragonBoss(name, pv, pe, attack):
     dragonBoss["Name"] = name
     dragonBoss["PV"] = pv
     dragonBoss["PE"] = pe
-    dragonBoss["Attack"] = attack
+    dragonBoss["Strenght"] = strength
 
     return dragonBoss
 
@@ -78,7 +78,7 @@ def displayDragonStats(dragonBoss):
     print(f"== {dragonBoss['Name']} stats ==")
     print(f"    - PV: {dragonBoss['PV']}")
     print(f"    - PE: {dragonBoss['PE']}")
-    print(f"    - Attack: {dragonBoss['Attack']}")
+    print(f"    - Strenght: {dragonBoss['Strenght']}")
 
 def displayPlayerStats(character):
     """
@@ -134,16 +134,16 @@ def dragonAttack(dragonBoss, attack_increase):
     """
 
     #Fight simulation:
-    #Dragon's Attack ; PE ; attack increase from action ; random(0, 10)
-    attack = dragonBoss["Attack"] + dragonBoss["PE"]//2 + attack_increase + rd.randint(0, 10)
+    #Dragon's Strength ; PE ; attack increase from action ; random(0, 10)
+    attack = dragonBoss["Strength"] + dragonBoss["PE"]//2 + attack_increase + rd.randint(0, 10)
 
     #[POSSIBILITY FOR CRITICAL HIT => see the fight difficulty when testing]
 
     #Base PE = 80
 
-    #Average attack exemple: 30 (Attack) + 70 (PE) //2 + 3 (increase) + 7 (random) = 75
-    #Very good attack exemple: 30 (Attack) + 80 (PE) //2 + 10 (increase) + 10 (random) = 90
-    #Very bad attack exemple: 30 (Attack) + 20 (PE) //2 + -5 (increase) + 1 (random) = 36
+    #Average attack exemple: 30 (Strength) + 70 (PE) //2 + 3 (increase) + 7 (random) = 75
+    #Very good attack exemple: 30 (Strength) + 80 (PE) //2 + 10 (increase) + 10 (random) = 90
+    #Very bad attack exemple: 30 (Strength) + 20 (PE) //2 + -5 (increase) + 1 (random) = 36
 
     print(f"The {dragonBoss['Name']} attacks with a power of {attack}!")
 
@@ -451,6 +451,35 @@ def dragonFight(character):
     print(f"As you enter the arena, you see the dragon waiting for you. It's an enormous creature and you are filled with both fear and excitement.")
     input("Press enter to continue... ")
     print()
+
+    #Asks to display a help message explaining the fight dynamics
+    help = IU.askChoice("** Show me how to fight the dragon? **", ["Yes please", "No, I fight dragons everyday."])
+    print()
+    if help == 1:
+        print("====== Dragon Fight Help ======")
+        """
+        The fight is turn-based. Each round, you will have to choose an action from a list of options.
+        Each action will have different consequences on the fight, 
+        such as increasing or decreasing your attack power, using or regaining PE (Energy Points), using your attributes, etc.
+        Same for the dragon.
+
+        Here is a detailed table explaining the different key words used during the fight:
+
+        Category  | Name       | Description             | Player/Dragon    | Long description
+        ----------------------------------------------------------------------------------------------------------------------------
+        Key Words |  PV        | Health Points           | Player & Dragon  | When PV = 0, the fighter dies and the fight stops.
+                  |  PE        | Energy Points           | Player & Dragon  | PE adds damage to the attack. An amount is losed ...
+                  |            |                         |                  | ... during actions, and sometimes it is recovered.
+                  |  Strength  | Constant extra damages  | Dragon           | X
+                  |  Stats     | PV/PE/Attack            | Player & Dragon  |
+                  |  Attribute | Player has 4 diff Attr: | Player           | During action, a player Attribute amount can ... 
+                  |            |                         |                  | ... influence them attack (multiplied by 1, 2 or 3).
+                  |            |                         |                  | ... Courage, Loyalty, Intelligence & Ambition
+                  | Power      | 
+        -----------------------------------------------------------------------------------------------------------------------------
+        
+        """
+
 
 #%%### Fight simulation ####
     print(f"== A wild {dragonBoss['Name']} appears in front of you, breathing fire and looking very angry! ==")
