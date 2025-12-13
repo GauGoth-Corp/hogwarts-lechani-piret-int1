@@ -50,4 +50,5 @@ if __name__ == "__main__":
     dragonFightFirstRound(igor_character, hungarian_horntail)
     """
     
+    #startChapter3(igor_character)
     startChapter4(igor_character)

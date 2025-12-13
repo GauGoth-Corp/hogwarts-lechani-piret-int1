@@ -437,6 +437,8 @@ def dragonFight(character):
     The dragon fight of chapter 4
 
     :param character: {dict} - The player's character dictionary 
+
+    :return FightResult: {bool | str} - True if the player wins, False if the dragon wins. A string msg if the fight ends in the first round (considered as True then)
     """
 
     dragonBoss = createDragonBoss("Hungarian Horntail", 250, 80, 30)
@@ -460,6 +462,12 @@ def dragonFight(character):
 
     #FIRST ROUND: always the same choice for this one only
     dragonFightFirstRound(character, dragonBoss)
+
+    #Add a security if the fight ends in the first round
+    if character["PV"] <= 0: 
+        return "You are really REALLY bad... How did you manage to die in the first round???"
+    elif dragonBoss["PV"] <= 0:
+        return "Wow! You defeated the dragon in the first round! Incredible! Did you have a cheat code??? Tell me 👀..."
 
     #Other rounds
     round_number = 2
@@ -502,7 +510,10 @@ def startChapter4(character):
 
         fightResult = dragonFight(character)
 
-        if fightResult:
+        if fightResult == True or fightResult == "Wow! You defeated the dragon in the first round! Incredible! Did you have a cheat code??? Tell me 👀...":
+            if fightResult == "Wow! You defeated the dragon in the first round! Incredible! Did you have a cheat code??? Tell me 👀...":
+                print(fightResult)
+            
             print(f"Albus Dumbledore: - \"Congratulations {character['First Name']} {character['Last Name']}! You have successfully completed the first task of the Triwizard Tournament by defeating the dragon!")
             print("WELL DONE!!! Yes, really!\"")
             print("Uh yes, you have maybe killed some innocent spectators too but hey, details...")
@@ -511,6 +522,10 @@ def startChapter4(character):
             print()
             print("=== END OF CHAPTER 4 ===")
         else:
+            if fightResult == "You are really REALLY bad... How did you manage to die in the first round???":
+                print(fightResult)
+            
+            #Special dialogues if the player dies
             print(f"Albus Dumbledore: - \"{character['First Name'].upper()} {character['Last Name'].upper()}. You're completely useless. OUT OF MY SCHOOL! Oh damn, I forgot you're already dead... Sorry.\"")
             print(f"You have been defeated by the dragon. PINPINPINPINNN PONNNN [Game Over Zelda version sound effect].")
             print()
@@ -525,53 +540,64 @@ def startChapter4(character):
 
             #Special dialogues for the 2nd tentative and more
             tentativeNumber += 1
-            if tentativeNumber >= 2:
-                print("Madam Pomfrey: - \"OKAY. You're really starting to piss me off now. This is the second time you die against that stupid dragon! Are you even trying to win this tournament??? Come on, get your act together!\"")
+            if tentativeNumber >=3:
+                print("Madam Pomfrey: - \"Unbelievable! AGAIN??? Oh, I get it now, you're doing that just to take my littles candies... Okay, not anymore. Now OUT OF MY INFIRMARY!\"")
+                print("Madam Pomfrey: - \"Go to hell! And try to not die because you cost me time...\"")
                 input("Press enter to continue... ")
-                print()
+
             else:
-                print("Madam Pomfrey: - \"Yes dear, you had a bad encounter with a dragon during the Triwizard Tournament. But don't worry, you're safe now.\"")
-                input("Press enter to continue... ")
-                print()
-                print(f"{character['First Name']}: - \"Phew! That was close! I must have been really lucky to survive that. Thank you, I-dont-know-who-you-are.\"")
-                print("Madam Pomfrey: - \"You're welcome dear.")
-            
-            print("Madam Pomfrey: - \"But no time to rest, let's try again!\"")
-            input("Press enter to continue... ")
-            print()
-            print(f"{character['First Name']}: - \"Uhh... NOWW?\"")
-            print("Madam Pomfrey: - \"Yes, NOWW! The dragon won't wait for you to be ready!\"")
+                if tentativeNumber == 2:
+                    print("Madam Pomfrey: - \"OKAY. You're really starting to piss me off now. This is the second time you die against that stupid dragon! Are you even trying to win this tournament??? Come on, get your act together!\"")
+                    input("Press enter to continue... ")
+                    print()
+                    print(f"{character['First Name']}: - \"Uhh... Sorry Madam Pomfrey. I'll try to do better next time... I guess...\"") 
 
-            #The player learns Avada Kedavra if not already known
-            if "Avada Kedavra" not in character["Spells"]:
-                print(f"{character['First Name']}: - \"Well, to be honest Madam Pomfrey, I tried to use Avada Kedavra on the dragon but it backfired on me... I guess I should have learned it first...\"")
+                    print()
+                else:
+                    print("Madam Pomfrey: - \"Yes dear, you had a bad encounter with a dragon during the Triwizard Tournament. But don't worry, you're safe now.\"")
+                    input("Press enter to continue... ")
+                    print()
+                    print(f"{character['First Name']}: - \"Phew! That was close! I must have been really lucky to survive that. Thank you, I-dont-know-who-you-are.\"")
+                    print("Madam Pomfrey: - \"You're welcome dear.")
+                
+                print("Madam Pomfrey: - \"But no time to rest, let's try again!\"")
                 input("Press enter to continue... ")
                 print()
-                print("Madame Pomfrey: - \"*sigh* Okay, I better understand... I'll teach you it.\"")
-                print(f"{character['First Name']}: - \"You really know this dark spell??? I should ask questions but ok, thxx!\"")
-                input("Press enter to continue... ")
-                print()
-                character["Spells"].append("Avada Kedavra")
-                print(f"** You have learned the spell Avada Kedavra! **")
-                print(f"{character['First Name']}: - \"Aaweuhdaaa...\"")
-                print("Madam Pomfrey: - \"NO. Don't try it on me please.\"")
+                print(f"{character['First Name']}: - \"Uhh... NOWW?\"")
+                print("Madam Pomfrey: - \"Yes, NOWW! The dragon won't wait for you to be ready!\"")
 
-            input("Press enter to continue... ")
-            print()
-            print(f"{character['First Name']}: - \"Oh. I'm speechless. OK, let's try again!\"")
-            print("Madam Pomfrey: - \"Before you go (ahh, young people, they're in such a hurry these days), here's something to cheer you up and that should help:\"")
-            input("Press enter to continue... ")  
-            print()
-            addItem(character, "Inventory", "Chocolate Frog")
-            addItem(character, "Inventory", "Bertie Bott's Every Flavour Beans")
-            incrementAttribute(character, "Courage", 7, True)
-            incrementAttribute(character, "Loyalty", 7, True)
-            incrementAttribute(character, "Intelligence", 7, True)
-            incrementAttribute(character, "Ambition", 7, True)
-            print("You feel a sudden rush of adrenaline and confidence, and suddenly feel ready for battle again! You jump out of bed, ready to face the dragon once more.")
-            input("Press enter to continue... ")
+                #The player learns Avada Kedavra if not already known
+                if "Avada Kedavra" not in character["Spells"]:
+                    print(f"{character['First Name']}: - \"Well, to be honest Madam Pomfrey, I tried to use Avada Kedavra on the dragon but it backfired on me... I guess I should have learned it first...\"")
+                    input("Press enter to continue... ")
+                    print()
+                    print("Madame Pomfrey: - \"*sigh* Okay, I better understand... I'll teach you it.\"")
+                    print(f"{character['First Name']}: - \"You really know this dark spell??? I should ask questions but ok, thxx!\"")
+                    input("Press enter to continue... ")
+                    print()
+                    character["Spells"].append("Avada Kedavra")
+                    print(f"** You have learned the spell Avada Kedavra! **")
+                    print(f"{character['First Name']}: - \"Aaweuhdaaa...\"")
+                    print("Madam Pomfrey: - \"NO. Don't try it on me please.\"")
+
+                input("Press enter to continue... ")
+                print()
+                print(f"{character['First Name']}: - \"Oh. I'm speechless. OK, let's try again!\"")
+                print("Madam Pomfrey: - \"Before you go (ahh, young people, they're in such a hurry these days), here's something to cheer you up and that should help:\"")
+                input("Press enter to continue... ")  
+                print()
+                addItem(character, "Inventory", "Chocolate Frog")
+                addItem(character, "Inventory", "Bertie Bott's Every Flavour Beans")
+                incrementAttribute(character, "Courage", 7, True)
+                incrementAttribute(character, "Loyalty", 7, True)
+                incrementAttribute(character, "Intelligence", 7, True)
+                incrementAttribute(character, "Ambition", 7, True)
+                print("You feel a sudden rush of adrenaline and confidence, and suddenly feel ready for battle again! You jump out of bed, ready to face the dragon once more.")
+                input("Press enter to continue... ")
+
             print(".....................\n")
             print()
+            fightResult = False #Ensures to restart the fight 
             
 
 
