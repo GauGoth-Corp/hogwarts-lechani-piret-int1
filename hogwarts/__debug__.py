@@ -32,8 +32,8 @@ if __name__ == "__main__":
     
     #### Chapter 4 test ####
     igor_character = {
-                        "Last Name": "D'Osgor", 
-                        "First Name": "Igor", 
+                        "Last Name": "moisi", 
+                        "First Name": "Caca", 
                         "Money": 531,
                         "Inventory": ["Magic Wand", "Bus full of children", "House elf", "Potions Book", "Wizard Robe"],
                         "Spells": ["Lumos", "Alohomora", "Expelliarmus", "Stupefy"],

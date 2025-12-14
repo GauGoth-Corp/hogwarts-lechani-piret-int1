@@ -63,7 +63,7 @@ def createDragonBoss(name, pv, pe, strength):
     dragonBoss["Name"] = name
     dragonBoss["PV"] = pv
     dragonBoss["PE"] = pe
-    dragonBoss["Strenght"] = strength
+    dragonBoss["Strength"] = strength
 
     return dragonBoss
 
@@ -78,7 +78,7 @@ def displayDragonStats(dragonBoss):
     print(f"== {dragonBoss['Name']} stats ==")
     print(f"    - PV: {dragonBoss['PV']}")
     print(f"    - PE: {dragonBoss['PE']}")
-    print(f"    - Strenght: {dragonBoss['Strenght']}")
+    print(f"    - Strength: {dragonBoss['Strength']}")
 
 def displayPlayerStats(character):
     """
