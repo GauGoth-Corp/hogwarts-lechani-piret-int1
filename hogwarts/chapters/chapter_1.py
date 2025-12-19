@@ -14,6 +14,10 @@ from universe.house import *
 from utils import input_utils as IU
 from universe.character import *
 
+from random import randint
+
+from hogwarts.universe.character import modifyMoney
+
 #%%###=== Global variables ===###
 contactSupportURL = "http://gaugoth.corp.free.fr/credits/contact/?subject=Hogwarts%20Game%20Support%20Request"
 
@@ -70,6 +74,7 @@ def meetHagrid():
     input("It's now time to buy supplies! You may buy all that you want but be mindful of your money! Press enter to continue... ")
 
 def buySupplies(display_list, values_list, character):
+    required_items = ["Magic Wand", "Wizard Robe", "Potions book"]
     required_bought = 0
     while character['Money'] >= 5:
         print(f"You have {character['Money']} Galleons. Make sure to save enough to buy the required items !")
@@ -103,7 +108,8 @@ def buySupplies(display_list, values_list, character):
 
                 input(f"You have successfully purchased {values_list[user_choice-1][0]} for {values_list[user_choice-1][1]} Galleons! Press enter to continue... ")
                 print(f"You now have {character['Money']} Galleons left.")
-                if values_list[user_choice-1][2] == "(required)":
+                if values_list[user_choice-1][0] in required_items:
+                    required_items.remove(values_list[user_choice-1][0])
                     required_bought += 1
 
     if required_bought < 3:
@@ -116,7 +122,20 @@ def buySupplies(display_list, values_list, character):
         input("Press enter to continue... ")
         print()
 
-        
+def buyPet(character):
+    input("It's time to choose your pet ! ")
+    input(f"You have {character['Money']} Galleons.")
+    welcome_message = "Welcome to the pet store ! Don't worry if you've already spent all your money we have options for the... financially challenged"
+    options = [["Owl", 20], ["Cat", 15], ["Rat", 10], ["Toad", 5], ["Random creepy guy", 0]]
+    user_choice = IU.askChoice(welcome_message, options)
+    if options[user_choice-1][1] > character['Money']:
+        input("You are poor and a disappointment")
+
+    else:
+        modifyMoney(character, -options[user_choice-1][1])
+        addItem(character, "Inventory", options[user_choice-1][0])
+        input(f"Congratulations ! You are now the proud owner of a {options[user_choice-1][0]} .")
+
 
 def startChapter1():
     """
@@ -129,7 +148,7 @@ def startChapter1():
     dict = IU.loadFile("data/inventory.json")
     display_list =[]
     values_list = [[value[0], value[1], value[2]] for value in dict.values()]
-
+    required_items = ["Magic Wand", "Wizard Robe", "Potions book"]
     for value in dict.values():
         display_list.append(f"{value[0]} - {value[1]} Galleons {value[2]}")
     buySupplies(display_list, values_list, character)
