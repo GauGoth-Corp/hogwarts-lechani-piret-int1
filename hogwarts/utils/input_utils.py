@@ -163,7 +163,7 @@ def decryptText(encryptedText, key):
 if __name__ == "__main__":
     ###Functions tests:
 
-    print("Loaded JSON: \n", loadFile("hogwarts/data/houses.json"))
+    print("Loaded JSON: \n", loadFile("data/houses.json"))
 
     encrypted = encryptText("Hello World!", [1,2,3,4,5,6,7,8,9,10,11,12])
     print("Encrypted:", encrypted)

@@ -167,7 +167,7 @@ if __name__ == "__main__":
 ]
     '''
     #Import questions from JSON file
-    questions = IU.loadFile("hogwarts/data/sorting_ceremony_questions.json")
+    questions = IU.loadFile("data/sorting_ceremony_questions.json")
 
     print(f"\n=== Here's the time to being assigned to your Hogwarts' House! Here is a quizz. Answer the questions and discover your House! ===\n")
     assignedHouse = assignHouse(Harry_the_goat, questions)
