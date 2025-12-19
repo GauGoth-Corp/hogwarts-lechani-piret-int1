@@ -75,7 +75,7 @@ def startGame():
     #Executes each chapter
     my_character = startChapter1()
     startChapter2(my_character, hgg_houses)
-    #startChapter3(my_character)
+    startChapter3(my_character)
     startChapter4(my_character)
     #start_chapter_5()
 
