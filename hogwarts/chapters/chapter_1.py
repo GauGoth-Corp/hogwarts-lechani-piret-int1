@@ -73,8 +73,8 @@ def buySupplies(display_list, values_list, character):
     required_bought = 0
     while character['Money'] >= 5:
         print(f"You have {character['Money']} Galleons. Make sure to save enough to buy the required items !")
-        choice = IU.askChoice("Catalog of available items:", display_list + ["Exit the shop"])
-        if choice == len(display_list) + 1: #Quit shop
+        user_choice = IU.askChoice("Catalog of available items:", display_list + ["Exit the shop"])
+        if user_choice == len(display_list) + 1: #Quit shop
             if required_bought < 3:
                 msg = "You have not bought all the required supplies. Are you sure you want to go out?"
             else:
@@ -84,26 +84,26 @@ def buySupplies(display_list, values_list, character):
                 break
             
         #Do not check if "exit" was chosen
-        if choice <= len(display_list):
-            if values_list[choice-1][1] > character['Money']:
+        if user_choice <= len(display_list):
+            if values_list[user_choice-1][1] > character['Money']:
                 input("You're too poor to buy this item. How about you cross the street to get a job? Press enter to continue... ")
 
             else:
                 #Manages the strange options:
-                if choice == 15: #100 Galleons
+                if user_choice == 15: #100 Galleons
                     modifyMoney(character, 120)
-                elif choice == 16: #500 Galleons
+                elif user_choice == 16: #500 Galleons
                     modifyMoney(character, 500)  
                 else:
-                    addItem(character, "Inventory", values_list[choice-1][0])
+                    addItem(character, "Inventory", values_list[user_choice-1][0])
 
-                modifyMoney(character, -values_list[choice-1][1])
+                modifyMoney(character, -values_list[user_choice-1][1])
 
 
 
-                input(f"You have successfully purchased {values_list[choice-1][0]} for {values_list[choice-1][1]} Galleons! Press enter to continue... ")
+                input(f"You have successfully purchased {values_list[user_choice-1][0]} for {values_list[user_choice-1][1]} Galleons! Press enter to continue... ")
                 print(f"You now have {character['Money']} Galleons left.")
-                if values_list[choice-1][2] == "(required)":
+                if values_list[user_choice-1][2] == "(required)":
                     required_bought += 1
 
     if required_bought < 3:
