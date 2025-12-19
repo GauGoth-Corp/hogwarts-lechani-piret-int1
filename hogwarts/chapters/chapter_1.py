@@ -126,7 +126,7 @@ def startChapter1():
     character = createCharacter()
     receiveLetter(character) 
     meetHagrid()
-    dict = IU.loadFile("hogwarts/data/inventory.json")
+    dict = IU.loadFile("data/inventory.json")
     display_list =[]
     values_list = [[value[0], value[1], value[2]] for value in dict.values()]
 

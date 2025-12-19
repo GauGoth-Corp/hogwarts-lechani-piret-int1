@@ -337,7 +337,7 @@ def getRandomFightAction():
     :return action: {dict} - The action chosen randomly
     """
 
-    actions_file = IU.loadFile("hogwarts/data/dragon_fight_choices.json")
+    actions_file = IU.loadFile("data/dragon_fight_choices.json")
 
     #Chooses randomly one action from the file 
     action = rd.choice(actions_file)

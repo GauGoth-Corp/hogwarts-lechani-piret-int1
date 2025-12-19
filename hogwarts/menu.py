@@ -142,7 +142,7 @@ def displayMainMenu():
     print("                     -----------------------------------                      ")
     print("                  A game developed by Aomm-lgtm & GauGoth Corp.               ")
     print("==============================================================================")
-    print(loadAsciiArt("hogwarts/data/Ascii/Hogwarts-Castle-ASCII.txt"))
+    print(loadAsciiArt("data/Ascii/Hogwarts-Castle-ASCII.txt"))
 
     print("==============================================================================")
     print("Copyright (c) 2025 GauGoth Corp. All Rights reserved.\n")
