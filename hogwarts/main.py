@@ -9,6 +9,11 @@
 ### CONVERT THIS PROJECT TO EXE WITH PYINSTALLER USING THE FOLLOWING COMMAND:
 # python -m pyinstaller --onefile --noconsole --icon=hgg-icon.ico hogwarts/main.py
 
+### WARNING: ###
+# PyCharm runs the program from the file directory, not from the main directory. 
+# Then, we have to set this parameter in VSCode to emulate the Pycharm behaviour:
+# "python.terminal.executeInFileDir": true
+
 """
 Hogwarts Game is a text-based adventure game set in the Harry Potter universe. This project is developed as part of a Python programming project at our school Efrei Paris.
 
