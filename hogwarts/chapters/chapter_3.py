@@ -94,8 +94,8 @@ def magicQuiz(character, questions_list, answer_list, houses={"Gryffindor":0, "H
 
 
 def startChapter3(character):
-    spell_dict = IU.loadFile("hogwarts/data/spells.json")
-    quiz_dict = IU.loadFile("hogwarts/data/magic_quiz.json")
+    spell_dict = IU.loadFile("data/spells.json")
+    quiz_dict = IU.loadFile("data/magic_quiz.json")
     spells_list = [[spell["name"], spell["type"]] for spell in spell_dict]
     questions_list = [[q["question"], i] for q in quiz_dict for i in range(len(quiz_dict))]
     answer_list = [[q["answer"], i] for q in quiz_dict for i in range(len(quiz_dict))]     
@@ -106,5 +106,5 @@ def startChapter3(character):
 
 #%%###=== Program ===####
 if __name__ == "__main__":
-    spell_dict = IU.loadFile("hogwarts/data/inventory.json")
+    spell_dict = IU.loadFile("data/inventory.json")
     print([type(spell) for spell in spell_dict])

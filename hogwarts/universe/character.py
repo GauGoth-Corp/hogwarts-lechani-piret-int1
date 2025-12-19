@@ -154,7 +154,7 @@ def endAdventure(character, msg):
     cheat = input(f"This is the end of your adventure. Press enter to exit... ")
     #Loading secured key from sensitive_info.json (ADD TO .gitignore)
     try:
-        key = IU.loadFile("hogwarts/data/sensitive_info.json")["easter_egg_pswd_key"]
+        key = IU.loadFile("data/sensitive_info.json")["easter_egg_pswd_key"]
     
 
         if IU.encryptText(cheat, key) == "Ig}H{}s%L{~x0":
@@ -164,10 +164,11 @@ def endAdventure(character, msg):
             print("Everyone thought you were done, but suddendly you take a great breath and get back on your feet. How mysterious is magic, isn't it?")
             print(f"Welcome back, {character['First Name']} {character['Last Name']}!")
             print()
+
         else:
             exit()
     except TypeError:
-        print(f"An error occured while trying to read the file 'hogwarts/data/sensitive_info.json'.\nPlease try again later or contact us at the adress {contactSupportURL} for help.")
+        print(f"An error occured while trying to read the file 'data/sensitive_info.json'.\nPlease try again later or contact us at the adress {contactSupportURL} for help.")
         exit()
 
 

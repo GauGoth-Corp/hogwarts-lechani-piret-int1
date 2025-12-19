@@ -204,7 +204,7 @@ def enterCommonRoom(character):
         endAdventure(character, "YOU HAVE FAILED THE SORTING CEREMONY. You are expelled from Hogwarts. GAME OVER")
     
     house = character["House"]
-    housesDescriptions = IU.loadFile("hogwarts/data/houses.json")
+    housesDescriptions = IU.loadFile("data/houses.json")
 
     print("After stuffing yourself like a pig, you follow the Prefects through the castle corridors...\n")
 
@@ -233,7 +233,7 @@ def startChapter2(character, houses):
     meetFriends(character)
     welcomeMessage(houses, character)
     #Import questions from JSON file
-    questions = IU.loadFile("hogwarts/data/sorting_ceremony_questions.json")
+    questions = IU.loadFile("data/sorting_ceremony_questions.json")
     sortingCeremony(character, questions)
     enterCommonRoom(character)
 
