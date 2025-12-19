@@ -78,13 +78,14 @@ def magicQuiz(character, question_answer_couple, houses={"Gryffindor":0, "Huffle
     total_earned = 0
     for i in range(4):
         selected_qa = choice(question_answer_couple)
+        question_answer_couple.remove(selected_qa)
         question = selected_qa[0]
         user_answer = input(f"Question {i+1}: {question} Your answer: ")
         correct_answer = selected_qa[1]
         if user_answer.lower() == correct_answer.lower():
             input("You're not as stupid as you look! Correct answer. Press enter to continue... ")
             total_earned += 25
-            updateHousePoints(houses, assignedHouse, 25)
+            updateHousePoints(houses, character["House"], 25)
 
         else:
             input(f"You actually are as stupid as you look! The correct answer was: {correct_answer}. Press enter to continue... ")

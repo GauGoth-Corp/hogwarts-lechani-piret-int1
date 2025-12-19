@@ -37,7 +37,8 @@ if __name__ == "__main__":
                         "Money": 531,
                         "Inventory": ["Magic Wand", "Bus full of children", "House elf", "Potions Book", "Wizard Robe"],
                         "Spells": [],
-                        "Attributes": {"Courage": 13, "Intelligence": 11, "Loyalty": 10, "Ambition": 13}
+                        "Attributes": {"Courage": 13, "Intelligence": 11, "Loyalty": 10, "Ambition": 13},
+                        "House": "Slytherin"
                         }
     
     """
