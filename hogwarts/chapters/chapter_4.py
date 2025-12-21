@@ -457,28 +457,33 @@ def dragonFight(character):
     print()
     if help == 1:
         print("====== Dragon Fight Help ======")
-        """
-        The fight is turn-based. Each round, you will have to choose an action from a list of options.
-        Each action will have different consequences on the fight, 
-        such as increasing or decreasing your attack power, using or regaining PE (Energy Points), using your attributes, etc.
-        Same for the dragon.
-
-        Here is a detailed table explaining the different key words used during the fight:
-
-        Category  | Name       | Description             | Player/Dragon    | Long description
-        ----------------------------------------------------------------------------------------------------------------------------
-        Key Words |  PV        | Health Points           | Player & Dragon  | When PV = 0, the fighter dies and the fight stops.
-                  |  PE        | Energy Points           | Player & Dragon  | PE adds damage to the attack. An amount is losed ...
-                  |            |                         |                  | ... during actions, and sometimes it is recovered.
-                  |  Strength  | Constant extra damages  | Dragon           | X
-                  |  Stats     | PV/PE/Attack            | Player & Dragon  |
-                  |  Attribute | Player has 4 diff Attr: | Player           | During action, a player Attribute amount can ... 
-                  |            |                         |                  | ... influence them attack (multiplied by 1, 2 or 3).
-                  |            |                         |                  | ... Courage, Loyalty, Intelligence & Ambition
-                  | Power      | 
-        -----------------------------------------------------------------------------------------------------------------------------
         
-        """
+        print("The fight is turn-based. Each round, you will have to choose an action from a list of options.\n"\
+        "Each action will have different consequences on the fight, \n" \
+        "such as increasing or decreasing your attack power, using or regaining PE (Energy Points), using your attributes, etc.\n" \
+        "Same for the dragon.\n" \
+        "\n" \
+        "Here is a detailed table explaining the different key words used during the fight:\n" \
+        "Category  | Name         | Description             | Player/Dragon    | Long description\n" \
+        "----------------------------------------------------------------------------------------------------------------------------\n" \
+        "Key words |  Round       | Current round number    | Player           | The fight is divided into rounds, starting from 1.\n" \
+        "          |  Stats       | PV/PE/Attack            | Player & Dragon  | X        \n" \
+        "          |  PV          | Health Points           | Player & Dragon  | When PV <= 0, the fighter dies and the fight stops.\n" \
+        "          |  PE          | Energy Points           | Player & Dragon  | PE adds damage to the attack. An amount is losed ...\n" \
+        "          |              |                         |                  | ... during actions, and sometimes it is recovered.\n" \
+        "          |  Strength    | Constant extra damages  | Dragon           | X\n" \
+        "          |  Attribute   | Player has 4 diff Attr: | Player           | During action, a player Attribute amount can ... \n" \
+        "          |              |                         |                  | ... influence them attack (multiplied by 1, 2 or 3).\n" \
+        "          |              |                         |                  | ... Courage, Loyalty, Intelligence & Ambition\n" \
+        "          |  Power       | Attack power            | Player & Dragon  | The higher the power is, the more damage is done.\n" \
+        "          | Critical hit | Very powerful attack    | Player           | If the attack power >= 60, there is a chance to ...\n" \
+        "          |              |                         |                  | ... increase the player attack by 50%.\n" \
+        "-----------------------------------------------------------------------------------------------------------------------------")
+        
+        input("Press enter to continue... ")
+        print()
+        
+        
 
 
 #%%### Fight simulation ####
