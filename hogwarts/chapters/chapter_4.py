@@ -432,11 +432,12 @@ def dragonFightSimulation(character, dragonBoss, roundNumber, message, choicesLi
     input("Press enter to continue... ")
     print()
 
-def dragonFight(character):
+def dragonFight(character, tentativeNumber):
     """
     The dragon fight of chapter 4
 
     :param character: {dict} - The player's character dictionary 
+    :param tentativeNumber: {int} - The number of tentatives already made 
 
     :return FightResult: {bool | str} - True if the player wins, False if the dragon wins. A string msg if the fight ends in the first round (considered as True then)
     """
@@ -452,10 +453,13 @@ def dragonFight(character):
     input("Press enter to continue... ")
     print()
 
-    #Asks to display a help message explaining the fight dynamics
-    help = IU.askChoice("** Show me how to fight the dragon? **", ["Yes please", "No, I fight dragons everyday."])
+    help = 0
+    if tentativeNumber > 0:
+        #Asks to display a help message explaining the fight dynamics
+        help = IU.askChoice("** Show me how to fight the dragon? **", ["Yes please", "No, I fight dragons everyday."])
     print()
-    if help == 1:
+    #Displays help by default the 1st time
+    if help == 1 or tentativeNumber == 0:
         print("====== Dragon Fight Help ======")
         
         print("The fight is turn-based. Each round, you will have to choose an action from a list of options.\n"\
@@ -652,7 +656,7 @@ def startChapter4(character):
 
     #Restarts fight unless the player wins
     while not fightResult:
-        fightResult = dragonFight(character) 
+        fightResult = dragonFight(character, tentativeNumber) 
         if fightResult == True or fightResult == "Wow! You defeated the dragon in the first round! Incredible! Did you have a cheat code??? Tell me 👀...":
             fightResult=  fightWin(character, fightResult)
         else:
