@@ -1,8 +1,8 @@
 ##############################################################
 #### Authors: Lisa Lechani & Gautier Piret ###################
-#### Hogwarts Game - v. Bêta #################################
+#### Hogwarts Game - v. 0.1 #################################
 #### MENU ####################################################
-#### 27/11/2025 - 28/11/2025 #################################
+#### 27/11/2025 - 21/12/2025 #################################
 #### Copyright (c) 2025 GauGoth Corp. All Rights reserved ####
 ##############################################################
 """
@@ -90,7 +90,7 @@ def loadSavedGame():
     """
 
     #print("============================== LOADING... ====================================")
-    print("Load Game feature is not available in the Bêta version. Starting a new game...\n")
+    print("Load Game feature is not available in the 0.1 version. Starting a new game...\n")
     startGame()
 
 def displayCredits():
@@ -99,7 +99,7 @@ def displayCredits():
     """
 
     print("================================ CREDITS ======================================")
-    print("#### Hogwarts Game - v. Bêta ####")
+    print("#### Hogwarts Game - v. 0.1 ####")
     print("Hogwarts Game is a text-based adventure game set in the Harry Potter universe.")
     print("")
     print("Developed by Aomm-lgtm & GauGoth Corp.")
@@ -140,7 +140,7 @@ def displayMainMenu():
 
     #%%###=== Main menu choices display ===####
     print("==============================================================================")
-    print("                           Hogwarts Game - v. Bêta                            ")
+    print("                           Hogwarts Game - v. 0.1                            ")
     print("                     -----------------------------------                      ")
     print("                  A game developed by Aomm-lgtm & GauGoth Corp.               ")
     print("==============================================================================")

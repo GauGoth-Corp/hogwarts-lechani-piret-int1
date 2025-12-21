@@ -1,11 +1,11 @@
-# Hogwarts Game - v. Bêta
-<i>Version Bêta<br/>
+# Hogwarts Game - v. 0.1
+<i>Version 0.1<br/>
 **License file**<br/>
 29/11/2025</i>
 
 *********************************************************************
 
-Thank you for downloading Hogwarts Game (v. Bêta).
+Thank you for downloading Hogwarts Game (v. 0.1).
 
 -----------------------------
 Hogwarts Game is a text-based adventure game set in the Harry Potter universe.
@@ -22,7 +22,7 @@ Hogwarts Game is a text-based adventure game set in the Harry Potter universe.
 
 ## License & Authorizations For Use
 
-THIS DOCUMENT AUTHORIZES YOU TO USE THE PROGRAM HOGWARTS GAME (V. BÊTA):
+THIS DOCUMENT AUTHORIZES YOU TO USE THE PROGRAM HOGWARTS GAME (V. 0.1):
 
 - This program has been distributed to you by Aomm-lgtm and the GauGoth Corp. organization. All rights reserved. Any reproduction, duplication, or copy, complete or partial, without the agreement of GauGoth Corp. or Aomm-lgtm is strictly forbidden.
 - Hogwarts Game and GauGoth Corp.'s goal is not to make money, but simply to have fun and share its creations. All GauGoth Corp. products are free of charge.
