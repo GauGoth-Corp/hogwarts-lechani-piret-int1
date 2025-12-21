@@ -36,7 +36,7 @@ if __name__ == "__main__":
                         "First Name": "obscur", 
                         "Money": 531,
                         "Inventory": ["Magic Wand", "Bus full of children", "House elf", "Potions Book", "Wizard Robe"],
-                        "Spells": [],
+                        "Spells": ["Lumos", "Alohomora", "Expelliarmus", "Stupefy", "Rictusempra"], #Avada Kedavra
                         "Attributes": {"Courage": 13, "Intelligence": 11, "Loyalty": 10, "Ambition": 13},
                         "House": "Slytherin"
                         }
@@ -51,5 +51,6 @@ if __name__ == "__main__":
     dragonFightFirstRound(igor_character, hungarian_horntail)
     """
     
-    startChapter3(igor_character)
+    #startChapter3(igor_character)
+    startChapter4(igor_character)
 

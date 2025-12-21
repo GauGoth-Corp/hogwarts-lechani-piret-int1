@@ -89,6 +89,7 @@ def addItem(character, key, item ,displayMsg=False):
     :param character: {dict} - The character dictionary
     :param key: {str} - The key in the character dictionary where the item should be added 
     :param item: {str} - The item to add to the list
+    :param displayMsg: {bool} ? - Whether to display a message
     :return character: {dict} - The updated character dictionary 
     """
     #Checks if the key exists and is a list
