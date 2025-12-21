@@ -34,7 +34,12 @@ def learnSpells(character, spells_list):
         character (dict): your character info 
         spells_list (list): all the spells available in the game
     """
-    input("You begin your magic lessons at Hogwarts. Press enter to continue... ")
+    print("You begin your magic lessons at Hogwarts. Time to learn some spells!")
+    input("Press enter to continue... ")
+    print()
+    print("During those very hard but exciting lessons, you will learn five new spells! Let's go, what are we waiting for??")
+    input("Press enter to continue... ")
+    print()
 
     remaining = {
         "Utility": 3,
@@ -48,19 +53,24 @@ def learnSpells(character, spells_list):
             remaining["Utility"] -= 1
             addItem(character, "Spells", learned_spell)
             spells_list.remove(learned_spell)
-            input(f"You just learned the spell {learned_spell[0]} ({learned_spell[1]}). How exciting... Press enter to continue... ")
+            print(f"You just learned the spell {learned_spell[0]} ({learned_spell[1]}). How exciting...")
+            input("Press enter to continue... ")
 
         elif learned_spell[1] == "Offensive" and remaining["Offensive"] > 0:
             remaining["Offensive"] -= 1
             addItem(character, "Spells", learned_spell)
             spells_list.remove(learned_spell)
-            input(f"You just learned the spell {learned_spell[0]} ({learned_spell[1]}). Do you even read these anymore ? Press enter to continue... ")
-                
+            print(f"You just learned the spell {learned_spell[0]} ({learned_spell[1]}). Do you even read these anymore ?")
+            input("Press enter to continue... ")
+
         elif learned_spell[1] == "Defensive" and remaining["Defensive"] > 0:
             remaining["Defensive"] -= 1
             addItem(character, "Spells", learned_spell)
             spells_list.remove(learned_spell)
-            input(f"You just learned the spell {learned_spell[0]} ({learned_spell[1]}). Did you know that the Alicia leitmotiv was used in 20 tracks of Clair Obscur ? Press enter to continue... ")
+            print(f"You just learned the spell {learned_spell[0]} ({learned_spell[1]}). Did you know that the Alicia leitmotiv was used in 20 tracks of Clair Obscur ?")
+            input("Press enter to continue... ")
+
+    print() 
 
 
 
@@ -74,7 +84,12 @@ def magicQuiz(character, question_answer_couple, houses={"Gryffindor":0, "Huffle
         answer_list (list): list of answers
         houses (dict): all houses with their current points
     """
-    input("Answer these 4 questions to earn points for your house! Press enter to continue... ")
+
+    print("It's time for a magic quizz... Are you ready to obtain you B.U.S.E?? Let's see!")
+    print("Answer these 4 questions to earn points for your house!")
+    input("Press enter to continue... ")
+    print()
+
     total_earned = 0
     for i in range(4):
         selected_qa = choice(question_answer_couple)
@@ -83,17 +98,22 @@ def magicQuiz(character, question_answer_couple, houses={"Gryffindor":0, "Huffle
         user_answer = input(f"Question {i+1}: {question} Your answer: ")
         correct_answer = selected_qa[1]
         if user_answer.lower() == correct_answer.lower():
-            input("You're not as stupid as you look! Correct answer. Press enter to continue... ")
+            print("You're not as stupid as you look! Correct answer.")
             total_earned += 25
             updateHousePoints(houses, character["House"], 25)
+            input("Press enter to continue... ")
 
         else:
-            input(f"You actually are as stupid as you look! The correct answer was: {correct_answer}. Press enter to continue... ")
-
-    input(f"You have earned a total of {total_earned} points for your house. Why couldn't you do better ? Press enter to continue... ")
-
+            print(f"You actually are as stupid as you look! The correct answer was: {correct_answer}.")
+            input("Press enter to continue... ")
+        print()
+    print(f"You have earned a total of {total_earned} points for your house. Why couldn't you do better ?")
+    input("Press enter to continue... ")
+    print()
 
 def startChapter3(character):
+    print("=== Chapter 3:  Classes and discovering Hogwarts ===\n")
+
     spell_list_dict = IU.loadFile("data/spells.json")
     quiz_dict = IU.loadFile("data/magic_quiz.json")
     spells_list = [[spell["name"], spell["type"]] for spell in spell_list_dict]

@@ -26,12 +26,15 @@ def introduction():
     """
     Introduction to the first chapter
     """
+    print("=== Chapter 1:  Arrival in the magical world ===\n")
     input("Welcome to Hogwarts! Ready for your first adventure? Ready guys ? Ready ? Press enter to continue...")    
 
 def createCharacter():
     """
     Asks user for character info to create a character and then displays it
     """
+
+    print("\n== Character Creation ==")
     first_name, last_name = "", ""
     while first_name.strip() == "":
         first_name = input("Enter your character's first name: ")
@@ -41,6 +44,7 @@ def createCharacter():
         last_name = input("Enter your character's last name: ")
         if last_name.strip() == "":
             print("You're not ready to become a problem solver if you don't even have a last name... Try again shitty\n")
+    print("\nLet's define your attributes. You shall be smart to choose their values wisely !")
     attributes = {
         "Courage": IU.askNumber("Enter your Courage (1-10): ", 1, 10),
         "Intelligence": IU.askNumber("Enter your Intelligence (1-10): ", 1, 10),
@@ -49,7 +53,12 @@ def createCharacter():
     } 
 
     character = initCharacter(last_name, first_name, attributes)
+
+    print("\nHere is a summary of your character:")
     displayCharacter(character)
+    input("Press enter to continue... ")
+    print()
+
     return character
 
 
@@ -58,20 +67,29 @@ def receiveLetter(character):
     Receives letter from Hogwarts and asks if the player wishes to go on an adventure (possible end state)
     :return:
     """
-    input("You have received your acceptance letter to Hogwarts School of Witchcraft and Wizardry! Press enter to continue... ")
+
+    print("You have received your acceptance letter to Hogwarts School of Witchcraft and Wizardry!")
     choice = IU.askChoice("Do you wish to attend Hogwarts ?", ["Yes", "No"])
     if choice == 1 :
-        input("Great! Let's get started on your magical journey. Press enter to continue... ")
+        print("Great! Let's get started on your magical journey.")
+        input("Press enter to continue... ")
+        print()
 
     else:
         endAdventure(character, "You won't be missed! Goodbye! GAME OVER")
 
 
 def meetHagrid():
-    input("Hagrid arrives to take you to Hogwarts after assaulting your cousin. Press enter to continue... ")
-    input("Hagrid: You're a wizard, Harry! Now, go buy me some beers with your dead parents' money. Press enter to continue... ")
-    input("You arrive at Diagon Alley, the place is bustling with life. You should buy school supplies but you have enough to have some fun. Press enter to continue... ")
-    input("It's now time to buy supplies! You may buy all that you want but be mindful of your money! Press enter to continue... ")
+    print("Hagrid arrives to take you to Hogwarts after assaulting your cousin.")
+    print("Hagrid: - \"You're a wizard, Harry! Now, go buy me some beers with your dead parents' money.\"")
+    input("Press enter to continue... ")
+    print()
+    print("You arrive at Diagon Alley, the place is bustling with life. You should buy school supplies but you have enough to have some fun.")
+    input("Press enter to continue... ")
+    print()
+    print("It's now time to buy supplies! You may buy all that you want but be mindful of your money!")
+    input("Press enter to continue... ")
+    print()
 
 def buySupplies(display_list, values_list, character):
     required_items = ["Magic Wand", "Wizard Robe", "Potions Book"]
