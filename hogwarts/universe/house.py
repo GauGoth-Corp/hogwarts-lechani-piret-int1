@@ -143,7 +143,7 @@ if __name__ == "__main__":
     displayWinningHouse(hgg_houses)
 
     #Example of assignHouse function
-    from hogwarts.universe import character as carac
+    from universe import character as carac
     Harry_the_goat = carac.initCharacter("Potter", "Harry", {"Courage": 5, "Intelligence": 5, "Loyalty": 5, "Ambition": 5})
 
     '''
