@@ -13,6 +13,7 @@ from random import choice, randint
 from universe.house import *
 from universe.character import *
 from utils.input_utils import *
+from chapters.chapter_1 import *
 from chapters.chapter_2 import *
 from chapters.chapter_3 import *
 from utils import input_utils as IU
