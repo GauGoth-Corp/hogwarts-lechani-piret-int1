@@ -46,6 +46,8 @@ def theEnd():
     print("We hope you enjoyed this little game set in the magical world of Harry Potter.")
     print()
     print("== We will be back after this short advertisement break... ==")
+    input("Press Enter to continue... ")
+    print()
     print("Is it finished? Not yet! Aomm-lgtm and GauGoth Corp. have developed several other projects:")
     print("     - Mini Golf 3D: The Pirate flag: a mini golf pirate adventure available on PC and mobile devices:")
     print("     PLAY NOW: http://gaugoth.corp.free.fr/games/\n")
