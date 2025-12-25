@@ -102,6 +102,7 @@ def startChapter3(character):
     question_answer_couple = [[q["question"], q["answer"]] for q in quiz_dict]
     learnSpells(character, spells_list)
     magicQuiz(character, question_answer_couple)
+    print()
     return character
 
 

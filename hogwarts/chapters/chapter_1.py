@@ -75,12 +75,11 @@ def meetHagrid():
 
 def buySupplies(display_list, values_list, character):
     required_items = ["Magic Wand", "Wizard Robe", "Potions book"]
-    required_bought = 0
     while character['Money'] >= 5:
         print(f"You have {character['Money']} Galleons. Make sure to save enough to buy the required items !")
         user_choice = IU.askChoice("Catalog of available items:", display_list + ["Exit the shop"])
         if user_choice == len(display_list) + 1: #Quit shop
-            if required_bought < 3:
+            if required_items != []:
                 msg = "You have not bought all the required supplies. Are you sure you want to go out?"
             else:
                 msg = "Are you sure you want to go out of the shop?"
@@ -110,9 +109,8 @@ def buySupplies(display_list, values_list, character):
                 print(f"You now have {character['Money']} Galleons left.")
                 if values_list[user_choice-1][0] in required_items:
                     required_items.remove(values_list[user_choice-1][0])
-                    required_bought += 1
 
-    if required_bought < 3:
+    if required_items == []:
         endAdventure(character, "Instead of buying school supplies you thought it would be a good idea to buy beers, guns and children. You are not a problem solver and failed your school year. Get your priorities straight. GAME OVER")
     
     else: 
@@ -126,15 +124,18 @@ def buyPet(character):
     input("It's time to choose your pet ! ")
     input(f"You have {character['Money']} Galleons.")
     welcome_message = "Welcome to the pet store ! Don't worry if you've already spent all your money we have options for the... financially challenged"
-    options = [["Owl", 20], ["Cat", 15], ["Rat", 10], ["Toad", 5], ["Random creepy guy", 0]]
-    user_choice = IU.askChoice(welcome_message, options)
-    if options[user_choice-1][1] > character['Money']:
+    options_list = [["Owl", 20], ["Cat", 15], ["Rat", 10], ["Toad", 5], ["Random creepy guy", 0]]
+    display_list = [f"{o[0]} - {o[1]} Galleons" for o in options_list]
+
+    user_choice = IU.askChoice(welcome_message, display_list)
+    if options_list[user_choice-1][1] > character['Money']:
         input("You are poor and a disappointment")
 
     else:
-        modifyMoney(character, -options[user_choice-1][1])
-        addItem(character, "Inventory", options[user_choice-1][0])
-        input(f"Congratulations ! You are now the proud owner of a {options[user_choice-1][0]} .")
+        modifyMoney(character, - options_list[user_choice-1][1])
+        addItem(character, "Inventory", options_list[user_choice-1][0])
+        input(f"Congratulations ! You are now the proud owner of a {options_list[user_choice-1][0]} .")
+
 
 
 def startChapter1():
@@ -152,6 +153,8 @@ def startChapter1():
     for value in dict.values():
         display_list.append(f"{value[0]} - {value[1]} Galleons {value[2]}")
     buySupplies(display_list, values_list, character)
+    buyPet(character)
+    print()
     return character
         
 #%%###=== Program ===####
