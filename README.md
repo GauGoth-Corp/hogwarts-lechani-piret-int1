@@ -38,7 +38,10 @@ _If you encounter any issue during installation, do not hesitate to [contact us]
 - **Notice: An easter egg is hidden somewhere!**
 
 ## LogBook
-As requested, we have created a "LogBook" tracing the development of the game. You can read it here: [[LOGBOOK.md](LOGBOOK.md)].
+As requested, we have created a "LogBook" tracing the development of the game. You can read it here: [[CONTRIBUTING.md](CONTRIBUTING.md)].
+
+## Control, Testing & Validation
+As requested, throughout development, we took care to debug all modules of the project. Here is a summary of the process, featuring bug fixes, error management and screenshots: [[TESTING.md](TESTING.md)].
 
 ## License
 _Copyright © 2025 GauGoth Corp. All rights reserved._

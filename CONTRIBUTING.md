@@ -9,7 +9,7 @@ Thank you for downloading Hogwarts Game (v. 0.1).
 
 -----------------------------
 Hogwarts Game is a text-based adventure game set in the Harry Potter universe.
-To learn more about the game and how to play it, please refer to the [README.md](README.md) file.
+To learn more about the game and how to play it, please refer to the [[README.md](README.md)] file.
 
 ## LogBook - Development History
 This LogBook traces the development of the Hogwarts Game.
