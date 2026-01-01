@@ -37,6 +37,8 @@ _If you encounter any issue during installation, do not hesitate to [contact us]
 - Character creation (first name, last name, attributes values)
 - **Notice: An easter egg is hidden somewhere!**
 
+-----------------------------
+
 ## LogBook
 As requested, we have created a "LogBook" tracing the development of the game. You can read it here: [[CONTRIBUTING.md](CONTRIBUTING.md)].
 

@@ -21,7 +21,7 @@ To learn more about the game and how to play it, please refer to the [[README.md
 
 ### Known Bugs
 - No known bugs at the moment. If you find one, please [contact us](http://gaugoth.corp.free.fr/en/credits/contact/?subject=Hogwarts%20Game%20v.%200.1%20bug%20report).
-- In some rare cases, if the game have been missed installed, some `.json` files containing important data may not be found. In this case, an error message is displayed using a try/except block. Please then install properly the game following the instructions in the [[README.md](README.md#installation)] file.
+- In some rare cases, if the game have been missed installed, some `.json` files containing important data may not be found. In this case, an error message is displayed using a try/except block. Please then re-install properly the game following the instructions in the [[README.md](README.md#installation)] file.
 
 ### Testing Strategies
 - Each module was tested separately during game development (section `if __name__ == "__main__":` at the end of each module and file `__debug__.py`). 
@@ -50,7 +50,7 @@ _Shop screen - other choices lead to different outcomes! :)_
 _House selection screen - the sorting hat works well_
 
 ![dragon-fight-round-1.png](screenshots/dragon-fight-round-1.png)
-_Dragon fight - round 1: the spells you have already learned influences the fight!_
+_Dragon fight - round 1: the spells you have already learned influence the fight!_
 
 ![the-end.png](screenshots/the-end.png)
 _The End screen - the adventure is completed successfully_
