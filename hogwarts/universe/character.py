@@ -83,6 +83,10 @@ def incrementAttribute(character, attributeName, amount=1, displayMsg=False):
     
     return character
 
+def newExit():
+
+    raise SystemExit
+
 def endAdventure(character, msg):
 
     print(msg)
@@ -104,10 +108,10 @@ def endAdventure(character, msg):
             print()
 
         else:
-            exit()
+            newExit()
     except TypeError:
         print(f"An error occured while trying to read the file 'data/sensitive_info.json'.\nPlease try again later or contact us at the adress {contactSupportURL} for help.")
-        exit()
+        newExit()
 
 
         
