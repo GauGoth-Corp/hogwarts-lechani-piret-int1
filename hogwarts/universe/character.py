@@ -141,6 +141,13 @@ def incrementAttribute(character, attributeName, amount=1, displayMsg=False):
     
     return character
 
+def newExit():
+    """
+    A fonction to exit the program
+    """
+
+    raise SystemExit
+
 def endAdventure(character, msg):
     """
     Ends the adventure for the character with a message and displays the final character profile 
@@ -148,6 +155,7 @@ def endAdventure(character, msg):
     :param character: {dict} - The character dictionary 
     :param msg: {str} - The message to display before ending the adventure
     """ 
+    
     print(msg)
     print("\nFinal character profile:")
     displayCharacter(character)
@@ -167,10 +175,10 @@ def endAdventure(character, msg):
             print()
 
         else:
-            exit()
+            newExit()
     except TypeError:
         print(f"An error occured while trying to read the file 'data/sensitive_info.json'.\nPlease try again later or contact us at the adress {contactSupportURL} for help.")
-        exit()
+        newExit()
 
 
         
