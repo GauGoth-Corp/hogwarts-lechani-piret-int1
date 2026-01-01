@@ -15,7 +15,7 @@ _Developed by Aomm-lgtm & GauGoth Corp._ (**Lisa Lechani** & **Gautier Piret**)
 _If you encounter any issue during installation, do not hesitate to [contact us](http://gaugoth.corp.free.fr/en/credits/contact/?subject=Hogwarts%20Game%20v.%200.1%20installation%20issue)!_
 
 1. If not already installed, download and install Python 3.11 or higher from the official website: [python.org](https://www.python.org/downloads/).
-2. Download the Hogwarts Game source code from this link: [[hogwarts-lechani-piret-int1-0.1.zip](https://github.com/GauGoth-Corp/hogwarts-lechani-piret-int1/releases/tag/v0.1)].
+2. Download the Hogwarts Game source code from this link: [[hogwarts-lechani-piret-int1-0.1.zip](https://github.com/GauGoth-Corp/hogwarts-lechani-piret-int1/archive/refs/tags/v0.1.zip)].
 3. Extract the downloaded ZIP file to the desired location on you computer.
 4. Open the folder `hogwarts-lechani-piret-int1-main`, then navigate to the `hogwarts` folder.
 5. Open a terminal in this folder (on Windows, you can do this by right-clicking then selecting "Open in Terminal").
