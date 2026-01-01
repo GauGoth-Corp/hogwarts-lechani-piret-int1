@@ -46,7 +46,7 @@ As requested, throughout development, we took care to debug all modules of the p
 -----------------------------
 
 ## License
-_Copyright © 2025 GauGoth Corp. All rights reserved._
+_Copyright © 2025-2026 GauGoth Corp. All rights reserved._
 
 _Copyright © & TM Warner Bros. Entertainment Inc. Publishing Rights © J.K. Rowling_
 
