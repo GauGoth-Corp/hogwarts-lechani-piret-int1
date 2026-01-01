@@ -3,7 +3,7 @@
 #### Hogwarts Game - v. 0.1 #################################
 ##### MAIN ####################################################
 #### 27/11/2025 - 02/01/2026 #################################
-#### Copyright (c) 2025 GauGoth Corp. All Rights reserved ####
+#### Copyright (c) 2025-2026 GauGoth Corp. All Rights reserved ####
 ##############################################################
 
 ### CONVERT THIS PROJECT TO EXE WITH PYINSTALLER USING THE FOLLOWING COMMAND:

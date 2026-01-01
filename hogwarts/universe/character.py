@@ -3,7 +3,7 @@
 #### Hogwarts Game - v. 0.1 #################################
 ##### CHARACTER ###############################################
 #### 27/11/2025 - 29/11/2025 #################################
-#### Copyright (c) 2025 GauGoth Corp. All Rights reserved ####
+#### Copyright (c) 2025-2026 GauGoth Corp. All Rights reserved ####
 ##############################################################
 """
 Functions for creating, managing, and displaying the player's character. 

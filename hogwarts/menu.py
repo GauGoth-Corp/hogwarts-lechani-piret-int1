@@ -3,7 +3,7 @@
 #### Hogwarts Game - v. 0.1 #################################
 ##### MENU ####################################################
 #### 27/11/2025 - 02/01/2026 #################################
-#### Copyright (c) 2025 GauGoth Corp. All Rights reserved ####
+#### Copyright (c) 2025-2026 GauGoth Corp. All Rights reserved ####
 ##############################################################
 """
 Main menu module for Hogwarts Game
@@ -147,7 +147,7 @@ def displayMainMenu():
     print(loadAsciiArt("data/Ascii/Hogwarts-Castle-ASCII.txt"))
 
     print("==============================================================================")
-    print("Copyright (c) 2025 GauGoth Corp. All Rights reserved.\n")
+    print("Copyright (c) 2025-2026 GauGoth Corp. All Rights reserved.\n")
     choice = askChoice("================================== MAIN MENU =================================", ["Start Game", "Load Game", "Credits", "Contact Us", "Quit Game"])
     print()
     return choice
