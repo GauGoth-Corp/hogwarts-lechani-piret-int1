@@ -1,16 +1,3 @@
-##############################################################
-#### Authors: Lisa Lechani & Gautier Piret ###################
-#### Hogwarts Game - v. 0.1 #################################
-#### CHAPTER 3 ###############################################
-#### 27/11/2025 - 21/12/2025 #################################
-#### Copyright (c) 2025 GauGoth Corp. All Rights reserved ####
-##############################################################
-
-
-#%%###=== Modules Import ===####
-#### Package modules import ####
-#WARNING: these imports do not work if we try to run this file directly 
-#They only work if we run the program from the main directory (hogwarts/) using main.py, menu.py or __debug__.py 
 from universe.house import *
 from universe.character import *
 from random import choice
@@ -18,12 +5,7 @@ from random import choice
 from utils import input_utils as IU
 
 
-#%%###=== Global variables ===###
 contactSupportURL = "http://gaugoth.corp.free.fr/credits/contact/?subject=Hogwarts%20Game%20Support%20Request"
-
-#%%###=== Module (functions) ===####
-
-    #USE ASK CHOICE OR ELSE YOU WILL REGRET IT
 
 
 def learnSpells(character, spells_list):
@@ -75,15 +57,6 @@ def learnSpells(character, spells_list):
 
 
 def magicQuiz(character, question_answer_couple, houses={"Gryffindor":0, "Hufflepuff":0, "Ravenclaw":0, "Slytherin":0}):
-    """
-    Asks 4 questions to your character from the magic_quiz.json file. The character's house earns 25 points per correct answer
-
-    Args:
-        character (dict): your character info
-        questions_list (list): list of questions
-        answer_list (list): list of answers
-        houses (dict): all houses with their current points
-    """
 
     print("It's time for a magic quizz... Are you ready to obtain you B.U.S.E?? Let's see!")
     print("Answer these 4 questions to earn points for your house!")
@@ -117,15 +90,14 @@ def startChapter3(character):
     spell_list_dict = IU.loadFile("data/spells.json")
     quiz_dict = IU.loadFile("data/magic_quiz.json")
     spells_list = [[spell["name"], spell["type"]] for spell in spell_list_dict]
-    #questions_list = [[q["question"], i] for q in quiz_dict for i in range(len(quiz_dict))]
-    #answer_list = [[q["answer"], i] for q in quiz_dict for i in range(len(quiz_dict))]  
+
+
     question_answer_couple = [[q["question"], q["answer"]] for q in quiz_dict]
     learnSpells(character, spells_list)
     magicQuiz(character, question_answer_couple)
     return character
 
 
-#%%###=== Program ===####
 if __name__ == "__main__":
     spell_dict = IU.loadFile("data/inventory.json")
     print([type(spell) for spell in spell_dict])

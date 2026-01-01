@@ -1,31 +1,12 @@
-##############################################################
-#### Authors: Lisa Lechani & Gautier Piret ###################
-#### Hogwarts Game - v. 0.1 #################################
-#### CHAPTER 2 ###############################################
-#### 27/11/2025 - 21/12/2025 #################################
-#### Copyright (c) 2025 GauGoth Corp. All Rights reserved ####
-##############################################################
-"""
-Functions for the second chapter of the Hogwarts Game.
-
-We can add as much functions as we want. The mandatory functions are still needed.
-"""
-
-
-#%%###=== Modules Import ===####
-#### Package modules import ####
-#WARNING: these imports do not work if we try to run this file directly 
-#They only work if we run the program from the main directory (hogwarts/) using main.py, menu.py or __debug__.py 
 from universe.house import *
 from utils import input_utils as IU
 from universe.character import *
 
 
-#%%###=== Global variables ===###
+
 contactSupportURL = "http://gaugoth.corp.free.fr/credits/contact/?subject=Hogwarts%20Game%20Support%20Request"
 
-#%%###=== Module (functions) ===####
-### MANDATORY FUNCTIONS ###
+
 def meetFriends(character):
     """
     This  function  depicts  the  journey  on  the  Hogwarts  Express  and  the  ﬁrst  meeting  with  Ron, Hermione, and Draco.
@@ -42,55 +23,55 @@ def meetFriends(character):
     if choice in PrimeNumberWagons:
         print(f"You choose the {choice}th wagon. A mysterious aura surrounds this wagon.")
         print("As you enter, you find a mathematician atmosphere: indeed, the wagon number is prime! You suddendly feel a surge of intelligence.")
-        #Adds 1 to Intelligence
+
         incrementAttribute(character, "Intelligence", 1, True)
     else:
         print(f"You choose the {choice}th wagon and seat near the window.")
         print(f"{character['First Name']}, do you really think choosing a precise wagon will change anything? It's just a train after all...")
     print()
 
-    #%%== Meeting with Ron ==
+
     print("As the train starts moving, a boy with red hair approaches you.")
     print(f"— Mysterious character with redhead: Hi, I'm Ron Weasley. Would you mind if I sit next to you?")
     choice = IU.askChoice("What do you answer?", [f"- {character['First Name']}: \"Go out, you seem to me very silly.\"", "You are very afraid of this boy and jump by the wagon window.", f"- {character['First Name']}: \"Hey! What's up guy! My name is {character['First Name']}, have a seat with me: atually I feel very alone...\""])
     if choice == 1:
         print("- Ron: \"I don't mind. I want a seat.\" Ron Weasley takes a seat and do not speak to you anymore.")
-        #Adds 1 to Ambition
+
         incrementAttribute(character, "Ambition", 1, True)
         
     elif choice == 2:
         endAdventure(character, f"You have very bad luck today: the train is crossing a valley. You fall and flatten like a pancake. See you {character['First Name']}!")
     else:
         print(f"- Ron: \"Wow! Nice to meet you {character['First Name']}!\" You and Ron instantly become friends. You spend the rest of the trip chatting and laughing!")
-        #Adds 2 to Loyalty
+
         incrementAttribute(character, "Loyalty", 2, True)
     input("Press enter to continue... ")
     print()
 
-    #%%== Meeting with Hermione ==
+
     print("A girl with bushy brown hair and a book in her hand approaches you.")
     print("— Mysterious character with bushy hair: : Hi, I'm Hermione Granger. Mind if I join you?") 
     choice = IU.askChoice("What do you answer?", [f"- {character['First Name']}: \"Go out, you seem to me very nerdy.\"", "You are very afraid of this girl and jump by the wagon window.", f"- {character['First Name']}: \"Sure, have a seat! I'm {character['First Name']} by the way.\""])
     if choice == 1:
         print("- Hermione: \"Are you kidding me?? I know more spells than you can imagine! Did you know that the square root of 144 is 12? Or that the spell 'Alohomora' is used to unlock doors?\" Hermione Granger takes a seat but continues to bother you about random facts during a very (too much) long time...")
-        #Adds 1 to Courage
+
         incrementAttribute(character, "Courage", 1, True)
     elif choice == 2:
         endAdventure(character, f"You have very bad luck today: the train is crossing a valley. You fall and flatten like a pancake. See you {character['First Name']}!")
     else:
         print(f"- Hermione: \"Nice to meet you {character['First Name']}!\" You and Hermione instantly become friends. You spend the rest of the trip discussing about various subjects, including books and spells!")
-        #Adds 2 to Intelligence
+
         incrementAttribute(character, "Intelligence", 2, True)
     input("Press enter to continue... ")
     print()
 
-    #%%== Encounter with Draco ==
+
     print("Suddenly, a boy with slicked-back blond hair and a sneer on his face approaches you.")
     print("— Mysterious character with slicked-back hair: : Well, well, well... What do we have here? I'm Draco Malfoy. Can I join you?")
     choice = IU.askChoice("What do you answer?", [f"- {character['First Name']}: \"I don't like your face: go out of there shitty!\"", "You are very afraid of this boy and jump by the wagon window.", f"- {character['First Name']}: \"Sure, have a seat! I'm {character['First Name']} by the way.\""])
     if choice == 1:
         print("- Draco: \"How rude! You will regret this!\" Draco Malfoy turns back and goes away, muttering insults under his breath.")
-        #Adds 1 to Courage
+
         incrementAttribute(character, "Courage", 1, True)
     elif choice == 2:
         endAdventure(character, f"You have very bad luck today: the train is crossing a valley. You fall and flatten like a pancake. See you {character['First Name']}!")
@@ -101,7 +82,7 @@ def meetFriends(character):
         print("- Hermione: \"Yes! Go away!\"")
         print("Draco Malfoy, clearly offended, side eyes you and leaves the wagon.")
         print("Ron and Hermione then look at you and insult you for being friendly with Draco.")
-        #Removes 2 to Loyalty
+
         incrementAttribute(character, "Loyalty", -2, True)
 
     input("Press enter to continue... ")
@@ -115,12 +96,7 @@ def meetFriends(character):
     print()
 
 def welcomeMessage(houses, character):
-    """
-    Welcome Message from Dumbledore
 
-    :param houses: {dict} - Houses & their current points. 
-    """
-    #Checks if the player has bought Hogwarts:
     hggIsBought = False
     if "Hogwarts (yes, the real estate market is slowing down)" in character["Inventory"]:
         hggIsBought = True
@@ -144,26 +120,26 @@ def welcomeMessage(houses, character):
         if choice == 1:
             print("- Dumbledore: “Thank you, Your Majesty. We are honored but everything we do is for your infinite glory.”")
             print("You graciously accept their homage, and the wizards bow even lower.")
-            #Adds 50 to Loyalty
+
             incrementAttribute(character, "Loyalty", 50, True)
         elif choice == 2:
             print("You walk past them without a word. But you do not forget to get your gifts of course.")
             print("- Dumbledore: \"I am so sorry for bothering you, Your Majesty. Please forgive us. Please. PLEASEEEEEEE\"")
             print("You ignore them and walk away, leaving Dumbledore and the wizards in a state of shock and despair.")
-            #Adds 20 to Ambition
+
             incrementAttribute(character, "Ambition", 20, True)
         else:
             print(f"{character['First Name']}: \"Execute them.\" you order coldly.")
             print("- Dumbledore: \"NOOOOOOOOOOOOOOOOOOOOOOOOOOOO\"")
             print("The wizards are horrified, but they comply with your command (of course, you're so much charismatic).")
             print("Dumbledore and the wizards are executed on the spot. A dark cloud of fear and despair descends upon Hogwarts.")
-            #Adds 100 to Courage 
+
             incrementAttribute(character, "Courage", 100, True)
 
     else:
         print("- Dumbledore: \"Ready guys? My name is Albus Dumbledore and I will be your headschool teacher for the year!\"")
         print("- Dumbledore: \"What am I hearing? No I am not 200 years old, thank you. -30 points for Hupplepuff!\"")
-        #-30 points for Hupplepuff 
+
         updateHousePoints(houses, "Hufflepuff", -30, True)
 
         print("- Dumbledore: \"Oh, by the way very little children, did you know the existence of Houses? You will learn more about them in a very short time...\"")
@@ -174,12 +150,7 @@ def welcomeMessage(houses, character):
     print()
 
 def sortingCeremony(character, questions):
-    """
-    Sorting Ceremony function
 
-    :param character: {dict} - The character dictionary
-    :param questions: {list[tuple]} -  A list of tuples, each containing: (1) the question text, (2) a list of possible choices, and (3) the corresponding houses for each answer.
-    """
     print("It's time for the Sorting Ceremony! The Sorting Hat will now determine your house based on your personality and choices. \nHere is a quizz. Answer the questions and discover your House! ")
     assignedHouse = assignHouse(character, questions)
     character["House"] = assignedHouse
@@ -191,14 +162,8 @@ def sortingCeremony(character, questions):
     print()
 
 def enterCommonRoom(character):
-#%%
-    """
-    The character enters his/her House common room
 
-    :param character: {dict} - The character dictionary
-    """
 
-    #Handles if no house assigned 
     if "House" not in character or character["House"] == None:
         print(f"[Error] No house assigned to {character['First Name']} {character['Last Name']}. Cannot enter common room.")
         endAdventure(character, "YOU HAVE FAILED THE SORTING CEREMONY. You are expelled from Hogwarts. GAME OVER")
@@ -218,21 +183,15 @@ def enterCommonRoom(character):
     
     input("Press enter to continue... ")
     print()
-#%%
+
 
 def startChapter2(character, houses):
 
-    """
-    Starts Chapter 2 
-
-    :param character: {dict} - The character dictionary 
-    :param houses: {dict} - Houses & their current points. Structure used: houses = {"Gryffindor": 0, "Slytherin": 0, "Hufflepuff": 0, "Ravenclaw": 0}
-    """
     print("=== Chapter 2: The Journey to Hogwarts ===")
     print()
     meetFriends(character)
     welcomeMessage(houses, character)
-    #Import questions from JSON file
+
     questions = IU.loadFile("data/sorting_ceremony_questions.json")
     sortingCeremony(character, questions)
     enterCommonRoom(character)
@@ -245,7 +204,7 @@ def startChapter2(character, houses):
 
 
     
-#%%###=== Program ===####
+
 if __name__ == "__main__":
     Harry_the_goat = initCharacter("Moustafa Al Ben Wallouh Ben Muhammad Abdel Kader Al Psartek", "Abdelaziz Al Saoudima", {"Courage": 10, "Intelligence": 10, "Loyalty": 10, "Ambition": 10})
     hgg_houses = {"Gryffindor": 0, "Slytherin": 0, "Hufflepuff": 0, "Ravenclaw": 0}

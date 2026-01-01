@@ -1,46 +1,14 @@
-##############################################################
-#### Authors: Lisa Lechani & Gautier Piret ###################
-#### Hogwarts Game - v. 0.1 #################################
-#### INPUT UTILS #############################################
-#### 27/11/2025 - 21/12/2025 #################################
-#### Copyright (c) 2025 GauGoth Corp. All Rights reserved ####
-##############################################################
-"""
-Utility functions for properly managing user input.
-"""
-
-#%%###=== Modules Import ===####
 import json
-#### Package modules import ####
 
-
-#%%###=== Global variables ===###
 contactSupportURL = "http://gaugoth.corp.free.fr/credits/contact/?subject=Hogwarts%20Game%20Support%20Request"
 
 
-#%%###=== Module (functions) ===####
 def askText(msg):
-    """
-    Asks the user to enter text
-    Prompt again whenever the text entered is invalid
 
-    :param msg: {str} - Input message display
-    :return txt: {str} - Text entered
-    """
-
-    txt = input(msg).strip() #Removes spaces at the beginning and at the end of the text
+    txt = input(msg).strip()
     return txt
 
 def askNumber(msg, minVal=None, maxVal=None):
-    """
-    Asks the user to enter an integer
-    Prompt again whenever the text entered is invalid
-    
-    :param msg: {str} - Input message display
-    :param minVal: {int} ? - Minimum value
-    :param maxVal: {int} ? - Maximum value
-    :return nb: {int} - Integer entered
-    """
 
     valid = False
     while not valid:
@@ -65,14 +33,7 @@ def askNumber(msg, minVal=None, maxVal=None):
     return nb
 
 def askChoice(msg, options):
-    """
-    Displays a numbered list of options and prompts the user to make a selection by entering the corresponding number
 
-    :param msg: {str} - Input message display
-    :param options: {list[str]} - List of different options
-    :return choice: {int} - Number corresponding to the selected option
-
-    """
     print(f"{msg}")
     for i in range(len(options)):
         print(f"    {i+1}. {options[i]}")
@@ -82,12 +43,6 @@ def askChoice(msg, options):
     return choice
 
 def loadFile(path):
-    """
-    Loads a JSON file contents. Raises an exception if an error occurs during the process.
-
-    :param path: {str} - file path of the JSON file to load
-    :return jsonList: {list} - JSON contents organized in lists
-    """
     
     try: 
         with open(path, "r", encoding="utf-8") as f:
@@ -98,12 +53,6 @@ def loadFile(path):
         return f"An error occured while trying to read the file {path}. [Error: {e}]\nPlease try again later or contact us at the adress {contactSupportURL} for help."
 
 def loadAsciiArt(path):
-    """
-    Loads an ASCII art from a text file. Raises an exception if an error occurs during the process. 
-
-    :param path: {str} - file path of the text file to load
-    :return asciiArt: {str} - ASCII art content
-    """
 
     try: 
         with open(path, "r", encoding="utf-8") as f:
@@ -114,17 +63,8 @@ def loadAsciiArt(path):
         return f"An error occured while trying to read the file {path}. [Error: {e}]\nPlease try again later or contact us at the adress {contactSupportURL} for help."
 
 def encryptText(text, key):
-    """
-    This function is used to encrypt text in order to store sensitive game information (like pswds, secret spells, etc.)
-    Based on the Caesar & Vigenère cipher methods.
-    
-    :param text: {str} - Text to encrypt
-    :param key: {list[int]} - Encryption key - WARNING: len(key) = len(text); 1 <= key[i] <= 9
 
-    :return: {str} - Encrypted text
-    """
 
-    #PROCESS
     text = text
     key = key
     Crypted=""
@@ -132,23 +72,11 @@ def encryptText(text, key):
         asciiPos = ord(text[i])
         Crypted+= chr(asciiPos+key[i])
 
-    #OUTPUT
+
     return Crypted
 
 def decryptText(encryptedText, key):
-    """
-    This function is used to decrypt text in order to retrieve sensitive game information 
-    Based on the Caesar & Vigenère cipher methods.
-    
-    :param encryptedText: {str} - Text to decrypt
-    :param key: {list[int]} - Decryption key - WARNING: len(key) = len(encryptedText); 1 <= key[i] <= 9
 
-    :return: {str} - Decrypted text
-    """
-
-    #Different from encryptText only in the processing part (subtraction instead of addition)
-
-    #PROCESS
     text = encryptedText
     key = key
     Decrypted=""
@@ -156,12 +84,12 @@ def decryptText(encryptedText, key):
         asciiPos = ord(text[i])
         Decrypted+= chr(asciiPos - key[i])
 
-    #OUTPUT
+
     return Decrypted
 
-#%%###=== Program ===####
+
 if __name__ == "__main__":
-    ###Functions tests:
+
 
     print("Loaded JSON: \n", loadFile("data/houses.json"))
 

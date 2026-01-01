@@ -1,15 +1,3 @@
-##############################################################
-#### Authors: Lisa Lechani & Gautier Piret ###################
-#### Hogwarts Game - v. 0.1 #################################
-#### CHAPTER 1 ###############################################
-#### 27/11/2025 - 21/12/2025 #################################
-#### Copyright (c) 2025 GauGoth Corp. All Rights reserved ####
-##############################################################
-
-#%%###=== Modules Import ===####
-#### Package modules import ####
-#WARNING: these imports do not work if we try to run this file directly 
-#They only work if we run the program from the main directory (hogwarts/) using main.py, menu.py or __debug__.py 
 from universe.house import *
 from utils import input_utils as IU
 from universe.character import *
@@ -18,21 +6,16 @@ from random import randint
 
 from universe.character import modifyMoney
 
-#%%###=== Global variables ===###
+
 contactSupportURL = "http://gaugoth.corp.free.fr/credits/contact/?subject=Hogwarts%20Game%20Support%20Request"
 
-#%%###=== Module (functions) ===####
+
 def introduction():
-    """
-    Introduction to the first chapter
-    """
+
     print("=== Chapter 1:  Arrival in the magical world ===\n")
     input("Welcome to Hogwarts! Ready for your first adventure? Ready guys ? Ready ? Press enter to continue...")    
 
 def createCharacter():
-    """
-    Asks user for character info to create a character and then displays it
-    """
 
     print("\n== Character Creation ==")
     first_name, last_name = "", ""
@@ -63,10 +46,6 @@ def createCharacter():
 
 
 def receiveLetter(character):
-    """
-    Receives letter from Hogwarts and asks if the player wishes to go on an adventure (possible end state)
-    :return:
-    """
 
     print("You have received your acceptance letter to Hogwarts School of Witchcraft and Wizardry!")
     choice = IU.askChoice("Do you wish to attend Hogwarts ?", ["Yes", "No"])
@@ -97,7 +76,7 @@ def buySupplies(display_list, values_list, character):
     while character['Money'] >= 5:
         print(f"You have {character['Money']} Galleons. Make sure to save enough to buy the required items !")
         user_choice = IU.askChoice("Catalog of available items:", display_list + ["Exit the shop"])
-        if user_choice == len(display_list) + 1: #Quit shop
+        if user_choice == len(display_list) + 1:
             if required_bought < 3:
                 msg = "You have not bought all the required supplies. Are you sure you want to go out?"
             else:
@@ -106,16 +85,16 @@ def buySupplies(display_list, values_list, character):
             if quit == 1:
                 break
             
-        #Do not check if "exit" was chosen
+
         if user_choice <= len(display_list):
             if values_list[user_choice-1][1] > character['Money']:
                 input("You're too poor to buy this item. How about you cross the street to get a job? Press enter to continue... ")
 
             else:
-                #Manages the strange options:
-                if user_choice == 15: #100 Galleons
+
+                if user_choice == 15:
                     modifyMoney(character, 120)
-                elif user_choice == 16: #500 Galleons
+                elif user_choice == 16:
                     modifyMoney(character, 500)  
                 else:
                     addItem(character, "Inventory", values_list[user_choice-1][0])
@@ -158,9 +137,7 @@ def buyPet(character):
 
 
 def startChapter1():
-    """
-    Starts chapter 1 of the Hogwarts adventure
-    """
+
     introduction()
     character = createCharacter()
     receiveLetter(character) 
@@ -175,6 +152,6 @@ def startChapter1():
     buyPet(character)
     return character
         
-#%%###=== Program ===####
+
 if __name__ == "__main__":
     startChapter1()
