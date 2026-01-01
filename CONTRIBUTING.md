@@ -57,7 +57,7 @@ For more precise details, please refer to the project's commit history on GitHub
 |
 |
 |
-|---- 01/01/2026 - Final review of the code. Completed the Readme file. Added this LogBook file. Deleted the comments and docstrings in the branch `without-com` for the presentation.
+|---- 01/01/2026 - Final review of the code. Completed the Readme file. Added this LogBook and the testing files. Deleted the comments and docstrings in the branch `without-com` for the presentation.
 |
 |
 |---- 03/01/2026
